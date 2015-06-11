@@ -17,6 +17,6 @@ To install, rename the projects.json.sample to projects.json
 and rename author.txt.sample to author.txt.
 
 Then type:
-    npm install
-    grunt build
+
+    npm install & grunt build
 
