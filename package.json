@@ -1,0 +1,23 @@
+{
+  "name": "Open_Data_Innovation_Coursework",
+  "version": "0.0.1",
+  "author": "JO",
+  "private": true,
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-concat-css": "^0.3.1",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-copy": "^0.8.0",
+    "grunt-contrib-cssmin": "*",
+    "grunt-contrib-less": "^1.0.0",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-cssc": "*",
+    "grunt-htmlhint": "*",
+    "grunt-jslint": "*",
+    "grunt-json-minify": "^0.4.0",
+    "grunt-stripcomments": "^0.3.1",
+    "matchdep": "*"
+  },
+  "dependencies": {}
+}

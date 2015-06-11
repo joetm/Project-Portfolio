@@ -1,0 +1,182 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="robots" content="NOINDEX,NOFOLLOW" />
+<title>Portfolio of Projects</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link rel="stylesheet" type="text/css" href="css/_prod.css" />
+<link rel="stylesheet" type="text/css" media="print" href="css/style-printing.css" />
+
+<link rel="icon" type="image/png" href="./favicon.png" />
+
+<script src="js/vendor/modernizr.js"></script>
+</head>
+<body id="top" class="defaultpointer">
+
+
+<div id="progressbar-container"><div id="progress"></div></div>
+
+
+<nav>
+	<div data-magellan-expedition="fixed">
+
+		<ul class="sub-nav">
+			<li class="nav-header">
+				<span class="show-for-large-up">Project</span> Portfolio
+				<span class="visible-print">of <span class="name_"></span></span>
+			</li>
+			<li data-magellan-arrival="dev" class="hidden-print hide-for-small-only"><a href="#dev">Web Development</a></li>
+			<li data-magellan-arrival="excel" class="hidden-print hide-for-small-only"><a href="#excel" class="excel">Excel</a></li>
+			<li data-magellan-arrival="other" class="hidden-print hide-for-small-only"><a href="#other">Others</a></li>
+			<!--
+			<li data-magellan-arrival="academic" class="hidden-print hide-for-small-only"><a href="#academic">Academic Work</a></li>
+			-->
+			<li class="right hidden-print"><i id="search" class="fi-magnifying-glass"></i></li>
+			<li class="right" id="last-update" title="Last Update">
+				<span class="show-for-large-up">Last Update:</span>
+				<span id="modification-date"></span>
+			</li>
+			<li id="num_projects" class="right"></li>
+		</ul>
+
+		<aside id="searchbox" class="hidden-print">
+		<div class="row">
+			<div class="small-12 columns" style="margin-top:1rem">
+				<div class="left">
+					<input id="s1" class="filter" type="checkbox" name="technology" value="PHP"><label for="s1">PHP</label>
+				</div>
+				<div class="left">
+					<input id="s2" class="filter" type="checkbox" name="technology" value="jQuery"><label for="s2">jQuery</label>
+				</div>
+				<div class="left">
+					<input id="s3" class="filter" type="checkbox" name="technology" value="AngularJS"><label for="s3">AngularJS</label>
+				</div>
+				<div class="left">
+					<input id="s4" class="filter" type="checkbox" name="technology" value="Sass"><label for="s4">Sass/Less</label>
+				</div>
+				<div class="left">
+					<input id="s5" class="filter" type="checkbox" name="technology" value="NodeJS"><label for="s5">NodeJS</label>
+				</div>
+				<div class="left">
+					<input id="s6" class="filter" type="checkbox" name="technology" value="Bootstrap"><label for="s6">Bootstrap</label>
+				</div>
+				<div class="left">
+					<input id="s7" class="filter" type="checkbox" name="technology" value="Foundation"><label for="s7">Foundation</label>
+				</div>
+			</div>
+		</div>
+		</aside>
+	</div>
+</nav>
+
+<div id="intro" class="row hidden-print">
+	<div class="small-12 columns">
+		<h3>About</h3>
+		<p>
+		<span class="about"></span> -
+		<a href="#contact" id="contact_link">Contact information</a>
+		</p>
+	</div>
+</div>
+
+
+<div id="current" class="row page-break hide-for-print">
+	<div class="small-12 columns">
+		<hr class="hidden-print">
+		<h3>Current Projects</h3>
+		<div class="intro_text"></div>
+	</div>
+</div>
+
+
+
+
+<div class="row hide-for-print">
+	<div class="large-12 columns">
+		<h3>Past Projects</h3>
+	</div>
+</div>
+
+
+
+<div id="projects" class="margin-top-print"></div>
+
+
+
+<footer class="row" id="footer">
+	<div id="contact" class="large-12 columns">
+		<hr>
+		<h4>Contact Me</h4>
+		<div class="small-12 medium-6 columns" id="em" style="display:none">
+			<i class="fi-mail"></i> Email: <span></span>
+		</div>
+		<div class="small-12 medium-6 columns">
+			<a href="#" target="_blank" id="linkedin">
+				<i class="fi-social-linkedin"></i> LinkedIn
+			</a>
+		</div>
+		<div class="small-12 medium-6 columns" id="ph" style="display:none">
+			<i class="fi-telephone"></i> Mobile Phone: <span></span>
+		</div>
+		<div class="small-12 medium-6 columns" id="cv" style="display:none">
+				<i class="fi-web"></i> CV website
+		</div>
+	</div>
+	<div class="small-12 columns">
+		<hr/>
+		<div class="row">
+			<div class="left small-6 columns">
+				<!--<p>&copy; 2015</p>-->
+				<a href="#top" class="hidden-print">Back to top</a>
+			</div>
+			<div class="small-6 columns">
+				<a href="http://validator.w3.org/check?uri=komasurfer.com%2Fportfolio%2F&amp;charset=%28detect+automatically%29&amp;doctype=Inline&amp;group=0"
+				target="_blank" title="Valid HTML5" class="right hidden-print">
+					<i class="fi-html5"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+<!--
+<script src="js/vendor/jquery.js"></script>
+<script src="js/vendor/mustache/mustache.min.js"></script>
+<script src="js/vendor/underscore/underscore-min.js"></script>
+<script src="js/vendor/backbone/backbone.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/vendor/foundation/foundation.min.js"></script>
+<script src="js/vendor/foundation/foundation.magellan.min.js"></script>
+<script src="js/vendor/foundation/foundation.clearing.js"></script>
+<script src="js/vendor/foundation/foundation.interchange.js"></script>
+-->
+
+<!--
+PRODUCTION JS
+-->
+<script src="js/_prod.js"></script>
+
+<script type="text/javascript"><!--
+//load the personal information from author.txt
+String.prototype.rot14 = function(){return this.replace(/[a-zA-Z]/g, function(c){return String.fromCharCode((c <= "Z" ? 90 : 122) >= (c = c.charCodeAt(0) + 14) ? c : c - 26);});};
+$.ajax({type:"GET",url: "author.txt"}).done(function(msg){var vars = msg.split("\n");if(vars && vars.length){
+	//email
+	$('#em span').text(vars[1].rot14());$('#em').show();
+	//phone
+	$('#ph span').text(vars[2]);$('#ph').show();
+	//cv website
+	$('#cv').wrap('<a href="'+vars[3].rot14()+'" target="_blank"></a>').show();
+	//username on linkedin
+	$('#linkedin').attr('href', 'http://linkedin.com/in/' + vars[4].rot14());
+
+	//name
+	$('.name_').text(vars[0].rot14());
+}});
+//-->
+</script>
+
+</body>
+</html>

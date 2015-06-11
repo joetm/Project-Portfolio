@@ -1,0 +1,25 @@
+body{font-family:Helvetica Neue,Helvetica,Helvetica,Arial,sans-serif;}
+p{text-align:justify;}
+.meta{margin-top:1.25rem;border-left:3px solid #008cba;}
+.meta .lbl{font-size:0.75rem;text-transform:uppercase;font-weight:900;}
+.defaultpointer{cursor:default;}
+#search{cursor:pointer;}
+#searchbox{display:none;}
+.excel .meta{border-left:3px solid #00ba8c;}
+.excel a{color:#00ba8c;}
+nav>div{border-bottom:1px solid #eee;}
+.sub-nav dt.active .excel,.sub-nav dd.active .excel,.sub-nav li.active .excel{background:#00ba8c;}
+.thumbs{background-color:#eee;padding:0 1.25rem 1.25rem 1.25rem;}
+.thumbs ul li{margin-top:1.25rem;margin-bottom:0;padding-bottom:0;padding-top:0;}
+.thumbs img{border:1px solid #909090;}
+.sub-nav .nav-header{color:#606060;font-size:1rem;}
+nav ul.sub-nav{margin:0;padding:0;list-style-type:none;}
+#progressbar-container{height:3px;width:100%;}
+#progressbar-container #progress{height:3px;width:0;background-color:#008cba;}
+#intro{margin-top:2rem;}
+@media only screen and (min-width: 40.063em) and (max-width: 64em){.hide-medium{display:none;}
+}
+.inline-list{margin-bottom:0;}
+.visible-img img{max-width:90%;}
+.visible-print{display:none;}
+#footer{margin-bottom:1.25rem;}
