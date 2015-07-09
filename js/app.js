@@ -154,7 +154,7 @@ $(function () {
 
                 }
 
-            }
+            }//for
 
             //console.log('data:', this.data);
 
