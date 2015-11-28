@@ -5,7 +5,7 @@ A system to display a portfolio of web development projects.
 
 Technologies used:
 *   Standards: HTML5, CSS3
-*   Components: BackboneJS, Underscore, jQuery, Foundation
+*   Components: BackboneJS, Underscore, jQuery, Mustache, Foundation
 
 The projects are stored in the projects.json file.
 A sample file (projects.json.sample) is included.
