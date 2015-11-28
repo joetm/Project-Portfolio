@@ -2,7 +2,6 @@
 
 var timestamp = new Date().getTime();
 
-
 //HTML5 local storage
 function state_set(id, content) {
     'use strict';
@@ -54,39 +53,64 @@ $(function () {
     });
 
     Projects = Backbone.Model.extend({
-        el: $('#projects'),
+        el_current: $('#current_projects'),
+        el_past: $('#past_projects'),
         initialize: function () {
-            _.bindAll(this, 'loadCSV', 'loadTemplate', 'process', 'render');
+            _.bindAll(this, 'loadJSON', 'loadSearch', 'loadTemplate', 'process', 'render');
         },//initialize
         foundation_loaded: false,
-        data: {},
-        rendered: '',
+        data: [],
+        rendered: [],
+        filter_events_ready: false,
         num_projects: 0,
+        search: [], //holds the search items and the snippet template
         project_filter_count: 0,
         init: function () {
-            this.loadCSV();
+            this.loadJSON();
             this.loadTemplate();
+            this.loadSearch();
         },//init
-        loadCSV: function () {
+        loadSearch: function () {
             var that = this;
-            $.getJSON("./json/projects.min.json?" + timestamp, function (data) {
-                if (data.projects !== undefined) {
-                    that.data = data.projects;
-                    that.num_projects = data.projects.length;
+            $.getJSON("./json/search.json", function (d) {
+                if (d && d.length) {
+                    that.search.items = d;
+                } else {
+                    that.search.items = [];
                 }
-                if (data.intro !== undefined) {
-                    $('#current .intro_text').html(data.intro);
-                }
-                if (data.about !== undefined) {
-                    $('#intro .about').html(data.about);
-                }
-
-                //console.log(this.data);
-                //console.log('num_projects:', that.num_projects);
-
-                that.trigger('loaded:csv');
+                that.trigger('loaded:search');
             });
-        },//loadCSV
+            $.get('./views/search_snippet.html', function (template) {
+                that.search.tpl = template;
+                that.trigger('loaded:search');
+            });
+        },//loadSearch
+        loadJSON: function () {
+            var that = this;
+            $.getJSON("./json/projects.min.json?" + timestamp, function (d) {
+                if (d.projects !== undefined) {
+                    that.num_projects = 0;
+                    if (d.projects.current !== undefined && d.projects.current.length) {
+                        d.projects.current = _.map(d.projects.current, function (arr) { arr.project_type = 'current'; return arr; });
+                        Array.prototype.push.apply(that.data, d.projects.current);
+                        that.num_projects += d.projects.current.length;
+                    }
+                    if (d.projects.past !== undefined && d.projects.past.length) {
+                        d.projects.past = _.map(d.projects.past, function (arr) { arr.project_type = 'past'; return arr; });
+                        Array.prototype.push.apply(that.data, d.projects.past);
+                        that.num_projects += d.projects.past.length;
+                    }
+                }
+                if (d.intro_text !== undefined && d.intro_text) {
+                    $('#intro_text').html(d.intro_text);
+                }
+                if (d.about !== undefined && d.about) {
+                    $('#intro .about').html(d.about);
+                }
+
+                that.trigger('loaded:json');
+            });
+        },//loadJSON
         loadTemplate: function () {
             var that = this;
             $.get('./views/template.html?' + timestamp, function (template) {
@@ -102,9 +126,12 @@ $(function () {
             }
             //console.log(this.data);
 
-            var rendered = '',
+            var rendered = [],
                 i,
-                id_helper = {};
+                id_helper = {},
+                target = '';
+
+            rendered.current = rendered.past = '';
 
             //reset project count
             this.project_filter_count = 0;
@@ -126,17 +153,17 @@ $(function () {
                     this.data[i].hasTechnology = (this.data[i].technology === undefined && this.data[i].technology ? false : true);
 
                     //has screenshots?
-                    this.data[i].hasImg = (this.data[i].technology === undefined && this.data[i].technology ? false : true);
+                    this.data[i].hasImg = (this.data[i].imgs !== undefined && this.data[i].imgs.length >= 1 ? true : false);
+                    //console.log(this.data[i].title, this.data[i].hasImg);
 
-                    if (this.data[i].imgs.length >= 1) {
-                        this.data[i].hasImg = true;
+                    if (this.data[i].hasImg) {
                         if (this.data[i].imgs.length > 1) {
+                            // gallery
                             this.data[i].gallery = this.data[i].imgs;
                         } else {
+                            // single screenshot
                             this.data[i].screenshot = this.data[i].imgs;
                         }
-                    } else {
-                        this.data[i].hasImg = false;
                     }
 
                     //element id for navigation
@@ -147,7 +174,13 @@ $(function () {
                         this.data[i].hasId = false;
                     }
 
-                    rendered = rendered + Mustache.render(this.template, this.data[i]);
+                    if (this.data[i].project_type === 'current') {
+                        target = 'current';
+                    } else {
+                        target = 'past';
+                    }
+
+                    rendered[target] = rendered[target] + Mustache.render(this.template, this.data[i]);
 
                     //update the progressbar
                     $('#progressbar-container #progress').width(((i + 1) / this.num_projects * 100) + '%');
@@ -156,13 +189,56 @@ $(function () {
 
             }//for
 
-            //console.log('data:', this.data);
-
-            this.rendered = rendered;
+            this.rendered.past = rendered.past;
+            this.rendered.current = rendered.current;
 
             this.render();
 
         },//process
+        setup_filter_events: function () {
+
+            if (!this.filter_events_ready) {
+                this.filter_events_ready = true;
+                $('#searchbox #searchitems .filter').on('click', function (e) {
+                    e.stopPropagation();
+
+                    //get filter value
+                    //var what = $(this).val(),
+                    var fields = [];
+
+                    //console.log(what);
+
+                    //get the selected values
+                    _.each($('#searchbox #searchitems .filter'), function (element) {
+                        if ($(element).prop('checked') === true) {
+                            fields.push(element.value);
+                        }
+                    });
+
+                    //show or hide the intro section
+                    //on non-empty search terms array
+                    if (fields.length > 0) {
+                        //hide the intro
+                        $('#intro').hide();
+                        $('#intro_text').hide();
+                        $('#current').hide();
+                        $('#past').hide();
+                        //clear the project list
+                        $('#current_projects').html('');
+                        $('#past_projects').html('');
+                    } else {
+                        //show all
+                        $('#intro, #current').show();
+                        $('#current, #past').show();
+                    }
+
+                    ps.filter(fields);
+                    ps.process();
+                    ps.render();
+
+                });//$('.filter').click
+            }//if (!this.filter_events_ready)
+        },
         filter: function (fields) {
 
             var i,
@@ -195,7 +271,8 @@ $(function () {
         },//filter
         render: function () {
 
-            $(this.el).html(this.rendered);
+            this.el_current.html(this.rendered.current);
+            this.el_past.html(this.rendered.past);
 
             this.trigger('foundation');
 
@@ -204,13 +281,39 @@ $(function () {
             $('#progressbar-container #progress')
                 .width('100%')
                 .css('background-color', '#FFFFFF');
-        }//render
+
+        },//render
+        render_search: function () {
+
+            var idx = 0,
+                data;
+            this.search.items = _.map(this.search.items, function (item) {
+                idx = idx + 1;
+                return {
+                    'item': item,
+                    'index': idx
+                };
+            });
+            data = {
+                'items': this.search.items
+            };
+            $('#searchbox #searchitems').html(Mustache.render(this.search.tpl, data));
+
+        }//render_search
     });//Projects
 
 
     ps = new Projects(); //I do not like this way of declaring in Javascript
 
-    ps.on("loaded:csv", function () {
+
+    /* events */
+    ps.on("loaded:search", function () {
+        if (this.search.tpl !== undefined && this.search.items !== undefined) {
+            this.render_search();
+            this.setup_filter_events();
+        }
+    });
+    ps.on("loaded:json", function () {
         this.process();
     });
     ps.on("loaded:template", function () {
@@ -226,34 +329,7 @@ $(function () {
 
     ps.init();
 
-    //checkbox filters
-    $('.filter').click(function () {
 
-        var fields = [];
-
-        //get the selected values
-        _.each($('.filter'), function (element) {
-            if ($(element).prop('checked') === true) {
-                fields.push(element.value);
-            }
-        });
-
-        $(ps.el).html('');
-
-        //show or hide the intro section and current projects
-        //non-empty search terms array
-        if (fields.length > 0) {
-            $('#intro, #current').hide();
-        } else {
-            //show all
-            $('#intro, #current').show();
-        }
-
-        ps.filter(fields);
-        ps.process();
-        ps.render();
-
-    });//$('.filter').click
 
 
     //get the last modification date and display it on the site
@@ -270,21 +346,18 @@ $(function () {
             }
         });
 
+
     $('#intro #contact_link').click(function (e) {
         e.preventDefault();
-
         //scroll to element
         $('html, body').animate({
             scrollTop: $("#footer").offset().top
         }, 400);
-
         //highlight the element
         $('#footer #contact div').css('background-color', '#FFFBF0');
-
         //$('#footer #contact div').animate({
         //    backgroundColor: '#FFFFFF'
         //}, 1500);
-
     });
 
     //sometimes, the foundation image gallery does not work

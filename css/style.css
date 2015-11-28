@@ -22,4 +22,5 @@ nav ul.sub-nav{margin:0;padding:0;list-style-type:none;}
 .inline-list{margin-bottom:0;}
 .visible-img img{max-width:90%;}
 .visible-print{display:none;}
+#current h3,#past h3{margin-top:2rem;}
 #footer{margin-bottom:1.25rem;}
