@@ -150,7 +150,7 @@ $(function () {
                     this.project_filter_count = this.project_filter_count + 1;
 
                     //has technology fields?
-                    this.data[i].hasTechnology = (this.data[i].technology === undefined && this.data[i].technology ? false : true);
+                    this.data[i].hasTechnology = (this.data[i].technology === undefined || !this.data[i].technology ? false : true);
 
                     //has screenshots?
                     this.data[i].hasImg = (this.data[i].imgs !== undefined && this.data[i].imgs.length >= 1 ? true : false);
@@ -165,6 +165,9 @@ $(function () {
                             this.data[i].screenshot = this.data[i].imgs;
                         }
                     }
+
+                    //has video?
+                    this.data[i].hasVideo = (this.data[i].videos !== undefined && this.data[i].videos.length >= 1 ? true : false);
 
                     //element id for navigation
                     if (id_helper[this.data[i].idtype] === undefined) {
