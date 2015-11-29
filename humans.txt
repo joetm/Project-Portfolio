@@ -1,6 +1,6 @@
 /* humanstxt.org */
 
 /* SITE */
-  Standards: HTML5, CSS3
+  Standards: HTML5, CSS3, JSON, Less
   Components: BackboneJS, Underscore, jQuery, Foundation
-  Software: Sublime, TextPad32, Sass
+  Software: Sublime, TextPad32, Less
