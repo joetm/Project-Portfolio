@@ -94,8 +94,8 @@ module.exports = function (grunt) {
                     'js/vendor/backbone/backbone.min.js',
                     'js/vendor/foundation/foundation.min.js',
                     'js/vendor/foundation/foundation.magellan.min.js',
-                    'js/vendor/foundation/foundation.clearing.js',
-                    'js/vendor/foundation/foundation.interchange.js',
+                    'js/vendor/foundation/foundation.clearing.min.js',
+                    'js/vendor/foundation/foundation.interchange.min.js',
                     'js/_app.min.js'
                 ],
                 dest: 'js/_prod.js'

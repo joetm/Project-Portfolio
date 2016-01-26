@@ -1,5 +1,4 @@
 body{font-family:Helvetica Neue,Helvetica,Helvetica,Arial,sans-serif;}
-p{text-align:justify;}
 .meta{margin-top:1.25rem;border-left:3px solid #008cba;}
 .meta .lbl{font-size:0.75rem;text-transform:uppercase;font-weight:900;}
 .defaultpointer{cursor:default;}
@@ -7,9 +6,9 @@ p{text-align:justify;}
 #searchbox{display:none;}
 .excel .meta{border-left:3px solid #00ba8c;}
 .excel a{color:#00ba8c;}
-nav>div{border-bottom:1px solid #eee;}
+nav>div{border-bottom:1px solid #f4f4f4;}
 .sub-nav dt.active .excel,.sub-nav dd.active .excel,.sub-nav li.active .excel{background:#00ba8c;}
-.thumbs{background-color:#eee;padding:0 1.25rem 1.25rem 1.25rem;}
+.thumbs{background-color:#fafafa;border:1px solid #dedede;padding:0 1.25rem 1.25rem 1.25rem;border-radius:5px;}
 .thumbs ul li{margin-top:1.25rem;margin-bottom:0;padding-bottom:0;padding-top:0;}
 .thumbs img{border:1px solid #909090;}
 .sub-nav .nav-header{color:#606060;font-size:1rem;}
@@ -24,3 +23,6 @@ nav ul.sub-nav{margin:0;padding:0;list-style-type:none;}
 .visible-print{display:none;}
 #current h3,#past h3{margin-top:2rem;}
 #footer{margin-bottom:1.25rem;}
+#past h3,#current h3{padding:1.25rem;background-color:#f0f0f0;border-radius:5px;}
+.columns ul{margin-top:0;margin-bottom:0;padding-top:0;padding-bottom:0;}
+.descr{text-align:justify;margin-bottom:0.625rem;}

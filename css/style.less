@@ -9,16 +9,14 @@
 @academic: #5B83AD;
 @academic-hover: #5B83AD;
 
-@thumbs-bg: #EEEEEE;
+@thumbs-bg: #F4F4F4;
+@h3-bg: #F0F0F0;
 @img-bg: #909090;
 
 /**************************/
 
 body{
 	font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-}
-p{
-	text-align: justify;
 }
 .meta{
 	margin-top:1.25rem;
@@ -52,8 +50,11 @@ nav>div{
 	background: @excel;
 }
 .thumbs{
-	background-color:@thumbs-bg;
+	/* background-color:@thumbs-bg; */
+	background-color:#FAFAFA;
+	border:1px solid #DEDEDE;
 	padding:0 1.25rem 1.25rem 1.25rem;
+	border-radius:5px;
 }
 .thumbs ul li{
     margin-top:1.25rem;
@@ -96,7 +97,6 @@ nav ul.sub-nav{
 .visible-img img{
     max-width:90%;
 }
-
 .visible-print{
     display:none;
 }
@@ -105,4 +105,19 @@ nav ul.sub-nav{
 }
 #footer{
     margin-bottom:1.25rem;
+}
+#past h3, #current h3{
+	padding:1.25rem;
+	background-color:@h3-bg;
+	border-radius:5px;
+}
+.columns ul {
+	margin-top:0;
+	margin-bottom:0;
+	padding-top:0;
+	padding-bottom:0;
+}
+.descr {
+	text-align: justify;
+	margin-bottom:0.625rem;
 }
