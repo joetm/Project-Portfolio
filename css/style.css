@@ -6,6 +6,8 @@ body{font-family:Helvetica Neue,Helvetica,Helvetica,Arial,sans-serif;}
 #searchbox{display:none;}
 .excel .meta{border-left:3px solid #00ba8c;}
 .excel a{color:#00ba8c;}
+.other .meta{border-left:3px solid #ffa500;}
+.other a{color:#ffa500;}
 nav>div{border-bottom:1px solid #f4f4f4;}
 .sub-nav dt.active .excel,.sub-nav dd.active .excel,.sub-nav li.active .excel{background:#00ba8c;}
 .thumbs{background-color:#fafafa;border:1px solid #dedede;padding:0 1.25rem 1.25rem 1.25rem;border-radius:5px;}

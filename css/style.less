@@ -1,18 +1,18 @@
 /**************************/
-
+/*     section colors     */
+/**************************/
 @webdev: #00BA8C;
 @webdev-hover: #008CBA;
 @excel: #00BA8C;
 @excel-hover: #00BA8C;
-@other: #5B83AD;
-@other-hover: #5B83AD;
-@academic: #5B83AD;
-@academic-hover: #5B83AD;
-
+@other: #FFA500; /*5B83AD*/
+@other-hover: #FFA500; /*5B83AD*/
+@academic: #8BA3ED;
+@academic-hover: #8BA3ED;
+/**************************/
 @thumbs-bg: #F4F4F4;
 @h3-bg: #F0F0F0;
 @img-bg: #909090;
-
 /**************************/
 
 body{
@@ -36,6 +36,7 @@ body{
 #searchbox{
 	display:none;
 }
+
 /*different colors for the sections*/
 .excel .meta{
 	border-left:3px solid @excel;
@@ -43,6 +44,13 @@ body{
 .excel a{
 	color: @excel;
 }
+.other .meta{
+	border-left:3px solid @other;
+}
+.other a{
+	color: @other;
+}
+
 nav>div{
 	border-bottom:1px solid @thumbs-bg;
 }

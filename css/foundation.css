@@ -96,12 +96,6 @@ img {
 .clearfix:after {
   clear: both; }
 
-.hide {
-  display: none; }
-
-.invisible {
-  visibility: hidden; }
-
 .antialiased {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
@@ -6199,3 +6193,9 @@ th.hide-for-touch {
 
   th.show-for-print {
     display: table-cell !important; } }
+
+.hide {
+  display: none; }
+
+.invisible {
+  visibility: hidden; }
