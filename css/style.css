@@ -6,10 +6,14 @@ body{font-family:Helvetica Neue,Helvetica,Helvetica,Arial,sans-serif;}
 #searchbox{display:none;}
 .excel .meta{border-left:3px solid #00ba8c;}
 .excel a{color:#00ba8c;}
+.sub-nav dt.active .excel,.sub-nav dd.active .excel,.sub-nav li.active .excel{background:#00ba8c;}
 .other .meta{border-left:3px solid #ffa500;}
 .other a{color:#ffa500;}
+.sub-nav dt.active .other,.sub-nav dd.active .other,.sub-nav li.active .other{background:#ffa500;}
+.academic .meta{border-left:3px solid #8ba3ed;}
+.academic a{color:#8ba3ed;}
+.sub-nav dt.active .academic,.sub-nav dd.active .academic,.sub-nav li.active .academic{background:#8ba3ed;}
 nav>div{border-bottom:1px solid #f4f4f4;}
-.sub-nav dt.active .excel,.sub-nav dd.active .excel,.sub-nav li.active .excel{background:#00ba8c;}
 .thumbs{background-color:#fafafa;border:1px solid #dedede;padding:0 1.25rem 1.25rem 1.25rem;border-radius:5px;}
 .thumbs ul li{margin-top:1.25rem;margin-bottom:0;padding-bottom:0;padding-top:0;}
 .thumbs img{border:1px solid #909090;}

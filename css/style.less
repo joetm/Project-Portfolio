@@ -38,24 +38,18 @@ body{
 }
 
 /*different colors for the sections*/
-.excel .meta{
-	border-left:3px solid @excel;
-}
-.excel a{
-	color: @excel;
-}
-.other .meta{
-	border-left:3px solid @other;
-}
-.other a{
-	color: @other;
-}
+.excel .meta{ border-left:3px solid @excel; }
+.excel a{ color: @excel; }
+.sub-nav dt.active .excel, .sub-nav dd.active .excel, .sub-nav li.active .excel{ background: @excel; }
+.other .meta{ border-left:3px solid @other; }
+.other a{ color: @other; }
+.sub-nav dt.active .other, .sub-nav dd.active .other, .sub-nav li.active .other{ background: @other; }
+.academic .meta{ border-left:3px solid @academic; }
+.academic a{ color: @academic; }
+.sub-nav dt.active .academic, .sub-nav dd.active .academic, .sub-nav li.active .academic{ background: @academic; }
 
 nav>div{
 	border-bottom:1px solid @thumbs-bg;
-}
-.sub-nav dt.active .excel, .sub-nav dd.active .excel, .sub-nav li.active .excel{
-	background: @excel;
 }
 .thumbs{
 	/* background-color:@thumbs-bg; */
