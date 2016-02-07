@@ -308,7 +308,6 @@ $(function () {
 
     ps = new Projects(); //I do not like this way of declaring in Javascript
 
-
     /* events */
     ps.on("loaded:search", function () {
         if (this.search.tpl !== undefined && this.search.items !== undefined) {
@@ -318,6 +317,7 @@ $(function () {
     });
     ps.on("loaded:json", function () {
         this.process();
+        $('.icon-loading').hide();
     });
     ps.on("loaded:template", function () {
         this.process();
@@ -331,8 +331,6 @@ $(function () {
     });
 
     ps.init();
-
-
 
 
     //get the last modification date and display it on the site

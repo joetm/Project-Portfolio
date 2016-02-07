@@ -32,3 +32,4 @@ nav ul.sub-nav{margin:0;padding:0;list-style-type:none;}
 #past h3,#current h3{padding:1.25rem;background-color:#f0f0f0;border-radius:5px;}
 .columns ul{margin-top:0;margin-bottom:0;padding-top:0;padding-bottom:0;}
 .descr{text-align:justify;margin-bottom:0.625rem;}
+.icon-loading{display:inline-block;}

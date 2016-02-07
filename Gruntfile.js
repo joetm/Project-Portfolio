@@ -136,8 +136,10 @@ module.exports = function (grunt) {
         concat_css: {
             build: {
                 src: [
-                    'css/foundation-icons.css',
+                    // 'css/foundation-icons.css',
                     'css/foundation.min.css',
+                    'css/loading.css',
+                    'css/animation.css',
                     'css/style.css'
                 ],
                 dest: 'css/_prod.css'
