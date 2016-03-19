@@ -1,4 +1,4 @@
-/*global document, $, Backbone, _, Mustache, localStorage, console, alert*/
+/*global document, $, Backbone, _, Mustache, localStorage, console*/
 
 var timestamp = new Date().getTime();
 
@@ -6,12 +6,14 @@ var timestamp = new Date().getTime();
 function state_set(id, content) {
     'use strict';
     try {
+        console.log('setting:', id, content);
         localStorage.setItem(id, content);
     } catch (ignore) {}
 }//state_set
 function state_get(id) {
     'use strict';
     try {
+        console.log('getting:', id);
         return localStorage.getItem(id);
     } catch (e) {
         return false;
@@ -20,6 +22,7 @@ function state_get(id) {
 function state_remove(id) {
     'use strict';
     try {
+        console.log('removing:', id);
         localStorage.removeItem(id);
         return true;
     } catch (e) {
@@ -306,7 +309,7 @@ $(function () {
     });//Projects
 
 
-    ps = new Projects(); //I do not like this way of declaring in Javascript
+    ps = new Projects();
 
     /* events */
     ps.on("loaded:search", function () {
@@ -317,6 +320,9 @@ $(function () {
     });
     ps.on("loaded:json", function () {
         this.process();
+        var pos = $('body').scrollTop();
+        //console.info('scrollposition: ' + pos);
+        state_set('scrollposition', pos);
         $('.icon-loading').hide();
     });
     ps.on("loaded:template", function () {
@@ -372,7 +378,7 @@ $(function () {
         //e.preventDefault();
         //var nav_height = $('nav').height();
         var pos = $('body').scrollTop();
-        //alert('scrollposition: ' + pos);
+        // console.info('scrollposition: ' + pos);
         state_set('scrollposition', pos);
     });
 
