@@ -23,13 +23,13 @@ Usage
 -----
 
 Type:
-    `npm install`
-    `npm start`
+`npm install`
+`npm start`
 
 Development
 -----------
 
 Type:
-    `npm run watch`
-    `npm start`
+`npm run watch`
+`npm start`
 
