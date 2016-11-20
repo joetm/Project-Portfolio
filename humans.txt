@@ -2,5 +2,5 @@
 
 /* SITE */
   Standards: HTML5, CSS3, JSON, Less
-  Components: BackboneJS, Underscore, jQuery, Foundation
-  Software: Sublime, TextPad32, Less
+  Components: React, Material-UI
+  Software: Sublime

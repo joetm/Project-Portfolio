@@ -1,22 +1,35 @@
 Project Portfolio
 ==========
 
-A system to display a portfolio of web development projects.
+A portfolio of web development projects.
 
 Technologies used:
 *   Standards: HTML5, CSS3
-*   Components: BackboneJS, Underscore, jQuery, Mustache, Foundation
+*   Components: React, Material-UI, Babel
 
-The projects are stored in the projects.json file.
-A sample file (projects.json.sample) is included.
+The projects are stored in data/projects.json.
+A sample file (data/projects.json.sample) is included.
 
-The personal information is stored in a text file (author.txt) in encoded format.
-A sample file (author.txt.sample) is included.
+The personal information is stored in a text file (data/author.txt) in encoded format.
+A sample file (data/author.txt.sample) is included.
 
-To install, rename the projects.json.sample to projects.json
-and rename author.txt.sample to author.txt.
+Installation
+------------
 
-Then type:
+To install, rename the data/projects.json.sample to data/projects.json
+and rename data/author.txt.sample to data/author.txt.
 
-    npm install & grunt build
+Usage
+-----
+
+Type:
+    `npm install`
+    `npm start`
+
+Development
+-----------
+
+Type:
+    `npm run watch`
+    `npm start`
 

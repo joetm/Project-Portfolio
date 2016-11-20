@@ -1,0 +1,84 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="robots" content="NOINDEX,NOFOLLOW" />
+<title>Portfolio of Projects</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" type="text/css" href="css/_prod.css" />
+<link rel="stylesheet" type="text/css" media="print" href="css/style-printing.css" />
+<link rel="icon" type="image/png" href="./favicon.png" />
+<script src="js/vendor/modernizr.js"></script>
+</head>
+<body id="top" class="defaultpointer">
+
+<div id="progressbar-container"><div id="progress"></div></div>
+
+<nav>
+	<div data-magellan-expedition="fixed">
+		<ul class="sub-nav">
+			<li class="nav-header">
+				<span class="show-for-large-up">Project</span> Portfolio
+				<span class="visible-print">of <span class="name_"></span></span>
+			</li>
+
+			<li data-magellan-arrival="dev" class="hidden-print hide-for-small-only"><a href="#dev">Web Development</a></li>
+			<li data-magellan-arrival="excel" class="hidden-print hide-for-small-only"><a href="#excel" class="excel">Excel</a></li>
+			<li data-magellan-arrival="other" class="hidden-print hide-for-small-only"><a href="#other" class="other">Others</a></li>
+			<li data-magellan-arrival="academic" class="hidden-print hide-for-small-only"><a href="#academic" class="academic">Academic</a></li>
+
+			<li class="right hidden-print"><i id="search" class="fi-magnifying-glass"></i></li>
+			<li class="right" id="last-update" title="Last Update">
+				<span class="show-for-large-up">Last Update:</span>
+				<span id="modification-date"></span>
+			</li>
+			<li id="num_projects" class="right"></li>
+		</ul>
+		<aside id="searchbox" class="hidden-print">
+		<div class="row">
+			<div id="searchitems" class="small-12 columns" style="margin-top:1rem"></div>
+		</div>
+		</aside>
+	</div>
+</nav>
+
+<section>
+	<div id="intro" class="row hidden-print">
+		<div class="small-12 columns">
+			<h3>About</h3>
+			<p>
+				<span class="about"></span> -
+				<a href="#contact" id="contact_link">Contact information</a>
+			</p>
+		</div>
+	</div>
+	<div id="intro_text"></div>
+</section>
+
+<section>
+	<div id="current" class="row page-break hide-for-print">
+		<div class="small-12 columns">
+			<hr class="hidden-print">
+			<h3>Current Projects <i class="icon-loading animate-spin" title="...loading..."></i></h3>
+		</div>
+	</div>
+	<div id="current_projects" class="margin-top-print"></div>
+</section>
+
+<section>
+	<div id="past" class="row hide-for-print">
+		<div class="large-12 columns">
+			<hr class="hidden-print">
+			<h3>Past Projects <i class="icon-loading animate-spin" title="...loading..."></i></h3>
+		</div>
+	</div>
+	<div id="past_projects" class="margin-top-print"></div>
+</section>
+
+<footer class="row" id="footer"></footer>
+
+<script type="text/javascript" src="js/_prod.js"></script>
+<script type="text/javascript" src="js/p.js"></script>
+
+</body>
+</html>
