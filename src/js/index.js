@@ -30,8 +30,7 @@ import BottomLinks from './Components/BottomLinks.jsx';
 
 
 // test
-var projects = [{title:'sss'},{title:'ttt'},{title:'aaa'}];
-
+let projects = {current: [], past: []};
 
 
 class App extends React.Component {
@@ -48,14 +47,16 @@ class App extends React.Component {
         this.serverRequest = fetch(projectsData)
         .then((response) => {
             return response.json();
-        }).then(function(projects) {
+        }).then(function(ps) {
 
             // console.log(projects);
 
-            _this.setState({aboutText: projects.about});
-            _this.setState({introText: projects.intro_text});
+            _this.setState({aboutText: ps.about});
+            _this.setState({introText: ps.intro_text});
+            // _this.setState({projects: ps.projects});
 
-            _this.setState({projects: projects.projects});
+            projects = ps.projects;
+            console.log('projects', projects);
 
             _this.setState({loading: false});
 
@@ -73,10 +74,12 @@ class App extends React.Component {
               <div>
                 <Nav />
                 <About aboutText={this.state.aboutText} introText={this.state.introText} />
-                <PastProjects>
-                    {projects.map(function(project, index) {return <Project title="{this.project.title}" />;})}
+                <CurrentProjects loading={this.state.loading}>
+                    {projects.current.map(function(project, index) {return <Project attrs={project} />;})}
+                </CurrentProjects>
+                <PastProjects loading={this.state.loading}>
+                    {projects.past.map(function(project, index) {return <Project attrs={project} />;})}
                 </PastProjects>
-                <CurrentProjects />
                 <BottomLinks />
               </div>
             </MuiThemeProvider>
