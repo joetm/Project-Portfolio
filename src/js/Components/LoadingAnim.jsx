@@ -5,9 +5,9 @@ class LoadingAnim extends React.Component {
     //     super(props);
     // }
     render() {
-        return this.props.loading === true ? (
+        return (
             <i class="icon-loading animate-spin" title="...loading..."></i>
-        ) : 'done';
+        )
     }
 }
 

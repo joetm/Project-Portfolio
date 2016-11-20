@@ -19,9 +19,9 @@ var Thumb = React.createClass({
         return (
             <a href="{this.props.img}" title="{this.props.title}">
                 <img data-caption="{this.props.title}"
-                    src="{this.props.attrs.thumb}"
+                    src="{this.props.thumb}"
                     alt=""
-                    data-interchange="[{this.props.attrs.img}, (small)], [{this.props.attrs.thumb}, (medium)], [{this.props.attrs.thumb}, (large)]"
+                    data-interchange="[{this.props.img}, (small)], [{this.props.thumb}, (medium)], [{this.props.thumb}, (large)]"
                     />
             </a>
         );
@@ -57,18 +57,20 @@ var Project = React.createClass({
 
                 <div class="thumbs">
                     <ul  class="clearing-thumbs small-block-grid-1 medium-block-grid-3 large-block-grid-4" data-clearing>
-                        <li class="{this.props.attrs.class}">
-                            <Thumb
-                                data-caption={this.props.title}
-                                src={this.props.attrs.thumb}
-                                alt=""
-                                data-interchange="[{this.props.attrs.img}, (small)], [{this.props.attrs.thumb}, (medium)], [{this.props.attrs.thumb}, (large)]"
-                                />
-                        </li>
+                        {this.props.attrs.imgs.map(function (img) {
+                            <li class="{this.props.attrs.class}">
+                                <Thumb
+                                    data-caption={img.title}
+                                    src={img.thumb}
+                                    alt=""
+                                    data-interchange="[{img.img}, (small)], [{img.thumb}, (medium)], [{img.thumb}, (large)]"
+                                    />
+                            </li>
+                        })}
                     </ul>
                     <div>
                         <a href="{this.props.attrs.img}">
-                            <img data-caption="{this.props.attrs.title}" alt="" src="{this.props.attrs.thumb}" data-interchange="[{this.props.attrs.attrs.img}, (small)], [{this.props.attrs.thumb}, (medium)], [{this.props.attrs.thumb}, (large)]" />
+                            <img data-caption={this.props.attrs.title} alt="" src={this.props.attrs.thumb} data-interchange="[{this.props.attrs.attrs.img}, (small)], [{this.props.attrs.thumb}, (medium)], [{this.props.attrs.thumb}, (large)]" />
                         </a>
                     </div>
                 </div>
