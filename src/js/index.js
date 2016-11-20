@@ -24,26 +24,14 @@ import Project from './Components/Project.jsx';
 import PastProjects from './Components/PastProjects.jsx';
 import CurrentProjects from './Components/CurrentProjects.jsx';
 
+import BottomLinks from './Components/BottomLinks.jsx';
 
 
-        // this.serverRequest = fetch(authorInfo)
-        // .then((response) => {
-        //     return response.text();
-        // }).then(function(txt) {
-        //     var vars = txt.split("\n");
-        //     if(vars && vars.length){
-        //         vars = vars.map(function(item) {return item.rot14();});
-        //         _this.state.Name = vars[0];
-        //         _this.state.Email = vars[1];
-        //         _this.state.Phone = vars[2];
-        //         _this.state.CV = vars[3];
-        //         _this.state.Linkedin = vars[4];
-        //     }
-        //     _this.setState({loading: false});
-        // });
 
 
+// test
 var projects = [{title:'sss'},{title:'ttt'},{title:'aaa'}];
+
 
 
 class App extends React.Component {
@@ -89,7 +77,7 @@ class App extends React.Component {
                     {projects.map(function(project, index) {return <Project title="{this.project.title}" />;})}
                 </PastProjects>
                 <CurrentProjects />
-                <Footer />
+                <BottomLinks />
               </div>
             </MuiThemeProvider>
         );

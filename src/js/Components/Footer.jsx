@@ -73,20 +73,6 @@ class Footer extends React.Component {
                             <i class="fi-web"></i> CV website: <a href="http:{this.state.CV}">{this.state.CV}</a>
                     </div>
                 </div>
-                <div class="small-12 columns">
-                    <hr />
-                    <div class="row">
-                        <div class="left small-6 columns">
-                            <a href="#top" class="hidden-print">Back to top</a>
-                        </div>
-                        <div class="small-6 columns">
-                            <a href="http://validator.w3.org/check?uri=komasurfer.com%2Fportfolio%2F&amp;charset=%28detect+automatically%29&amp;doctype=Inline&amp;group=0"
-                            target="_blank" title="Valid HTML5" class="right hidden-print">
-                                <i class="fi-html5"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
             </div>
         );
     }
