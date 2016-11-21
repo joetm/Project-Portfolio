@@ -26,8 +26,13 @@ import CurrentProjects from './Components/CurrentProjects.jsx';
 
 import BottomBar from './Components/BottomBar.jsx';
 
-
-
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/navigation/arrow-upward';
+const FloatingScrollButton = () => (
+    <FloatingActionButton secondary={true} mini={false} style={{position:'fixed', right:'20px', bottom: '20px'}}>
+      <ContentAdd />
+    </FloatingActionButton>
+);// /
 
 
 class App extends React.Component {
@@ -81,6 +86,7 @@ class App extends React.Component {
                 <PastProjects loading={this.state.loading}>
                     {this.projects.past.map(function(project, index) {return <Project key={index} attrs={project} />;})}
                 </PastProjects>
+                <FloatingScrollButton />
                 <BottomBar />
               </div>
             </MuiThemeProvider>
