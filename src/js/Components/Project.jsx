@@ -1,16 +1,18 @@
 var React = require('react');
 
 /*
-                <div class="videos">
-                        <div>
-                            <iframe width="420" height="315"
-                                src="https://www.youtube.com/embed/{this.props.code}" frameborder="0" allowfullscreen></iframe>
-                        </div>
-                </div>
+    <div class="videos">
+            <div>
+                <iframe width="420" height="315"
+                    src="https://www.youtube.com/embed/{this.props.code}" frameborder="0" allowfullscreen></iframe>
+            </div>
+    </div>
 */
 
-function outputMarkup(txt) {
-  return {__html: txt};
+
+
+function outputHTML(txt) {
+    return {__html: txt};
 }
 
 
@@ -29,17 +31,15 @@ var Thumb = React.createClass({
 });
 
 
-/*
-    <img data-caption="{this.props.title}"
-        src="{this.props.attrs.thumb}"
-        alt=""
-        data-interchange="[{this.props.attrs.img}, (small)], [{this.props.attrs.thumb}, (medium)], [{this.props.attrs.thumb}, (large)]"
-        />
-*/
-
 
 var Project = React.createClass({
   render: function() {
+
+    let technologies = [];
+    for (let i=0, numrows = this.props.attrs.technology.length; i < numrows; i++) {
+        technologies.push(<li>{this.props.attrs.technology[i]}</li>);
+    }
+
     return (
         <div id="{this.props.idtype}"
             class="{this.props.idtype} row page-break margin-top-print"
@@ -50,10 +50,7 @@ var Project = React.createClass({
 
                 <h4>{this.props.attrs.title}</h4>
 
-                <div class="descr">
-                    {this.props.attrs.description}
-                </div>
-
+                <div class="descr" dangerouslySetInnerHTML={{__html: this.props.attrs.description}}></div>
 
                 <div class="thumbs">
                     <ul  class="clearing-thumbs small-block-grid-1 medium-block-grid-3 large-block-grid-4" data-clearing>
@@ -75,23 +72,18 @@ var Project = React.createClass({
                     </div>
                 </div>
 
-
                 <div class="meta columns margin-top-print">
 
                     <div class="large-12">
                         <span class="lbl">{this.props.attrs.label}:</span> <a href="{this.props.attrs.link}" target="_blank">{this.props.attrs.title}</a>
                     </div>
 
-
-                        <div class="large-12">
-                            <span class="lbl">Technology:</span>
-                            <ul class="inline-list">
-
-                                <li>{this.props.attrs.ssss}</li>
-
-                            </ul>
-                        </div>
-
+                    <div class="large-12">
+                        <span class="lbl">Technology:</span>
+                        <ul class="inline-list">
+                            {technologies}
+                        </ul>
+                    </div>
 
                     <div class="large-12">
                         <span class="lbl">Status:</span> {this.props.attrs.status}
@@ -109,7 +101,7 @@ var Project = React.createClass({
 
 
                     <div class="large-12">
-                        <span class="lbl">Organisation:</span> {this.props.attrs.organisation}
+                        <span class="lbl">Organisation:</span> <span class="descr" dangerouslySetInnerHTML={{__html: this.props.attrs.organisation}}></span>
                     </div>
 
 
@@ -129,6 +121,7 @@ var Project = React.createClass({
                 </div>
 
             </div>
+
         </div>
     );
   }

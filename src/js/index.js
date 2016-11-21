@@ -24,7 +24,7 @@ import Project from './Components/Project.jsx';
 import PastProjects from './Components/PastProjects.jsx';
 import CurrentProjects from './Components/CurrentProjects.jsx';
 
-import BottomLinks from './Components/BottomLinks.jsx';
+import BottomBar from './Components/BottomBar.jsx';
 
 
 
@@ -65,7 +65,9 @@ class App extends React.Component {
 
     // abort the running request if component is unmounted
     componentWillUnmount() {
-        this.serverRequest.abort();
+        if (this.serverRequest) {
+            this.serverRequest.abort();
+        }
     }
 
     render() {
@@ -80,7 +82,7 @@ class App extends React.Component {
                 <PastProjects loading={this.state.loading}>
                     {projects.past.map(function(project, index) {return <Project attrs={project} />;})}
                 </PastProjects>
-                <BottomLinks />
+                <BottomBar />
               </div>
             </MuiThemeProvider>
         );

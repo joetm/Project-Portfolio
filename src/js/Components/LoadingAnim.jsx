@@ -5,7 +5,6 @@ class LoadingAnim extends React.Component {
     //     super(props);
     // }
     render() {
-    	console.log('LoadingAnim loading', this.props.loading);
 
 		let icon_style = this.props.loading === true ?
 	      {display: 'none'} :
