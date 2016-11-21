@@ -1,4 +1,4 @@
-var React = require('react');
+const React = require('react');
 
 /*
     <div class="videos">
@@ -17,16 +17,14 @@ function outputHTML(txt) {
 
 
 var Thumb = React.createClass({
-    render: function () {
-        return (
+    render: () => (
             <a href={this.props.img} title={this.props.title}>
                 <img src={this.props.thumb}
                     alt=""
                     />
             </a>
-        );
-        // data-interchange="[{this.props.img}, (small)], [{this.props.thumb}, (medium)], [{this.props.thumb}, (large)]"
-    }
+    )
+    // data-interchange="[{this.props.img}, (small)], [{this.props.thumb}, (medium)], [{this.props.thumb}, (large)]"
 });
 
 
