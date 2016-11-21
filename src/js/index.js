@@ -29,11 +29,13 @@ import BottomBar from './Components/BottomBar.jsx';
 
 
 
-// test
-let projects = {current: [], past: []};
-
 
 class App extends React.Component {
+
+    projects = {
+        current: [],
+        past: []
+    };
 
     constructor(props) {
         super(props);
@@ -48,18 +50,15 @@ class App extends React.Component {
         .then((response) => {
             return response.json();
         }).then(function(ps) {
-
-            // console.log(projects);
+            // console.log(ps);
 
             _this.setState({aboutText: ps.about});
             _this.setState({introText: ps.intro_text});
-            // _this.setState({projects: ps.projects});
 
-            projects = ps.projects;
-            console.log('projects', projects);
+            _this.projects = ps.projects;
+            // console.log('projects', _this.projects);
 
             _this.setState({loading: false});
-
         });
     }
 
@@ -77,10 +76,10 @@ class App extends React.Component {
                 <Nav />
                 <About aboutText={this.state.aboutText} introText={this.state.introText} />
                 <CurrentProjects loading={this.state.loading}>
-                    {projects.current.map(function(project, index) {return <Project attrs={project} />;})}
+                    {this.projects.current.map(function(project, index) {return <Project key={index} attrs={project} />;})}
                 </CurrentProjects>
                 <PastProjects loading={this.state.loading}>
-                    {projects.past.map(function(project, index) {return <Project attrs={project} />;})}
+                    {this.projects.past.map(function(project, index) {return <Project key={index} attrs={project} />;})}
                 </PastProjects>
                 <BottomBar />
               </div>
