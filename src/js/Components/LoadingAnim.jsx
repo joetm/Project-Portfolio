@@ -5,8 +5,14 @@ class LoadingAnim extends React.Component {
     //     super(props);
     // }
     render() {
+    	console.log('LoadingAnim loading', this.props.loading);
+
+		let icon_style = this.props.loading === true ?
+	      {display: 'none'} :
+	      {display: 'inline-block'};
+
         return (
-            <i class="icon-loading animate-spin" title="...loading..."></i>
+            <i style={icon_style} class="icon-loading animate-spin" title="...loading..."></i>
         )
     }
 }

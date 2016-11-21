@@ -10,6 +10,7 @@ class PastProjects extends React.Component {
         };
     }
     render() {
+    	this.state.loading = false;
         return (
             <section>
                 <div id="past" class="row hide-for-print">
