@@ -15,21 +15,29 @@ import ScrollButton from './ScrollButton.jsx';
 import PastProjects from './PastProjects.jsx';
 import CurrentProjects from './CurrentProjects.jsx';
 
-
-
+import $ from 'jquery';
 
 
 class App extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            loading: true,
+            scrolled: false
+        };
+    }
+
+    // context provider
+    getChildContext() {
+        console.log('scrolled in App:', this.state.scrolled);
+        return {scrolled: this.state.scrolled};
+    }
 
     projects = {
         current: [],
         past: []
     };
-
-    constructor(props) {
-        super(props);
-        this.state = {loading: true};
-    }
 
     componentDidMount() {
         let _this = this;
@@ -49,6 +57,13 @@ class App extends React.Component {
 
             _this.setState({loading: false});
         });
+
+        // TODO
+        // watch the scrolling
+        // $(window).scroll(function() {
+        //     _this.state.scrolled = $(window).scrollTop() > 0;
+        // });
+
     }
 
     // abort the running request if component is unmounted
@@ -80,6 +95,12 @@ class App extends React.Component {
             </MuiThemeProvider>
         );
     }
-}
+};
+
+// context
+App.childContextTypes = {
+    scrolled: React.PropTypes.bool
+};
+
 
 export default App;

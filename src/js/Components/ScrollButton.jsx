@@ -9,7 +9,7 @@ import ContentAdd from 'material-ui/svg-icons/navigation/arrow-upward';
 class FloatingScrollButton extends React.Component {
 
     state = {
-      visible: false
+      visible: this.context.scrolled
     };
 
     onBtnClick(event) {
@@ -34,5 +34,11 @@ class FloatingScrollButton extends React.Component {
     }
 
 };
+
+// capture the context of the App
+FloatingScrollButton.contextTypes = {
+    scrolled: React.PropTypes.bool
+};
+
 
 export default FloatingScrollButton;
