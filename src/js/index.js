@@ -75,10 +75,14 @@ class App extends React.Component {
                 <Nav />
                 <About aboutText={this.state.aboutText} introText={this.state.introText} />
                 <CurrentProjects loading={this.state.loading}>
-                    {this.projects.current.map(function(project, index) {return <Project key={index} attrs={project} />;})}
+                    {this.projects.current.map(function(project, index) {
+                        return <Project key={index} attrs={project} />;})
+                    }
                 </CurrentProjects>
                 <PastProjects loading={this.state.loading}>
-                    {this.projects.past.map(function(project, index) {return <Project key={index} attrs={project} />;})}
+                    {this.projects.past.map(function(project, index) {
+                        return <Project key={index} attrs={project} />;})
+                    }
                 </PastProjects>
                 <ScrollButton />
                 <BottomBar />

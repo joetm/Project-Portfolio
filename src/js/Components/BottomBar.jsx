@@ -2,16 +2,22 @@ import React, {Component} from 'react';
 import FontIcon from 'material-ui/FontIcon';
 import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
 import Paper from 'material-ui/Paper';
-//import IconLocationOn from 'material-ui/svg-icons/communication/location-on';
 
-//import Icons from 'material-design-icons';
+import EmailICO from 'material-ui/svg-icons/communication/email';
+import PhoneICO from 'material-ui/svg-icons/communication/phone';
+import WebsiteICO from 'material-ui/svg-icons/av/web';
+const emailIcon = <EmailICO />;
+const phoneIcon = <PhoneICO />;
+// const linkedinIcon = <FontIcon className="material-icons">linkedin</FontIcon>;
+const githubIcon = <FontIcon className="material-icons">github</FontIcon>;
+const websiteIcon = <WebsiteICO />;
 
+const iconStyle = {height:'24px'};
+import GitICO from 'react-icons/lib/fa/github-square';
+import LinkedInICO from 'react-icons/lib/fa/linkedin-square';
+const gitIcon = <GitICO style={iconStyle} />;
+const linkedinIcon = <LinkedInICO style={iconStyle} />;
 
-const emailIcon = <FontIcon className="material-icons">email</FontIcon>;
-const phoneIcon = <FontIcon className="material-icons">phone</FontIcon>;
-const linkedinIcon = <FontIcon className="material-icons">linkedin</FontIcon>;
-const websiteIcon = <FontIcon className="material-icons">website</FontIcon>;
-// const nearbyIcon = <IconLocationOn />;
 
 
 class BottomBar extends Component {
@@ -34,7 +40,7 @@ class BottomBar extends Component {
       };
   }
 
-    componentDidMount() {
+  componentDidMount() {
         let _this = this;
 
         const authorInfo = './data/author.txt';
@@ -58,13 +64,17 @@ class BottomBar extends Component {
             }
             _this.setState({loading: false});
         });
-    }
+  }
 
   // abort the running request if component is unmounted
   componentWillUnmount() {
       if (this.serverRequest) {
         this.serverRequest.abort();
       }
+  }
+
+  redirect() {
+    console.log('redirect to', this.state.linkedin);
   }
 
   render() {
@@ -83,13 +93,19 @@ class BottomBar extends Component {
           />
           <BottomNavigationItem
             label={this.state.linkedin}
+            onClick={this.redirect.bind(this)}
             icon={linkedinIcon}
             onTouchTap={() => this.select(2)}
           />
           <BottomNavigationItem
+            label={'joetm'}
+            icon={gitIcon}
+            onTouchTap={() => this.select(3)}
+          />
+          <BottomNavigationItem
             label={this.state.cv}
             icon={websiteIcon}
-            onTouchTap={() => this.select(3)}
+            onTouchTap={() => this.select(4)}
           />
         </BottomNavigation>
       </Paper>

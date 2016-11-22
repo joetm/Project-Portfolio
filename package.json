@@ -49,6 +49,7 @@
     "material-ui": "^0.16.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
+    "react-icons": "^2.2.1",
     "react-select": "^1.0.0-rc.2",
     "react-tap-event-plugin": "^1.0.0",
     "whatwg-fetch": "^2.0.1"
