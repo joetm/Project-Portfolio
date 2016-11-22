@@ -7,8 +7,10 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');;
 
 module.exports = {
   // context: path.join(__dirname, "src"),
-  devtool: debug ? "inline-sourcemap" : null,
   entry: [
+    // vendor: [
+    //     "jquery"
+    // ],
     'whatwg-fetch', // AJAX fetch polyfill - https://github.com/github/fetch
     "./src/js/index.js"
   ],
@@ -16,6 +18,12 @@ module.exports = {
     // path: path.join(__dirname, "dist/js/"),
     path: path.resolve('./dist'),
     filename: "js/client.min.js"
+  },
+  devtool: debug ? "inline-sourcemap" : null,
+  resolve: {
+      alias: {
+          jquery: './node_modules/jquery/dist/jquery.min.js'
+      }
   },
   module: {
     loaders: [
