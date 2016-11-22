@@ -23,15 +23,8 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            loading: true,
-            scrolled: false
+            loading: true
         };
-    }
-
-    // context provider
-    getChildContext() {
-        console.log('scrolled in App:', this.state.scrolled);
-        return {scrolled: this.state.scrolled};
     }
 
     projects = {
@@ -57,13 +50,6 @@ class App extends React.Component {
 
             _this.setState({loading: false});
         });
-
-        // TODO
-        // watch the scrolling
-        // $(window).scroll(function() {
-        //     _this.state.scrolled = $(window).scrollTop() > 0;
-        // });
-
     }
 
     // abort the running request if component is unmounted
@@ -96,11 +82,5 @@ class App extends React.Component {
         );
     }
 };
-
-// context
-App.childContextTypes = {
-    scrolled: React.PropTypes.bool
-};
-
 
 export default App;

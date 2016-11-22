@@ -8,16 +8,27 @@ import ContentAdd from 'material-ui/svg-icons/navigation/arrow-upward';
 // const FloatingScrollButton = React.createClass({
 class FloatingScrollButton extends React.Component {
 
-    state = {
-      visible: this.context.scrolled
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            scrolled: false
+        };
+    }
 
     onBtnClick(event) {
-        console.log('going up');
         // window.scrollTo(0,0);
         $('html, body').animate({
             scrollTop: 0
         }, 400);
+    }
+
+    componentDidMount() {
+        let _this = this;
+
+        // watch the scrolling
+        $(window).scroll(function() {
+            _this.setState({scrolled: $(window).scrollTop() > 0});
+        });
     }
 
     render() {
@@ -26,7 +37,13 @@ class FloatingScrollButton extends React.Component {
                 secondary={true}
                 mini={false}
                 onClick={this.onBtnClick.bind(this)}
-                style={{display: (this.state.visible ? 'block' : 'none'), zIndex: '999', position:'fixed', right:'20px', bottom: '20px'}}
+                style={{
+                    display: this.state.scrolled ? 'block' : 'none',
+                    zIndex:'999',
+                    position:'fixed',
+                    right:'20px',
+                    bottom:'20px'
+                }}
                 >
                 <ContentAdd />
             </FloatingActionButton>
