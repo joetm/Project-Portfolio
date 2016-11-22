@@ -15,8 +15,6 @@ import ScrollButton from './ScrollButton.jsx';
 import PastProjects from './PastProjects.jsx';
 import CurrentProjects from './CurrentProjects.jsx';
 
-import $ from 'jquery';
-
 
 class App extends React.Component {
 

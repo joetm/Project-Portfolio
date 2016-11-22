@@ -1,5 +1,4 @@
 const React = require('react');
-const $ = require('jquery');
 
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/navigation/arrow-upward';
@@ -16,19 +15,20 @@ class FloatingScrollButton extends React.Component {
     }
 
     onBtnClick(event) {
-        // window.scrollTo(0,0);
-        $('html, body').animate({
-            scrollTop: 0
-        }, 400);
+        // todo: do this without jquery
+        // $('html, body').animate({
+        //     scrollTop: 0
+        // }, 400);
     }
 
     componentDidMount() {
         let _this = this;
 
+        // todo: do this without jquery
         // watch the scrolling
-        $(window).scroll(function() {
-            _this.setState({scrolled: $(window).scrollTop() > 0});
-        });
+        // $(window).scroll(function() {
+        //     _this.setState({scrolled: $(window).scrollTop() > 0});
+        // });
     }
 
     render() {
