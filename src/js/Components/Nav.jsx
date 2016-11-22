@@ -4,12 +4,30 @@ const React = require('react');
 import AppBar from 'material-ui/AppBar';
 
 
+
+function handleTitleTouchTap() {
+  console.log('onTouchTap triggered on the title component');
+}
+
+function handleLeftIconButtonTouchTap() {
+  console.log('left icon click');
+
+
+
+}
+
 var Nav = React.createClass({
+
   render: function() {
     return (
-    	<AppBar title="Project Portfolio" />
+    	<AppBar
+	    	onTitleTouchTap={handleTitleTouchTap}
+	    	onLeftIconButtonTouchTap={handleLeftIconButtonTouchTap}
+    		title="Project Portfolio"
+    	/>
     );
   }
+
 });
 
 /*
