@@ -1,5 +1,7 @@
 const React = require('react');
 
+import Thumb from './Thumb.jsx';
+
 /*
     <div class="videos">
             <div>
@@ -10,23 +12,9 @@ const React = require('react');
 */
 
 
-
 function outputHTML(txt) {
     return {__html: txt};
 }
-
-
-var Thumb = React.createClass({
-    render: () => (
-            <a href={this.props.img} title={this.props.title}>
-                <img src={this.props.thumb}
-                    alt=""
-                    />
-            </a>
-    )
-    // data-interchange="[{this.props.img}, (small)], [{this.props.thumb}, (medium)], [{this.props.thumb}, (large)]"
-});
-
 
 
 var Project = React.createClass({
@@ -41,15 +29,15 @@ var Project = React.createClass({
     if (this.props.attrs.imgs !== undefined) {
         let _this = this;
         imgs = this.props.attrs.imgs.map((img, index) => (
-                            <li key={_this.props.idtype+'_img_'+index} class={img.class}>
-                                <Thumb
-                                    title={img.title}
-                                    img={img.img}
-                                    thumb={img.thumb}
-                                    alt=""
-                                />
-                            </li>
-                        )
+                <li key={_this.props.idtype+'_img_'+index} class={img.class}>
+                    <Thumb
+                        title={img.title}
+                        img={img.img}
+                        thumb={img.thumb}
+                        alt=""
+                    />
+                </li>
+            )
         );
     }
 

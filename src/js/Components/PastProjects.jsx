@@ -3,12 +3,14 @@ var React = require('react');
 import LoadingAnim from './LoadingAnim.jsx';
 
 class PastProjects extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
             loading: true
         };
     }
+
     render() {
         return (
             <section>
@@ -22,6 +24,7 @@ class PastProjects extends React.Component {
             </section>
         );
     }
+
 }
 
 export default PastProjects;

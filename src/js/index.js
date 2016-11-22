@@ -13,19 +13,6 @@ injectTapEventPlugin();
 import App from './Components/App.jsx';
 
 
-// const App = () => (
-//   <MuiThemeProvider>
-//     <div>
-//       <Nav />
-//       <About />
-//       <PastProjects />
-//       <CurrentProjects />
-//       <Footer />
-//     </div>
-//   </MuiThemeProvider>
-// );
-
-
 ReactDOM.render(
   <App />,
   document.getElementById('app')

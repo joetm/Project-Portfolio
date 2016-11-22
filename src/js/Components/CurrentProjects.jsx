@@ -2,13 +2,21 @@ const React = require('react');
 
 import LoadingAnim from './LoadingAnim.jsx';
 
-class CurrentProjects extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+const CurrentProjects = React.createClass({
+
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         loading: true
+    //     };
+    // }
+
+    getInitialState() {
+        return {
             loading: true
         };
-    }
+    },
+
     render() {
         return (
             <section>
@@ -22,6 +30,7 @@ class CurrentProjects extends React.Component {
             </section>
         );
     }
-}
+
+});
 
 export default CurrentProjects;

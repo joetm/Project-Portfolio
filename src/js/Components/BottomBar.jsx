@@ -25,6 +25,7 @@ class BottomBar extends Component {
   state = {
     selectedIndex: 0,
   };
+
   select = (index) => this.setState({selectedIndex: index});
 
   serverRequest = null;

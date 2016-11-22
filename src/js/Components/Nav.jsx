@@ -16,19 +16,15 @@ function handleLeftIconButtonTouchTap() {
 
 }
 
-var Nav = React.createClass({
 
-  render: function() {
-    return (
-    	<AppBar
-	    	onTitleTouchTap={handleTitleTouchTap}
-	    	onLeftIconButtonTouchTap={handleLeftIconButtonTouchTap}
-    		title="Project Portfolio"
-    	/>
-    );
-  }
+let Nav = () => (
+    <AppBar
+        onTitleTouchTap={handleTitleTouchTap}
+        onLeftIconButtonTouchTap={handleLeftIconButtonTouchTap}
+        title="Project Portfolio"
+    />
+);
 
-});
 
 /*
         <nav>

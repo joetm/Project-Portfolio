@@ -16,6 +16,19 @@ import PastProjects from './PastProjects.jsx';
 import CurrentProjects from './CurrentProjects.jsx';
 
 
+// const App = () => (
+//   <MuiThemeProvider>
+//     <div>
+//       <Nav />
+//       <About />
+//       <PastProjects />
+//       <CurrentProjects />
+//       <Footer />
+//     </div>
+//   </MuiThemeProvider>
+// );
+
+
 class App extends React.Component {
 
     constructor(props) {
