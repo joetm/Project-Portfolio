@@ -4,7 +4,7 @@ import Avatar from 'material-ui/Avatar';
 import {List, ListItem} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import Divider from 'material-ui/Divider';
-import Icon from 'material-ui/svg-icons/communication/chat-bubble';
+import Icon from 'material-ui/svg-icons/file/folder';
 
 class SubNav extends React.Component {
 
@@ -23,7 +23,7 @@ class SubNav extends React.Component {
 	}
 
 	render() {
-		console.log('SubNav visibility:', this.state.visible);
+		// console.log('SubNav visibility:', this.state.visible);
 		return (
 			<div style={{display: this.props.visible || this.state.visible ? 'block' : 'none'}}>
 		    <List>

@@ -14,21 +14,29 @@ class FloatingScrollButton extends React.Component {
         };
     }
 
+    // see http://stackoverflow.com/a/24559613/426266
+    scrollToTop(scrollDuration) {
+        var scrollStep = -window.scrollY / (scrollDuration / 15),
+            scrollInterval = setInterval(function(){
+            if ( window.scrollY != 0 ) {
+                window.scrollBy( 0, scrollStep );
+            }
+            else {
+                clearInterval(scrollInterval);
+            }
+        },15);
+    }
+
     onBtnClick(event) {
-        // todo: do this without jquery
-        // $('html, body').animate({
-        //     scrollTop: 0
-        // }, 400);
+        this.scrollToTop(400)
     }
 
     componentDidMount() {
-        let _this = this;
-
-        // todo: do this without jquery
-        // watch the scrolling
-        // $(window).scroll(function() {
-        //     _this.setState({scrolled: $(window).scrollTop() > 0});
-        // });
+        window.onscroll = function (e) {
+            let scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+            console.log('scrollTop', scrollTop);
+            this.setState({scrolled: scrollTop > 0});
+        }.bind(this);
     }
 
     render() {
@@ -50,11 +58,6 @@ class FloatingScrollButton extends React.Component {
         );
     }
 
-};
-
-// capture the context of the App
-FloatingScrollButton.contextTypes = {
-    scrolled: React.PropTypes.bool
 };
 
 
