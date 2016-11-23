@@ -57,7 +57,7 @@ class App extends React.Component {
             _this.setState({introText: ps.intro_text});
 
             _this.projects = ps.projects;
-            // console.log('projects', _this.projects);
+            console.log('projects', _this.projects);
 
             _this.setState({loading: false});
         });

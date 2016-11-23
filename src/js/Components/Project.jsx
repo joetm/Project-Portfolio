@@ -2,6 +2,17 @@ const React = require('react');
 
 import Thumb from './Thumb.jsx';
 
+class ProjectLinkRow extends React.Component {
+    render() {
+        return (
+            <div key={this.props.key}>
+                <span class="lbl">{this.props.label}:</span> <a href={this.props.linkTarget} target="_blank">{this.props.linkText}</a>
+            </div>
+        );
+    }
+}
+
+
 /*
     <div class="videos">
             <div>
@@ -41,11 +52,20 @@ var Project = React.createClass({
         );
     }
 
-    // let links = [];
-    // for (let i=0, numrows = this.props.attrs.links.length; i < numrows; i++) {
-    //     links.push(<div><span class="lbl">Label:</span> <a href="#" target="_blank">{this.props.attrs.links[i]}</a></div>);
-    // }
-    // console.log('links', links);
+    let projectLinks = [];
+    if (this.props.attrs.links !== undefined) {
+        for (let i=0, numrows=this.props.attrs.links.length; i < numrows; i++) {
+            projectLinks.push(
+                <ProjectLinkRow
+                    key={this.props.idtype+'_link_'+i}
+                    label={this.props.attrs.links[i].label}
+                    linkText={this.props.attrs.links[i].title}
+                    linkTarget={this.props.attrs.links[i].link}
+                />
+            );
+        }
+        console.log('links', projectLinks);
+    }
 
     // <div>
     //     <a href="{this.props.attrs.img}">
@@ -73,7 +93,7 @@ var Project = React.createClass({
                 <div class="meta columns margin-top-print">
 
                     <div class="large-12">
-                        {'LINKS: TODO'}
+                        {projectLinks}
                     </div>
 
                     <div class="large-12">

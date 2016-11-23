@@ -34,7 +34,7 @@ class FloatingScrollButton extends React.Component {
     componentDidMount() {
         window.onscroll = function (e) {
             let scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
-            console.log('scrollTop', scrollTop);
+            // console.log('scrollTop', scrollTop);
             this.setState({scrolled: scrollTop > 0});
         }.bind(this);
     }
