@@ -1,0 +1,128 @@
+/**************************/
+/*     section colors     */
+/**************************/
+@webdev: #00BA8C;
+@webdev-hover: #008CBA;
+@excel: #00BA8C;
+@excel-hover: #00BA8C;
+@other: #FFA500; /*5B83AD*/
+@other-hover: #FFA500; /*5B83AD*/
+@academic: #8BA3ED;
+@academic-hover: #8BA3ED;
+/**************************/
+@thumbs-bg: #F4F4F4;
+@h3-bg: #F0F0F0;
+@img-bg: #909090;
+/**************************/
+
+body{
+	font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+}
+.meta{
+	margin-top:1.25rem;
+	border-left:3px solid @webdev-hover;
+}
+.meta .lbl{
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	font-weight: 900;
+}
+.defaultpointer{
+	cursor:default;
+}
+#search{
+	cursor:pointer;
+}
+#searchbox{
+	display:none;
+}
+
+/*different colors for the sections*/
+.excel .meta{ border-left:3px solid @excel; }
+.excel a{ color: @excel; }
+.sub-nav dt.active .excel, .sub-nav dd.active .excel, .sub-nav li.active .excel{ background: @excel; }
+.other .meta{ border-left:3px solid @other; }
+.other a{ color: @other; }
+.sub-nav dt.active .other, .sub-nav dd.active .other, .sub-nav li.active .other{ background: @other; }
+.academic .meta{ border-left:3px solid @academic; }
+.academic a{ color: @academic; }
+.sub-nav dt.active .academic, .sub-nav dd.active .academic, .sub-nav li.active .academic{ background: @academic; }
+
+nav>div{
+	border-bottom:1px solid @thumbs-bg;
+}
+.thumbs{
+	/* background-color:@thumbs-bg; */
+	background-color:#FAFAFA;
+	border:1px solid #DEDEDE;
+	padding:0 1.25rem 1.25rem 1.25rem;
+	border-radius:5px;
+}
+.thumbs ul li{
+    margin-top:1.25rem;
+    margin-bottom:0;
+    padding-bottom:0;
+    padding-top:0;
+}
+.thumbs img{
+	border:1px solid @img-bg;
+}
+.videos{
+
+}
+.sub-nav .nav-header{
+	color:#606060;
+	font-size:1rem;
+}
+nav ul.sub-nav{
+    margin:0;padding:0;list-style-type:none;
+}
+#progressbar-container{
+	height:3px;
+	width:100%;
+}
+#progressbar-container #progress{
+	height:3px;
+	width:0px;
+	background-color: @webdev-hover;
+}
+#intro{
+    margin-top:2rem;
+}
+
+@media only screen and (min-width: 40.063em) and (max-width: 64em) {
+    /*hide some thumbnails on medium sized screens*/
+    .hide-medium{display:none}
+}
+.inline-list{margin-bottom:0}
+
+.visible-img img{
+    max-width:90%;
+}
+.visible-print{
+    display:none;
+}
+#current h3, #past h3{
+	margin-top:2rem;
+}
+#footer{
+    margin-bottom:1.25rem;
+}
+#past h3, #current h3{
+	padding:1.25rem;
+	background-color:@h3-bg;
+	border-radius:5px;
+}
+.columns ul {
+	margin-top:0;
+	margin-bottom:0;
+	padding-top:0;
+	padding-bottom:0;
+}
+.descr {
+	text-align: justify;
+	margin-bottom:0.625rem;
+}
+.icon-loading{
+	display:inline-block;
+}

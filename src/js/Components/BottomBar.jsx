@@ -74,13 +74,9 @@ class BottomBar extends Component {
       }
   }
 
-  redirect() {
-    console.log('redirect to', this.state.linkedin);
-  }
-
   render() {
     return (
-      <Paper zDepth={1}>
+      <Paper style={{marginTop:'4em'}} zDepth={1}>
         <BottomNavigation selectedIndex={this.state.selectedIndex}>
           <BottomNavigationItem
             label={this.state.email}
@@ -94,13 +90,14 @@ class BottomBar extends Component {
           />
           <BottomNavigationItem
             label={this.state.linkedin}
-            onClick={this.redirect.bind(this)}
             icon={linkedinIcon}
+            target={'linkedin'}
             onTouchTap={() => this.select(2)}
           />
           <BottomNavigationItem
             label={'joetm'}
             icon={gitIcon}
+            target={'github'}
             onTouchTap={() => this.select(3)}
           />
           <BottomNavigationItem

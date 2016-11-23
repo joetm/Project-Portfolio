@@ -64,7 +64,7 @@ var Project = React.createClass({
                 />
             );
         }
-        console.log('links', projectLinks);
+        // console.log('links', projectLinks);
     }
 
     return (
