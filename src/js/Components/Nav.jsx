@@ -3,27 +3,44 @@ const React = require('react');
 // material-ui components
 import AppBar from 'material-ui/AppBar';
 
+import SubHeader from './SubHeader.jsx';
 
 
-function handleTitleTouchTap() {
-  console.log('onTouchTap triggered on the title component');
-}
+// let Nav = () => (
+// class Nav extends React.Component {
+let Nav = React.createClass({
 
-function handleLeftIconButtonTouchTap() {
-  console.log('left icon click');
+    getInitialState () {
+        return {
+            submenuVisible: false
+        };
+    },
 
+    handleTitleTouchTap() {
+        console.log('onTouchTap triggered on the title component');
+    },
+    handleLeftIconButtonTouchTap() {
+        console.log('menu icon click');
+        this.setState({submenuVisible: !this.state.submenuVisible});
+    },
 
+	render() {
+        return (
+            <div>
+                <AppBar
+                   onTitleTouchTap={this.handleTitleTouchTap}
+                   onLeftIconButtonTouchTap={this.handleLeftIconButtonTouchTap}
+                   title="Project Portfolio"
+                />
+                <SubHeader
+                   title="TEST"
+                   visible={this.state.submenuVisible}
+                />
+            </div>
+        );
+	}
 
-}
-
-
-let Nav = () => (
-    <AppBar
-        onTitleTouchTap={handleTitleTouchTap}
-        onLeftIconButtonTouchTap={handleLeftIconButtonTouchTap}
-        title="Project Portfolio"
-    />
-);
+});
 
 
 /*
