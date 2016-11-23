@@ -17,7 +17,7 @@ class PastProjects extends React.Component {
                 <div id="past" class="row hide-for-print">
                     <div class="large-12 columns">
                         <hr class="hidden-print" />
-                            <h3>Past Projects <LoadingAnim loading={this.state.loading} /></h3>
+                            <h3>{this.props.title} <LoadingAnim loading={this.state.loading} /></h3>
                     </div>
                 </div>
                 <div id="past_projects" class="margin-top-print">{this.props.children}</div>

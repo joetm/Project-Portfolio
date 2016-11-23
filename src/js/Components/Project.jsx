@@ -78,24 +78,33 @@ var Project = React.createClass({
 
                 <div class="descr" dangerouslySetInnerHTML={{__html: this.props.attrs.description}}></div>
 
-                <div class="thumbs">
-                    <ul class="clearing-thumbs small-block-grid-1 medium-block-grid-3 large-block-grid-4">
-                        {imgs}
-                    </ul>
-                </div>
+                {this.props.attrs.imgs && this.props.attrs.imgs.length > 0 ? 
+                    <div class="thumbs">
+                        <ul class="clearing-thumbs small-block-grid-1 medium-block-grid-3 large-block-grid-4">
+                            {imgs}
+                        </ul>
+                    </div> :
+                    ''
+                }
 
                 <div class="meta columns margin-top-print">
 
-                    <div class="large-12">
-                        {projectLinks}
-                    </div>
+                    {this.props.attrs.projectLinks ? 
+                        <div class="large-12">
+                            {projectLinks}
+                        </div> :
+                        ''
+                    }
 
-                    <div class="large-12">
-                        <span class="lbl">Technology:</span>
-                        <ul class="inline-list">
-                            {technologies}
-                        </ul>
-                    </div>
+                    {this.props.attrs.technologies ? 
+                        <div class="large-12">
+                            <span class="lbl">Technology:</span>
+                            <ul class="inline-list">
+                                {technologies}
+                            </ul>
+                        </div> :
+                        ''
+                    }
 
                     {this.props.attrs.status ? 
                         <div class="large-12">
@@ -139,9 +148,12 @@ var Project = React.createClass({
                         ''
                     }
 
-                    <div class="large-12">
-                        <span class="lbl">Date:</span> {this.props.attrs.daterange}
-                    </div>
+                    {this.props.attrs.daterange ? 
+                        <div class="large-12">
+                            <span class="lbl">Date:</span> {this.props.attrs.daterange}
+                        </div> :
+                        ''
+                    }
 
                 </div>
 

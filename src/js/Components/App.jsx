@@ -9,11 +9,9 @@ import Nav from './Nav.jsx';
 import About from './About.jsx';
 import Footer from './Footer.jsx';
 import Project from './Project.jsx';
+import Projects from './Projects.jsx';
 import BottomBar from './BottomBar.jsx';
 import ScrollButton from './ScrollButton.jsx';
-
-import PastProjects from './PastProjects.jsx';
-import CurrentProjects from './CurrentProjects.jsx';
 
 
 // const App = () => (
@@ -76,16 +74,22 @@ class App extends React.Component {
               <div>
                 <Nav />
                 <About aboutText={this.state.aboutText} introText={this.state.introText} />
-                <CurrentProjects loading={this.state.loading}>
+                <Projects
+                    loading={this.state.loading}
+                    title={'Current Projects'}
+                    >
                     {this.projects.current.map(function(project, index) {
                         return <Project key={index} attrs={project} />;})
                     }
-                </CurrentProjects>
-                <PastProjects loading={this.state.loading}>
+                </Projects>
+                <Projects
+                    loading={this.state.loading}
+                    title={'Past Projects'}
+                    >
                     {this.projects.past.map(function(project, index) {
                         return <Project key={index} attrs={project} />;})
                     }
-                </PastProjects>
+                </Projects>
                 <ScrollButton />
                 <BottomBar />
               </div>
