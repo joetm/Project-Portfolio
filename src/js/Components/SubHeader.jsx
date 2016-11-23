@@ -22,23 +22,53 @@ class SubNav extends React.Component {
     	});
 	}
 
+	handleClick(filter) {
+		console.log('filter', filter);
+		// TODO
+		if (projects) {
+			projects.map(function(project) {
+				project.visible = (project.idtype === filter);
+				return project;
+			});
+		}
+	}
+
+	// TODO: fix click outside of menu
+
 	render() {
 		// console.log('SubNav visibility:', this.state.visible);
 		return (
-			<div style={{display: this.props.visible || this.state.visible ? 'block' : 'none'}}>
+			<div style={{display: this.state.visible ? 'block' : 'none'}}>
 		    <List>
 		      <Subheader>Filter</Subheader>
 		      <ListItem
+                onClick={this.handleClick.bind(this, 'web')}
 		        primaryText="Web Development"
 		        leftAvatar={<Icon />}
 		        rightIcon={<Icon />}
 		      />
 		      <ListItem
+                onClick={this.handleClick.bind(this, 'admin')}
+		        primaryText="Adminstration"
+		        leftAvatar={<Icon />}
+		        rightIcon={<Icon />}
+		      />
+    		<Divider />
+		      <ListItem
+                onClick={this.handleClick.bind(this, 'academic')}
 		        primaryText="Academic"
 		        leftAvatar={<Icon />}
 		        rightIcon={<Icon />}
 		      />
+		    <Divider />
 		      <ListItem
+                onClick={this.handleClick.bind(this, 'excel')}
+		        primaryText="Excel"
+		        leftAvatar={<Icon />}
+		        rightIcon={<Icon />}
+		      />
+		      <ListItem
+                onClick={this.handleClick.bind(this, 'other')}
 		        primaryText="Other"
 		        leftAvatar={<Icon />}
 		        rightIcon={<Icon />}
@@ -50,19 +80,5 @@ class SubNav extends React.Component {
 
 }
 
-/*
-    <Divider />
-    <List>
-      <Subheader>Technologies</Subheader>
-      <ListItem
-        primaryText="JavaScript"
-        leftAvatar={<Avatar src="images/jsa-128.jpg" />}
-      />
-      <ListItem
-        primaryText="PHP"
-        leftAvatar={<Avatar src="images/chexee-128.jpg" />}
-      />
-    </List>
-*/
 
 module.exports = enhanceWithClickOutside(SubNav);

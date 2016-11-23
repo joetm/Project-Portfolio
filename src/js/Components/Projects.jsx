@@ -11,16 +11,19 @@ class PastProjects extends React.Component {
         };
     }
 
+    // TODO: fix CSS and remove id="past"
     render() {
         return (
             <section>
-                <div id="past" class="row hide-for-print">
+                <div id="past" class="projects_headline row hide-for-print">
                     <div class="large-12 columns">
                         <hr class="hidden-print" />
                             <h3>{this.props.title} <LoadingAnim loading={this.state.loading} /></h3>
                     </div>
                 </div>
-                <div id="past_projects" class="margin-top-print">{this.props.children}</div>
+                <div class="projects_body margin-top-print">
+                    {this.props.children}
+                </div>
             </section>
         );
     }
