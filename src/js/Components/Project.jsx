@@ -67,12 +67,6 @@ var Project = React.createClass({
         console.log('links', projectLinks);
     }
 
-    // <div>
-    //     <a href="{this.props.attrs.img}">
-    //         <img data-caption={this.props.attrs.title} alt="" src={this.props.attrs.thumb} data-interchange="[{this.props.attrs.attrs.img}, (small)], [{this.props.attrs.thumb}, (medium)], [{this.props.attrs.thumb}, (large)]" />
-    //     </a>
-    // </div>
-
     return (
         <div id={this.props.idtype}
             class="{this.props.idtype} row page-break margin-top-print">
