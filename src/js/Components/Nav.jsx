@@ -17,6 +17,7 @@ let Nav = React.createClass({
     handleTitleTouchTap() {
         console.log('onTouchTap triggered on the title component');
     },
+
     handleLeftIconButtonTouchTap() {
         console.log('menu icon click');
         // console.log('submenu visible state', !this.state.submenuVisible);
