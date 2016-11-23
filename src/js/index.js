@@ -30,47 +30,6 @@ ReactDOM.render(
 
 var timestamp = new Date().getTime();
 
-//HTML5 local storage
-function state_set(id, content) {
-    'use strict';
-    try {
-        console.log('setting:', id, content);
-        localStorage.setItem(id, content);
-    } catch (ignore) {}
-}//state_set
-function state_get(id) {
-    'use strict';
-    try {
-        console.log('getting:', id);
-        return localStorage.getItem(id);
-    } catch (e) {
-        return false;
-    }
-}//state_get
-function state_remove(id) {
-    'use strict';
-    try {
-        console.log('removing:', id);
-        localStorage.removeItem(id);
-        return true;
-    } catch (e) {
-        return false;
-    }
-}//state_remove
-function test_get() {
-    'use strict';
-    var mod = 'modernizr';
-    try {
-        localStorage.setItem(mod, mod);
-        localStorage.removeItem(mod);
-        return true;
-    } catch (e) {
-        return false;
-    }
-}//test_get
-
-
-
 $(function () {
     'use strict';
 
@@ -79,9 +38,6 @@ $(function () {
         ps,
         sb = $('#searchbox');
 
-    $('#search').click(function () {
-        sb.toggle();
-    });
 
     Projects = Backbone.Model.extend({
         el_current: $('#current_projects'),

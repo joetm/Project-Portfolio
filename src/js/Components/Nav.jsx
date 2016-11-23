@@ -21,6 +21,7 @@ let Nav = React.createClass({
     },
     handleLeftIconButtonTouchTap() {
         console.log('menu icon click');
+        // console.log('submenu visible state', !this.state.submenuVisible);
         this.setState({submenuVisible: !this.state.submenuVisible});
     },
 

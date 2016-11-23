@@ -49,6 +49,7 @@
     "material-design-icons": "^3.0.1",
     "material-ui": "^0.16.1",
     "react": "^15.3.2",
+    "react-click-outside": "^2.2.0",
     "react-dom": "^15.3.2",
     "react-icons": "^2.2.1",
     "react-select": "^1.0.0-rc.2",

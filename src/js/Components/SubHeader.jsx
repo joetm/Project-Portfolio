@@ -1,3 +1,4 @@
+const enhanceWithClickOutside = require('react-click-outside'); // https://www.npmjs.com/package/react-click-outside
 import React from 'react';
 import Avatar from 'material-ui/Avatar';
 import {List, ListItem} from 'material-ui/List';
@@ -7,9 +8,24 @@ import Icon from 'material-ui/svg-icons/communication/chat-bubble';
 
 class SubNav extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            visible: props.visible
+        };
+    }
+
+	handleClickOutside() {
+		console.log('click outside');
+    	this.setState({
+    		visible: false
+    	});
+	}
+
 	render() {
+		console.log('SubNav visibility:', this.state.visible);
 		return (
-			<div style={{display: this.props.visible ? 'block' : 'none'}}>
+			<div style={{display: this.props.visible || this.state.visible ? 'block' : 'none'}}>
 		    <List>
 		      <Subheader>Filter</Subheader>
 		      <ListItem
@@ -49,4 +65,4 @@ class SubNav extends React.Component {
     </List>
 */
 
-export default SubNav;
+module.exports = enhanceWithClickOutside(SubNav);
