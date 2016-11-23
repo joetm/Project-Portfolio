@@ -1,5 +1,21 @@
 const React = require('react');
 
+class ContactLink extends React.Component {
+    onBtnClick(event) {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+    render() {
+        return (
+            <a
+            href="#contact"
+            onClick={this.onBtnClick.bind(this)}
+            >
+                Contact information
+            </a>
+        );
+    }
+}
+
 class About extends React.Component {
   render() {
     return (
@@ -14,7 +30,7 @@ class About extends React.Component {
                         {this.props.introText}
                     </p>
                     <p>
-                        <a href="#contact" id="contact_link">Contact information</a>
+                        <ContactLink />
                     </p>
                 </div>
             </div>
@@ -23,4 +39,4 @@ class About extends React.Component {
   }
 }
 
-export default About;
+module.exports = About;
