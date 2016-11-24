@@ -21,14 +21,13 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            loading: true
+            loading: true,
+            projects: {
+                current: [],
+                past: []
+            }
         };
     }
-
-    projects = {
-        current: [],
-        past: []
-    };
 
     componentDidMount() {
         let _this = this;
@@ -43,8 +42,8 @@ class App extends React.Component {
             _this.setState({aboutText: ps.about});
             _this.setState({introText: ps.intro_text});
 
-            _this.projects = ps.projects;
-            console.log('projects', _this.projects);
+            _this.state.projects = ps.projects;
+            console.log('projects', _this.state.projects);
 
             _this.setState({loading: false});
         });
@@ -57,36 +56,39 @@ class App extends React.Component {
         }
     }
 
-                   // onTitleTouchTap={this.handleTitleTouchTap}
-                   // onLeftIconButtonTouchTap={this.handleLeftIconButtonTouchTap}
+    projectsFilter(filter) {
+        console.log('projectsFilter', filter);
+        this.state.projects.current.map(function (project) {
+            project.visible = (project.idtype === filter ? true : false);
+            console.log(filter, project.idtype, project.visible);
+            return project;
+        });
+        this.state.projects.past.map(function (project) {
+            project.visible = (project.idtype === filter ? true : false);
+            console.log(filter, project.idtype, project.visible);
+            return project;
+        });
+    }
 
     render() {
         return (
             <MuiThemeProvider>
               <div>
-                <Nav>
-                    <NavBar
-                       title="Project Portfolio"
-                    />
-                    <SubHeader
-                       title="TEST"
-                       visible={this.state.submenuVisible}
-                    />
-                </Nav>
+                <Nav
+                    projectsFilter={this.projectsFilter.bind(this)}
+                />
                 <About aboutText={this.state.aboutText} introText={this.state.introText} />
                 <Projects
                     loading={this.state.loading}
                     title={'Current Projects'}
-                    >
+                >
                     {
-                        this.projects.current.map(function(project, index) {
-                            if (1==1) {
-
-                            }
+                        this.state.projects.current.map(function(project, index) {
                             return (
                                 <Project
                                     key={'current_'+index}
                                     attrs={project}
+                                    visible={project.visible !== false}
                                 />
                             );
                         })
@@ -95,13 +97,14 @@ class App extends React.Component {
                 <Projects
                     loading={this.state.loading}
                     title={'Past Projects'}
-                    >
+                >
                     {
-                        this.projects.past.map(function(project, index) {
+                        this.state.projects.past.map(function(project, index) {
                             return (
                                 <Project
                                     key={'past_'+index}
                                     attrs={project}
+                                    visible={project.visible !== false}
                                 />
                             );
                         })

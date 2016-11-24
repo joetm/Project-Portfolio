@@ -23,12 +23,9 @@ function outputHTML(txt) {
 
 var Project = React.createClass({
 
-    getInitialState: () => ({
-        visible: true
-    }),
-
-
     render: function() {
+
+        console.log('project visible', this.props.visible !== false);
 
         let technologies = [];
         for (let i=0, numrows = this.props.attrs.technology.length; i < numrows; i++) {
@@ -66,10 +63,10 @@ var Project = React.createClass({
             // console.log('links', projectLinks);
         }
 
+//                id={this.props.idtype}
         return (
             <div
-                id={this.props.idtype}
-                style={{display: this.state.visible === true ? 'block' : 'none'}}
+                style={{display: (this.props.visible === false ? 'none' : 'block')}}
                 class="row page-break margin-top-print"
             >
                 <div class="large-12 columns">

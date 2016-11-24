@@ -12,12 +12,10 @@ $last_modified = intval(filemtime ($dir . '/projects.json'));
 if($last_modified)
 {
 	echo date('Y-m-d', $last_modified);
-	exit;
 }
 else
 {
 	echo '0';
-	die();
 }
 
 ?>

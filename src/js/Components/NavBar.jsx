@@ -7,20 +7,13 @@ import AppBar from 'material-ui/AppBar';
 // class Nav extends React.Component {
 let NavBar = React.createClass({
 
-    getInitialState() {
-        return {
-            submenuVisible: false
-        };
-    },
-
     handleTitleTouchTap() {
         console.log('onTouchTap triggered on the title component');
     },
 
     handleLeftIconButtonTouchTap() {
         console.log('menu icon click');
-        console.log('submenu visible state', !this.state.submenuVisible);
-        this.setState({submenuVisible: !this.state.submenuVisible});
+        this.props.toggleSubMenu();
     },
 
 	render() {
@@ -36,4 +29,4 @@ let NavBar = React.createClass({
 });
 
 
-export default NavBar;
+module.exports = NavBar;

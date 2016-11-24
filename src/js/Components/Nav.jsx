@@ -8,13 +8,41 @@ import SubHeader from './SubHeader.jsx';
 // class Nav extends React.Component {
 let Nav = React.createClass({
 
-	render() {
+    getInitialState() {
+        // initialise the state (once)
+        return {
+            submenuVisible: false
+        };
+    },
+
+    toggleSubMenu() {
+        this.setState({submenuVisible: !this.state.submenuVisible});
+    },
+    hideSubMenu() {
+        this.setState({submenuVisible: false});
+    },
+    showSubMenu() {
+        this.setState({submenuVisible: true});
+    },
+
+    // projectsFilter is passed through from App
+
+    render() {
         return (
-            <Nav>
-                {this.props.children}
-            </Nav>
+            <div>
+                <NavBar
+                    title="Project Portfolio"
+                    toggleSubMenu={this.toggleSubMenu}
+                />
+                <SubHeader
+                    title="Filter"
+                    visible={this.state.submenuVisible}
+                    hideSubMenu={this.hideSubMenu}
+                    projectsFilter={this.props.projectsFilter}
+                />
+            </div>
         );
-	}
+    }
 
 });
 
