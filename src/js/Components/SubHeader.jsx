@@ -8,13 +8,6 @@ import Icon from 'material-ui/svg-icons/file/folder';
 
 class SubNav extends React.Component {
 
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         visible: props.visible
-    //     };
-    // }
-
     // TODO
 	handleClickOutside() {
 		console.log('click outside');
@@ -26,20 +19,22 @@ class SubNav extends React.Component {
 	handleClick(filter) {
 		console.log('filter', filter);
 		// TODO
-		if (projects !== undefined) {
-			projects.map(function(project) {
-				project.visible = (project.idtype === filter);
-				return project;
-			});
-		}
+		// if (projects !== undefined) {
+		// 	projects.map(function(project) {
+		// 		project.visible = (project.idtype === filter);
+		// 		return project;
+		// 	});
+		// }
+		// close subnavbar
+		this.setState({'visible': false});
 	}
 
 	// TODO: fix click outside of menu
 
 	render() {
-		// console.log('SubNav visibility:', this.state.visible);
+		// outer component controls the visible state with props
 		return (
-			<div style={{display: this.props.visible ? 'block' : 'none'}}>
+			<div style={{display: this.props.visible  ? 'block' : 'none'}}>
 		    <List>
 		      <Subheader>Filter</Subheader>
 		      <ListItem

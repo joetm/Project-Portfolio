@@ -6,25 +6,14 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import 'whatwg-fetch'; // see https://github.com/github/fetch
 
 import Nav from './Nav.jsx';
+import NavBar from './NavBar.jsx';
+import SubHeader from './SubHeader.jsx';
 import About from './About.jsx';
 import Footer from './Footer.jsx';
 import Project from './Project.jsx';
 import Projects from './Projects.jsx';
 import BottomBar from './BottomBar.jsx';
 import ScrollButton from './ScrollButton.jsx';
-
-
-// const App = () => (
-//   <MuiThemeProvider>
-//     <div>
-//       <Nav />
-//       <About />
-//       <PastProjects />
-//       <CurrentProjects />
-//       <Footer />
-//     </div>
-//   </MuiThemeProvider>
-// );
 
 
 class App extends React.Component {
@@ -68,26 +57,54 @@ class App extends React.Component {
         }
     }
 
+                   // onTitleTouchTap={this.handleTitleTouchTap}
+                   // onLeftIconButtonTouchTap={this.handleLeftIconButtonTouchTap}
+
     render() {
         return (
             <MuiThemeProvider>
               <div>
-                <Nav />
+                <Nav>
+                    <NavBar
+                       title="Project Portfolio"
+                    />
+                    <SubHeader
+                       title="TEST"
+                       visible={this.state.submenuVisible}
+                    />
+                </Nav>
                 <About aboutText={this.state.aboutText} introText={this.state.introText} />
                 <Projects
                     loading={this.state.loading}
                     title={'Current Projects'}
                     >
-                    {this.projects.current.map(function(project, index) {
-                        return <Project key={index} attrs={project} />;})
+                    {
+                        this.projects.current.map(function(project, index) {
+                            if (1==1) {
+
+                            }
+                            return (
+                                <Project
+                                    key={'current_'+index}
+                                    attrs={project}
+                                />
+                            );
+                        })
                     }
                 </Projects>
                 <Projects
                     loading={this.state.loading}
                     title={'Past Projects'}
                     >
-                    {this.projects.past.map(function(project, index) {
-                        return <Project key={index} attrs={project} />;})
+                    {
+                        this.projects.past.map(function(project, index) {
+                            return (
+                                <Project
+                                    key={'past_'+index}
+                                    attrs={project}
+                                />
+                            );
+                        })
                     }
                 </Projects>
                 <ScrollButton />
