@@ -2,7 +2,6 @@ var debug = false; // process.env.NODE_ENV !== "production";
 var webpack = require('webpack');
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var ReactToHtmlPlugin = require('react-to-html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');;
 
 module.exports = {
@@ -70,11 +69,15 @@ module.exports = {
     new CopyWebpackPlugin([
       {from: './data', to: './data'},
       {from: './font', to: './font'}
-    ])
-    // new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
-    // new ReactToHtmlPlugin('index.html', 'index.js', {
-    //   static: true,
-    //   template: ejs.compile(fs.readFileSync(__dirname + '/src/template.ejs', 'utf-8'))
-    // })
+    ]),
+	new webpack.optimize.UglifyJsPlugin({
+	    compress: {
+	        warnings: false
+	    }
+	})
+    //new webpack.optimize.UglifyJsPlugin({
+      //mangle: false,
+      //sourcemap: true
+    //})
   ]
 };
