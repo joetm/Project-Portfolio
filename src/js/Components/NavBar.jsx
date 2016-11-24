@@ -22,6 +22,7 @@ let NavBar = React.createClass({
                    onTitleTouchTap={this.handleTitleTouchTap}
                    onLeftIconButtonTouchTap={this.handleLeftIconButtonTouchTap}
                    title="Project Portfolio"
+                   showMenuIconButton={false}
                 />
         );
 	}

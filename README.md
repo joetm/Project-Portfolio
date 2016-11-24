@@ -25,6 +25,8 @@ Usage
 Type:
 `npm install`
 `npm start`
+or
+`http-server .`
 
 Development
 -----------

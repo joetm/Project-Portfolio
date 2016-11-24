@@ -25,7 +25,7 @@ var Project = React.createClass({
 
     render: function() {
 
-        console.log('project visible', this.props.visible !== false);
+        console.log('project visible', this.props.visible);
 
         let technologies = [];
         for (let i=0, numrows = this.props.attrs.technology.length; i < numrows; i++) {
@@ -74,8 +74,6 @@ var Project = React.createClass({
                     <hr class="hide-for-print" />
 
                     <h4>{this.props.attrs.title}</h4>
-
-                    <div>{this.props.attrs.idtype}</div>
 
                     <div class="descr" dangerouslySetInnerHTML={{__html: this.props.attrs.description}}></div>
 
