@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'loading';
-  src: url('../font/loading.eot?87518495');
-  src: url('../font/loading.eot?87518495#iefix') format('embedded-opentype'),
-       url('../font/loading.woff?87518495') format('woff'),
-       url('../font/loading.ttf?87518495') format('truetype'),
-       url('../font/loading.svg?87518495#loading') format('svg');
+  src: url('../../font/loading.eot?87518495');
+  src: url('../../font/loading.eot?87518495#iefix') format('embedded-opentype'),
+       url('../../font/loading.woff?87518495') format('woff'),
+       url('../../font/loading.ttf?87518495') format('truetype'),
+       url('../../font/loading.svg?87518495#loading') format('svg');
   font-weight: normal;
   font-style: normal;
 }

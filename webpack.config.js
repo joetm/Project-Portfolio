@@ -41,19 +41,40 @@ module.exports = {
         exclude: /(node_modules|bower_components|projects)/,
         loader: 'json5-loader'
       },
-      // { test: /\.css$/,loader: "style-loader!css-loader" }
+      // fonts and svg
+      { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff" },
+      { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff" },
+      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
+      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
+      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" },
+      // images
+      {
+        test: /\.(ico|jpe?g|png|gif)$/,
+        loader: "file"
+      },
+      {
+        test: /\.scss$/,
+        // exclude: [/node_modules/], // sassLoader will include node_modules explicitly
+        exclude: /projects/,
+        loader: ExtractTextPlugin.extract("style", "css?sourceMap!postcss!sass?sourceMap&outputStyle=expanded")
+      }
+      // {
+      //     test: /\.s?css$/,
+      //     exclude: /projects/,
+      // 	  loader: "style-loader!css-loader"
+      // }
       // {
       //   test: /\.css$/,
       //   exclude: /(node_modules|bower_components|projects)/,
       //   loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader')
       // }
-      {
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract({
-          fallbackLoader: "style-loader",
-          loader: "css-loader"
-        })
-      }
+      // {
+      //   test: /\.css$/,
+      //   loader: ExtractTextPlugin.extract({
+      //     fallbackLoader: "style-loader",
+      //     loader: "css-loader"
+      //   })
+      // }
     ]
   },
   resolve: {
