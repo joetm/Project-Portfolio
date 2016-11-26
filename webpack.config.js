@@ -83,6 +83,13 @@ module.exports = {
       'components'
     ]
   },
+  // using enzyme with webpack
+  // see https://github.com/airbnb/enzyme/blob/master/docs/guides/webpack.md
+  externals: {
+    'react/addons': true,
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true
+  },
   plugins: debug ? [] : [
     new ExtractTextPlugin('style.css', { allChunks: true }),
     new webpack.optimize.DedupePlugin(),
