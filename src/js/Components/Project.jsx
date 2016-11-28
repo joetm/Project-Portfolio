@@ -25,7 +25,7 @@ var Project = React.createClass({
 
     render: function() {
 
-        console.log('project visible', this.props.visible);
+        // console.log('project visible', this.props.visible);
 
         let technologies = [];
         for (let i=0, numrows = this.props.attrs.technology.length; i < numrows; i++) {
@@ -60,7 +60,7 @@ var Project = React.createClass({
                     />
                 );
             }
-            // console.log('links', projectLinks);
+            console.log('links', projectLinks);
         }
 
 //                id={this.props.idtype}
@@ -88,7 +88,7 @@ var Project = React.createClass({
 
                     <div class="meta columns margin-top-print">
 
-                        {this.props.attrs.projectLinks ? 
+                        {projectLinks ? 
                             <div class="large-12">
                                 {projectLinks}
                             </div> :

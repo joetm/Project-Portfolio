@@ -24,8 +24,8 @@ Usage
 
 Type:
 `npm install`
-`npm start`
-or
+Then:
+`webpack`
 `http-server .`
 
 Development
@@ -34,4 +34,4 @@ Development
 Type:
 `npm run watch`
 `npm start`
-
+The latter will start the dev server at http://localhost:8080/webpack-dev-server/

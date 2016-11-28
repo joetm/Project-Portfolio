@@ -5,7 +5,9 @@
 // import '../css/foundation.css'; // .min
 // import '../css/loading.css';
 // import '../css/animation.css';
-import '!css-loader!sass-loader!../css/foundation.scss';
+
+// import '!css-loader!sass-loader!../css/foundation.scss';
+
 // import '../css/style.scss';
 
 

@@ -15,7 +15,6 @@
   },
   "jest": {
     "setupTestFrameworkScriptFile": "node_modules/jest-enzyme/lib/index.js",
-    // old versions of jest set the unmocks
     "unmockedModulePathPatterns": [
       "react",
       "enzyme",
