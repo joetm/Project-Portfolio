@@ -25,45 +25,41 @@ class SubNav extends Component {
 	handleClick(filter) {
 		console.log('filter', filter);
 	    this.props.toggleSubMenu();
-	    // this.props.projectsFilter(filter);
+	    this.props.projectsFilter(filter);
 	}
 
 	render() {
 		return (
 			<div style={{display: this.props.visible ? 'block' : 'none'}}>
 			    <List>
-				      <Subheader>Project Filter</Subheader>
+				      <Subheader inset={true}>Project Filter</Subheader>
 				      <ListItem
 		                onClick={this.handleClick.bind(this, 'dev')}
 				        primaryText="Web Development"
-				        leftAvatar={<Icon />}
-				        rightIcon={<Icon />}
+				        leftAvatar={<Avatar icon={<Icon />} />}
 				      />
 				      <ListItem
 		                onClick={this.handleClick.bind(this, 'admin')}
 				        primaryText="Adminstration"
-				        leftAvatar={<Icon />}
-				        rightIcon={<Icon />}
+				        leftAvatar={<Avatar icon={<Icon />} />}
 				      />
 		    		<Divider />
 				      <ListItem
 		                onClick={this.handleClick.bind(this, 'academic')}
 				        primaryText="Academic"
-				        leftAvatar={<Icon />}
-				        rightIcon={<Icon />}
+				        leftAvatar={<Avatar icon={<Icon />} />}
 				      />
 				    <Divider />
 				      <ListItem
 		                onClick={this.handleClick.bind(this, 'excel')}
 				        primaryText="Excel"
-				        leftAvatar={<Icon />}
-				        rightIcon={<Icon />}
+				        leftAvatar={<Avatar icon={<Icon />} />}
 				      />
 				      <ListItem
 		                onClick={this.handleClick.bind(this, 'other')}
 				        primaryText="Other"
-				        leftAvatar={<Icon />}
-				        rightIcon={<Icon />}
+				        leftAvatar={<Avatar icon={<Icon />} />}
+				        rightIcon={null}
 				      />
 				    <Divider />
 			    </List>

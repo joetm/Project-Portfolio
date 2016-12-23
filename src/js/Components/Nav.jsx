@@ -5,6 +5,7 @@ import SubHeader from './SubHeader.jsx';
 
 // const Nav = () => (
 class Nav extends React.PureComponent {
+
     render() {
         return (
             <div>
@@ -14,6 +15,7 @@ class Nav extends React.PureComponent {
                 <SubHeader
                     visible={this.props.subMenuVisible}
                     projectsFilter={this.props.projectsFilter}
+                    toggleSubMenu={this.props.toggleSubMenu}
                 />
             </div>
         );

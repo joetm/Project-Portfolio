@@ -15,7 +15,7 @@ class PastProjects extends Component {
     // TODO: fix CSS and remove id="past"
     render() {
         return (
-            <section>
+            <section style={{display: this.props.visible ? 'block' : 'none'}}>
                 <div id="past" class="projects_headline row hide-for-print">
                     <div class="large-12 columns">
                         <hr class="hidden-print" />

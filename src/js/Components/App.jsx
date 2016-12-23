@@ -64,25 +64,54 @@ class App extends React.Component {
         this.state.projects.current.map((project) => {
             project.visible = (project.idtype === filter ? true : false);
             // console.log(filter, project.idtype, project.visible);
-            return project;
+            // return project;
         });
         this.state.projects.past.map((project) => {
             project.visible = (project.idtype === filter ? true : false);
             // console.log(filter, project.idtype, project.visible);
-            return project;
+            // return project;
         });
     }
 
     toggleSubMenu() {
         let subMenuVisible = this.state.subMenuVisible;
-        console.log('SubHeader state (before):', subMenuVisible);
         this.setState({
             subMenuVisible: !subMenuVisible
         });
-        console.log('SubHeader state (after):', !subMenuVisible);
     }
 
     render() {
+
+        let numCurrentProjects = 0;
+        let currentProjects = this.state.projects.current.map((project, index) => {
+                                    if (project.visible !== false) {
+                                        numCurrentProjects++;    
+                                    }
+                                    return (
+                                        <Project
+                                            key={`current_project_${index}`}
+                                            attrs={project}
+                                            visible={project.visible !== false}
+                                        />
+                                    );
+                                });
+        let numPastProjects = 0;
+        let pastProjects = this.state.projects.past.map((project, index) => {
+                                    if (project.visible !== false) {
+                                        numPastProjects++;    
+                                    }
+                                    return (
+                                        <Project
+                                            key={`past_project_${index}`}
+                                            attrs={project}
+                                            visible={project.visible !== false}
+                                        />
+                                    );
+                                });
+
+        console.log('#currentProjects', numCurrentProjects);
+        console.log('#pastProjects', numPastProjects);
+
         return (
             <MuiThemeProvider>
                 <div>
@@ -98,32 +127,16 @@ class App extends React.Component {
                     <Projects
                         loading={this.state.loading}
                         title={'Current Projects'}
+                        visible={numCurrentProjects > 0}
                     >
-                        {
-                            this.state.projects.current.map((project, index) => (
-                                    <Project
-                                        key={`current_project_${index}`}
-                                        attrs={project}
-                                        visible={project.visible !== false}
-                                    />
-                                )
-                            )
-                        }
+                        {currentProjects}
                     </Projects>
                     <Projects
                         loading={this.state.loading}
                         title={'Past Projects'}
+                        visible={numPastProjects > 0}
                     >
-                        {
-                            this.state.projects.past.map((project, index) => (
-                                    <Project
-                                        key={`past_project_${index}`}
-                                        attrs={project}
-                                        visible={project.visible !== false}
-                                    />
-                                )
-                            )
-                        }
+                        {pastProjects}
                     </Projects>
                     <ScrollButton />
                     <BottomBar />
