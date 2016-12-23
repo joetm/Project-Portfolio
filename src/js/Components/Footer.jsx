@@ -1,6 +1,6 @@
 // import appConfig from '../../../config.json5';
 
-var React = require('react');
+import React from 'react';
 
 import 'whatwg-fetch'; // see https://github.com/github/fetch
 
@@ -23,18 +23,16 @@ class Footer extends React.Component {
 
     componentDidMount() {
 
-        let _this = this;
-
         const authorInfo = `./data/author.txt`;
 
         this.serverRequest = fetch(authorInfo)
         .then((response) => {
             return response.text();
         }).then(function(txt) {
-            var vars = txt.split("\n");
+            let vars = txt.split("\n");
             if(vars && vars.length){
                 vars = vars.map(function(item) {return item.rot14();});
-                _this.setState({
+                this.setState({
                     Name: vars[0],
                     Email: vars[1],
                     Phone: vars[2],
@@ -42,8 +40,8 @@ class Footer extends React.Component {
                     Linkedin: vars[4]
                 });
             }
-            _this.setState({loading: false});
-        });
+            this.setState({loading: false});
+        }.bind(this));
     }
 
     // abort the running request if component is unmounted

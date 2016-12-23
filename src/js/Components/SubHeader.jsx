@@ -1,6 +1,8 @@
-const enhanceWithClickOutside = require('react-click-outside'); // https://www.npmjs.com/package/react-click-outside
-
 import React from 'react';
+import { Component } from 'react';
+
+// const enhanceWithClickOutside = require('react-click-outside'); // https://www.npmjs.com/package/react-click-outside
+
 import Avatar from 'material-ui/Avatar';
 import {List, ListItem} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
@@ -8,30 +10,29 @@ import Divider from 'material-ui/Divider';
 import Icon from 'material-ui/svg-icons/file/folder';
 
 
-class SubNav extends React.Component {
+class SubNav extends Component {
 
-    handleClickOutside(e) {
-        console.log('click outside');
-		// console.log(e.target);
-		// e.stopPropagation()
-		console.log(this.props.visible);
-		//if (this.props.visible) {
-	    //    this.props.hideSubMenu();
-	    //}
-    }
+  //   handleClickOutside(e) {
+  //       console.log('click outside');
+		// // console.log(e.target);
+		// e.stopPropagation();
+		// console.log('SubNav visible', this.props.visible);
+		// //if (this.props.visible) {
+	 //    //    this.props.hideSubMenu();
+	 //    //}
+  //   }
 
 	handleClick(filter) {
 		console.log('filter', filter);
-	    this.props.hideSubMenu();
-	    this.props.projectsFilter(filter);
+	    this.props.toggleSubMenu();
+	    // this.props.projectsFilter(filter);
 	}
 
 	render() {
-		// outer component controls the visible state with props
 		return (
-			<div style={{display: this.props.visible  ? 'block' : 'none'}}>
+			<div style={{display: this.props.visible ? 'block' : 'none'}}>
 			    <List>
-				      <Subheader>{this.props.title}</Subheader>
+				      <Subheader>Project Filter</Subheader>
 				      <ListItem
 		                onClick={this.handleClick.bind(this, 'dev')}
 				        primaryText="Web Development"
@@ -72,5 +73,5 @@ class SubNav extends React.Component {
 
 }
 
-
-module.exports = enhanceWithClickOutside(SubNav);
+// module.exports = enhanceWithClickOutside(SubNav);
+module.exports = SubNav;

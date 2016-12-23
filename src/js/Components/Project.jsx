@@ -4,10 +4,10 @@ import Thumb from './Thumb.jsx';
 import Video from './Video.jsx';
 
 
-class ProjectLinkRow extends React.Component {
+class ProjectLinkRow extends React.PureComponent {
     render() {
         return (
-            <div key={this.props.key}>
+            <div>
                 <span class="lbl">{this.props.label}:</span> <a href={this.props.linkTarget} target="_blank">{this.props.linkText}</a>
             </div>
         );
@@ -16,9 +16,9 @@ class ProjectLinkRow extends React.Component {
 
 
 
-function outputHTML(txt) {
-    return {__html: txt};
-}
+// function outputHTML(txt) {
+//     return {__html: txt};
+// }
 
 
 var Project = React.createClass({
@@ -50,23 +50,21 @@ var Project = React.createClass({
 
         let projectLinks = [];
         if (this.props.attrs.links !== undefined) {
-            for (let i=0, numrows=this.props.attrs.links.length; i < numrows; i++) {
+            for (let i = 0, numrows = this.props.attrs.links.length; i < numrows; i++) {
                 projectLinks.push(
                     <ProjectLinkRow
-                        key={this.props.idtype+'_link_'+i}
+                        key={`${this.props.idtype}_link_${i}`}
                         label={this.props.attrs.links[i].label}
                         linkText={this.props.attrs.links[i].title}
                         linkTarget={this.props.attrs.links[i].link}
                     />
                 );
             }
-            console.log('links', projectLinks);
         }
 
-//                id={this.props.idtype}
         return (
             <div
-                style={{display: (this.props.visible === false ? 'none' : 'block')}}
+                style={{display: this.props.visible === false ? 'none' : 'block'}}
                 class="row page-break margin-top-print"
             >
                 <div class="large-12 columns">
@@ -95,7 +93,7 @@ var Project = React.createClass({
                             ''
                         }
 
-                        {this.props.attrs.technologies ? 
+                        {technologies ? 
                             <div class="large-12">
                                 <span class="lbl">Technology:</span>
                                 <ul class="inline-list">

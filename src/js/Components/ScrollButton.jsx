@@ -1,11 +1,12 @@
-const React = require('react');
+import React from 'react';
+import { Component } from 'react';
 
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/navigation/arrow-upward';
 
 // const FloatingScrollButton = () => (
 // const FloatingScrollButton = React.createClass({
-class FloatingScrollButton extends React.Component {
+class FloatingScrollButton extends Component {
 
     constructor(props) {
         super(props);

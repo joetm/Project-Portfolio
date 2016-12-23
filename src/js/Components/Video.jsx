@@ -1,21 +1,20 @@
-var React = require('react');
+import React from 'react';
+import { PureComponent } from 'react';
 
-var Vid = React.createClass({
-  render: function() {
+class Vid extends PureComponent {
+  render() {
     return (
         <div class="videos">
-            <div>
-                <iframe
-                    width="420"
-                    height="315"
-                    src="https://www.youtube.com/embed/{this.props.code}"
-                    frameborder="0"
-                    allowfullscreen
-                ></iframe>
-            </div>
+            <iframe
+                width="420"
+                height="315"
+                src="https://www.youtube.com/embed/{this.props.code}"
+                frameborder="0"
+                allowfullscreen
+            ></iframe>
         </div>
     );
   }
-});
+}
 
 export default Vid;

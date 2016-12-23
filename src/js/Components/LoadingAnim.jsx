@@ -1,6 +1,6 @@
-const React = require('react');
+import React from 'react';
 
-class LoadingAnim extends React.Component {
+class LoadingAnim extends React.PureComponent {
 
     render() {
 

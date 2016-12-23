@@ -1,6 +1,8 @@
-/*global document, console*/
-
+/*********/
 /*  CSS  */
+/*********/
+
+// TODO
 
 // import '../css/foundation.css'; // .min
 // import '../css/loading.css';
@@ -10,13 +12,11 @@
 
 // import '../css/style.scss';
 
-
+/********/
 /*  JS  */
-
-// import appConfig from './config.json5';
+/********/
 
 import React from 'react';
-// import ReactDOM from 'react-dom';
 import { render } from 'react-dom'
 
 import injectTapEventPlugin from 'react-tap-event-plugin';

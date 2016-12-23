@@ -1,8 +1,9 @@
-var debug = true; // process.env.NODE_ENV !== "production";
+var debug = false; // process.env.NODE_ENV !== "production";
 var webpack = require('webpack');
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');;
+var CopyWebpackPlugin = require('copy-webpack-plugin');
+
 
 module.exports = {
   // context: path.join(__dirname, "src"),
@@ -54,8 +55,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        // exclude: [/node_modules/], // sassLoader will include node_modules explicitly
-        exclude: /projects/,
+        exclude: [ /projects/, /node_modules/ ],
         loader: ExtractTextPlugin.extract("style", "css?sourceMap!postcss!sass?sourceMap&outputStyle=expanded")
       }
       // {
@@ -98,11 +98,14 @@ module.exports = {
       {from: './data', to: './data'},
       {from: './font', to: './font'}
     ]),
-	new webpack.optimize.UglifyJsPlugin({
-	    compress: {
-	        warnings: false
-	    }
-	})
+    new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+    })
+  	// new webpack.optimize.UglifyJsPlugin({
+	  //     compress: {
+	  //         warnings: false
+	  //     }
+	  //  })
     //new webpack.optimize.UglifyJsPlugin({
       //mangle: false,
       //sourcemap: true

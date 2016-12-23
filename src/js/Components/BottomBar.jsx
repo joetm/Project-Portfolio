@@ -6,18 +6,12 @@ import Paper from 'material-ui/Paper';
 import EmailICO from 'material-ui/svg-icons/communication/email';
 import PhoneICO from 'material-ui/svg-icons/communication/phone';
 import WebsiteICO from 'material-ui/svg-icons/av/web';
-const emailIcon = <EmailICO />;
-const phoneIcon = <PhoneICO />;
-// const linkedinIcon = <FontIcon className="material-icons">linkedin</FontIcon>;
-const githubIcon = <FontIcon className="material-icons">github</FontIcon>;
-const websiteIcon = <WebsiteICO />;
-
-const iconStyle = {height:'24px'};
 import GitICO from 'react-icons/lib/fa/github-square';
 import LinkedInICO from 'react-icons/lib/fa/linkedin-square';
-const gitIcon = <GitICO style={iconStyle} />;
-const linkedinIcon = <LinkedInICO style={iconStyle} />;
 
+const iconStyle = {
+  height: '24px'
+};
 
 
 class BottomBar extends Component {
@@ -42,7 +36,6 @@ class BottomBar extends Component {
   }
 
   componentDidMount() {
-        let _this = this;
 
         const authorInfo = './data/author.txt';
 
@@ -55,16 +48,18 @@ class BottomBar extends Component {
                 // convert
                 vars = vars.map(function(item) {return item.rot14();});
                 // store new state
-                _this.setState({
+                this.setState({
                     // Name: vars[0],
                     email: vars[1],
                     phone: vars[2],
                     cv: vars[3],
-                    linkedin: vars[4]
+                    linkedin: vars[4],
+                    loading: false
                 });
+            } else {
+                this.setState({loading: false});
             }
-            _this.setState({loading: false});
-        });
+        }.bind(this));
   }
 
   // abort the running request if component is unmounted
@@ -80,29 +75,29 @@ class BottomBar extends Component {
         <BottomNavigation selectedIndex={this.state.selectedIndex}>
           <BottomNavigationItem
             label={this.state.email}
-            icon={emailIcon}
+            icon={<EmailICO />}
             onTouchTap={() => this.select(0)}
           />
           <BottomNavigationItem
             label={this.state.phone}
-            icon={phoneIcon}
+            icon={<PhoneICO />}
             onTouchTap={() => this.select(1)}
           />
           <BottomNavigationItem
             label={this.state.linkedin}
-            icon={linkedinIcon}
+            icon={<LinkedInICO style={iconStyle} />}
             target={'linkedin'}
             onTouchTap={() => this.select(2)}
           />
           <BottomNavigationItem
             label={'joetm'}
-            icon={gitIcon}
+            icon={<GitICO style={iconStyle} />}
             target={'github'}
             onTouchTap={() => this.select(3)}
           />
           <BottomNavigationItem
             label={this.state.cv}
-            icon={websiteIcon}
+            icon={<WebsiteICO />}
             onTouchTap={() => this.select(4)}
           />
         </BottomNavigation>

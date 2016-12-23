@@ -1,6 +1,6 @@
-const React = require('react');
+import React from 'react';
 
-class ContactLink extends React.Component {
+class ContactLink extends React.PureComponent {
     onBtnClick(event) {
         window.scrollTo(0, document.body.scrollHeight);
     }
@@ -16,27 +16,27 @@ class ContactLink extends React.Component {
     }
 }
 
-class About extends React.Component {
-  render() {
-    return (
-        <section>
-            <div id="intro" class="row hidden-print">
-                <div class="small-12 columns">
-                    <h3>About</h3>
-                    <p>
-                        {this.props.aboutText}
-                    </p>
-                    <p>
-                        {this.props.introText}
-                    </p>
-                    <p>
-                        <ContactLink />
-                    </p>
+class About extends React.PureComponent {
+    render () {
+        return (
+            <section>
+                <div id="intro" class="row hidden-print">
+                    <div class="small-12 columns">
+                        <h3>About</h3>
+                        <p>
+                            {this.props.aboutText}
+                        </p>
+                        <p>
+                            {this.props.introText}
+                        </p>
+                        <p>
+                            <ContactLink />
+                        </p>
+                    </div>
                 </div>
-            </div>
-        </section>
-    );
-  }
+            </section>
+        );
+    }
 }
 
 module.exports = About;

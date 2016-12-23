@@ -1,12 +1,10 @@
-const React = require('react');
+import React from 'react';
 
-let SearchSnippet = () => (
-    {{#items}}
-    <div class="left">
-        <input id="s{{index}}" class="filter" type="checkbox" name="technology" value="{{item}}">
-        <label for="s{{index}}" class="filter">{{item}}</label>
-    </div>
-    {{/items}}
+export default SearchSnippet = () => (
+    items.map((item, index) => (
+        <div class="left">
+            <input id={s+index} className="filter" type="checkbox" name="technology" value={item}>
+            <label for={s+index} className="filter">{item}</label>
+        </div>
+    ))
 );
-
-export default SearchSnippet;
