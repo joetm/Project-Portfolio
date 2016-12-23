@@ -9,6 +9,8 @@ import WebsiteICO from 'material-ui/svg-icons/av/web';
 import GitICO from 'react-icons/lib/fa/github-square';
 import LinkedInICO from 'react-icons/lib/fa/linkedin-square';
 
+
+const DELAY = 1000;
 const iconStyle = {
   height: '24px'
 };
@@ -17,23 +19,24 @@ const iconStyle = {
 class BottomBar extends Component {
 
   state = {
-    selectedIndex: 0,
+    selectedIndex: -1,
+    loading: true,
+    Email: 'loading...',
+    Phone: 'loading...',
+    CV: 'loading...',
+    Linkedin: 'loading...',
   };
-
-  select = (index) => this.setState({selectedIndex: index});
 
   serverRequest = null;
 
-  constructor(props) {
-      super(props);
-      this.state = {
-          loading: true,
-          Email: 'loading...',
-          Phone: 'loading...',
-          CV: 'loading...',
-          Linkedin: 'loading...',
-      };
+  navigate = (index, site, content) => {
+    this.setState({selectedIndex: index});
+    //navigate after a nice animation
+    window.setTimeout(() => {
+        window.location = site + content;
+    }, DELAY);
   }
+
 
   componentDidMount() {
 
@@ -42,7 +45,7 @@ class BottomBar extends Component {
         this.serverRequest = fetch(authorInfo)
         .then((response) => {
             return response.text();
-        }).then(function(txt) {
+        }).then((txt) => {
             var vars = txt.split("\n");
             if(vars && vars.length){
                 // convert
@@ -59,7 +62,7 @@ class BottomBar extends Component {
             } else {
                 this.setState({loading: false});
             }
-        }.bind(this));
+        });
   }
 
   // abort the running request if component is unmounted
@@ -76,29 +79,29 @@ class BottomBar extends Component {
           <BottomNavigationItem
             label={this.state.email}
             icon={<EmailICO />}
-            onTouchTap={() => this.select(0)}
+            onTouchTap={() => this.navigate(0, 'mailto:', this.state.email)}
           />
           <BottomNavigationItem
             label={this.state.phone}
             icon={<PhoneICO />}
-            onTouchTap={() => this.select(1)}
+            onTouchTap={() => this.navigate(1, 'phone:', this.state.phone)}
           />
           <BottomNavigationItem
             label={this.state.linkedin}
             icon={<LinkedInICO style={iconStyle} />}
             target={'linkedin'}
-            onTouchTap={() => this.select(2)}
+            onTouchTap={() => this.navigate(2, 'https://www.linkedin.com/in/', this.state.linkedin)}
           />
           <BottomNavigationItem
             label={'joetm'}
             icon={<GitICO style={iconStyle} />}
             target={'github'}
-            onTouchTap={() => this.select(3)}
+            onTouchTap={() => this.navigate(3, 'https://github.com/', 'joetm')}
           />
           <BottomNavigationItem
             label={this.state.cv}
             icon={<WebsiteICO />}
-            onTouchTap={() => this.select(4)}
+            onTouchTap={() => this.navigate(4, this.state.cv, '')}
           />
         </BottomNavigation>
       </Paper>

@@ -32,10 +32,10 @@ class App extends React.Component {
                 past: []
             }
         };
+        this.serverRequest = null;
     }
 
     componentDidMount() {
-        let _this = this;
         const projectsData = `./data/projects.json`;
 
         this.serverRequest = fetch(projectsData)
@@ -43,13 +43,13 @@ class App extends React.Component {
             return response.json();
         }).then((ps) => {
             // console.log('projects', _this.state.projects);
-            _this.setState({
+            this.setState({
                 projects: ps.projects,
                 aboutText: ps.about,
                 introText: ps.intro_text,
                 loading: false
             });
-        }, this);
+        });
     }
 
     // abort the running request if component is unmounted
@@ -61,12 +61,12 @@ class App extends React.Component {
 
     projectsFilter(filter) {
         // console.log('projectsFilter', filter);
-        this.state.projects.current.map(function (project) {
+        this.state.projects.current.map((project) => {
             project.visible = (project.idtype === filter ? true : false);
             // console.log(filter, project.idtype, project.visible);
             return project;
         });
-        this.state.projects.past.map(function (project) {
+        this.state.projects.past.map((project) => {
             project.visible = (project.idtype === filter ? true : false);
             // console.log(filter, project.idtype, project.visible);
             return project;
@@ -74,10 +74,12 @@ class App extends React.Component {
     }
 
     toggleSubMenu() {
-        console.log('toggle SubHeader');
+        let subMenuVisible = this.state.subMenuVisible;
+        console.log('SubHeader state (before):', subMenuVisible);
         this.setState({
-            subMenuVisible: !this.state.subMenuVisible
+            subMenuVisible: !subMenuVisible
         });
+        console.log('SubHeader state (after):', !subMenuVisible);
     }
 
     render() {

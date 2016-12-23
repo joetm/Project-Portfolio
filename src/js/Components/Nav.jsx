@@ -1,7 +1,7 @@
 const React = require('react');
 
 import NavBar from './NavBar.jsx';
-//import SubHeader from './SubHeader.jsx';
+import SubHeader from './SubHeader.jsx';
 
 // const Nav = () => (
 class Nav extends React.PureComponent {
@@ -11,14 +11,14 @@ class Nav extends React.PureComponent {
                 <NavBar
                     toggleSubMenu={this.props.toggleSubMenu}
                 />
+                <SubHeader
+                    visible={this.props.subMenuVisible}
+                    projectsFilter={this.props.projectsFilter}
+                />
             </div>
         );
     }
 }
 
-//        <SubHeader
-//            visible={this.props.subMenuVisible}
-//            projectsFilter={this.props.projectsFilter}
-//        />
 
 export default Nav;
