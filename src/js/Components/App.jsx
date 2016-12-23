@@ -94,14 +94,13 @@ class App extends React.Component {
                                         />
                                     );
                                 });
-        return [ projects, numProjects ];
+        return { projects, numProjects };
     }
 
     render() {
 
-        let currentProjects, numCurrentProjects, pastProjects, numPastProjects;
-        ([ currentProjects, numCurrentProjects ] = this.getProjects('current'));
-        ([ pastProjects, numPastProjects ] = this.getProjects('past'));
+        let { projects: currentProjects = [], numProjects: numCurrentProjects } = this.getProjects('current');
+        let { projects: pastProjects = [], numProjects: numPastProjects } = this.getProjects('past');
 
         console.log('#currentProjects', numCurrentProjects);
         console.log('#pastProjects', numPastProjects);
