@@ -80,34 +80,28 @@ class App extends React.Component {
         });
     }
 
+    getProjects(projectType) {
+        let numProjects = 0;
+        let projects = this.state.projects[projectType].map((project, index) => {
+                                    if (project.visible !== false) {
+                                        numProjects++;    
+                                    }
+                                    return (
+                                        <Project
+                                            key={`${projectType}_project_${index}`}
+                                            attrs={project}
+                                            visible={project.visible !== false}
+                                        />
+                                    );
+                                });
+        return [ projects, numProjects ];
+    }
+
     render() {
 
-        let numCurrentProjects = 0;
-        let currentProjects = this.state.projects.current.map((project, index) => {
-                                    if (project.visible !== false) {
-                                        numCurrentProjects++;    
-                                    }
-                                    return (
-                                        <Project
-                                            key={`current_project_${index}`}
-                                            attrs={project}
-                                            visible={project.visible !== false}
-                                        />
-                                    );
-                                });
-        let numPastProjects = 0;
-        let pastProjects = this.state.projects.past.map((project, index) => {
-                                    if (project.visible !== false) {
-                                        numPastProjects++;    
-                                    }
-                                    return (
-                                        <Project
-                                            key={`past_project_${index}`}
-                                            attrs={project}
-                                            visible={project.visible !== false}
-                                        />
-                                    );
-                                });
+        let currentProjects, numCurrentProjects, pastProjects, numPastProjects;
+        ([ currentProjects, numCurrentProjects ] = this.getProjects('current'));
+        ([ pastProjects, numPastProjects ] = this.getProjects('past'));
 
         console.log('#currentProjects', numCurrentProjects);
         console.log('#pastProjects', numPastProjects);
