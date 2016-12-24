@@ -3,8 +3,8 @@ import React from 'react';
 // https://github.com/callemall/material-ui
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-//import { createStore } from 'redux';
-//import { Provider } from 'react-redux';
+// import { createStore } from 'redux';
+// import { Provider } from 'react-redux';
 
 import 'whatwg-fetch'; // see https://github.com/github/fetch
 
@@ -60,17 +60,24 @@ class App extends React.Component {
     }
 
     projectsFilter(filter) {
-        // console.log('projectsFilter', filter);
-        this.state.projects.current.map((project) => {
-            project.visible = (project.idtype === filter ? true : false);
-            // console.log(filter, project.idtype, project.visible);
-            // return project;
-        });
-        this.state.projects.past.map((project) => {
-            project.visible = (project.idtype === filter ? true : false);
-            // console.log(filter, project.idtype, project.visible);
-            // return project;
-        });
+        // project filter
+        if (filter) {
+            // console.log('projectsFilter', filter);
+            this.state.projects.current.map((project) => {
+                project.visible = (project.idtype === filter ? true : false);
+            });
+            this.state.projects.past.map((project) => {
+                project.visible = (project.idtype === filter ? true : false);
+            });
+        // filter reset
+        } else {
+            this.state.projects.current.map((project) => {
+                project.visible = true;
+            });
+            this.state.projects.past.map((project) => {
+                project.visible = true;
+            });
+        }
     }
 
     toggleSubMenu() {
@@ -83,17 +90,17 @@ class App extends React.Component {
     getProjects(projectType) {
         let numProjects = 0;
         let projects = this.state.projects[projectType].map((project, index) => {
-                                    if (project.visible !== false) {
-                                        numProjects++;    
-                                    }
-                                    return (
-                                        <Project
-                                            key={`${projectType}_project_${index}`}
-                                            attrs={project}
-                                            visible={project.visible !== false}
-                                        />
-                                    );
-                                });
+                            if (project.visible !== false) {
+                                numProjects++;    
+                            }
+                            return (
+                                <Project
+                                    key={`${projectType}_project_${index}`}
+                                    attrs={project}
+                                    visible={project.visible !== false}
+                                />
+                            );
+                        });
         return { projects, numProjects };
     }
 
@@ -102,8 +109,8 @@ class App extends React.Component {
         let { projects: currentProjects = [], numProjects: numCurrentProjects } = this.getProjects('current');
         let { projects: pastProjects = [], numProjects: numPastProjects } = this.getProjects('past');
 
-        console.log('#currentProjects', numCurrentProjects);
-        console.log('#pastProjects', numPastProjects);
+        // console.log('#currentProjects', numCurrentProjects);
+        // console.log('#pastProjects', numPastProjects);
 
         return (
             <MuiThemeProvider>

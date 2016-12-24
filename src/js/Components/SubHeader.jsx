@@ -8,6 +8,9 @@ import {List, ListItem} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import Divider from 'material-ui/Divider';
 import Icon from 'material-ui/svg-icons/file/folder';
+import FlatButton from 'material-ui/FlatButton';
+import FontIcon from 'material-ui/FontIcon';
+import CloseIcon from 'material-ui/svg-icons/navigation/close';
 
 const DEV = 'dev';
 const ADMIN = 'admin';
@@ -27,7 +30,8 @@ const initialFilterState = {
 class SubNav extends Component {
 
     state = {
-        filters: initialFilterState
+        filters: initialFilterState,
+        activeFilter: null
     };
 
   //   handleClickOutside(e) {
@@ -39,6 +43,24 @@ class SubNav extends Component {
 	 //    //    this.props.hideSubMenu();
 	 //    //}
   //   }
+
+    resetFilters() {
+        let filters = {};
+        for (let key in this.state.filters) {
+            if (this.state.filters.hasOwnProperty(key)) {
+                filters[key] = false;
+            }
+        }
+        // update the filter state
+        this.setState({
+            filters,
+            activeFilter: null
+        });
+        // close the submenu
+        this.props.toggleSubMenu();
+        // reset the projects filter
+        this.props.projectsFilter(null);
+    }
 
 	handleClick(filter) {
 		// console.log('selected filter:', filter);
@@ -56,7 +78,10 @@ class SubNav extends Component {
             }
         }
         // update the filter state
-        this.setState({filters});
+        this.setState({
+            filters,
+            activeFilter: filter
+        });
         // close the submenu
 	    this.props.toggleSubMenu();
         // filter the projects with the selected filter
@@ -69,6 +94,17 @@ class SubNav extends Component {
 			    <List>
 			        <Subheader inset={true}>
                         Project Filter
+                        <div style={{float: 'right', display: this.state.activeFilter ? 'block' : 'none'}}>
+                            Active Filter: {this.state.activeFilter}
+                            <FlatButton
+                                onClick={this.resetFilters.bind(this)}
+                                label="Reset"
+                                labelPosition="before"
+                                secondary={true}
+                                icon={<CloseIcon />}
+                                style={{marginLeft:'1em'}}
+                            />
+                        </div>
                     </Subheader>
                     <ListItem
                         onClick={this.handleClick.bind(this, DEV)}
