@@ -9,8 +9,26 @@ import Subheader from 'material-ui/Subheader';
 import Divider from 'material-ui/Divider';
 import Icon from 'material-ui/svg-icons/file/folder';
 
+const DEV = 'dev';
+const ADMIN = 'admin';
+const ACADEMIC = 'academic';
+const EXCEL = 'excel';
+const OTHER = 'other';
+
+const initialFilterState = {
+  [DEV]: false,
+  [ADMIN]: false,
+  [ACADEMIC]: false,
+  [EXCEL]: false,
+  [OTHER]: false
+};
+
 
 class SubNav extends Component {
+
+    state = {
+        filters: initialFilterState
+    };
 
   //   handleClickOutside(e) {
   //       console.log('click outside');
@@ -23,8 +41,25 @@ class SubNav extends Component {
   //   }
 
 	handleClick(filter) {
-		console.log('filter', filter);
+		// console.log('selected filter:', filter);
+        let filters = {};
+        for (let key in this.state.filters) {
+            if (this.state.filters.hasOwnProperty(key)) {
+                // not the clicked one
+                if (key !== filter) {
+                    // filter is not active
+                    filters[key] = false;
+                } else {
+                    // toggle the clicked one
+                    filters[filter] = !this.state.filters[filter];
+                }
+            }
+        }
+        // update the filter state
+        this.setState({filters});
+        // close the submenu
 	    this.props.toggleSubMenu();
+        // filter the projects with the selected filter
 	    this.props.projectsFilter(filter);
 	}
 
@@ -32,38 +67,40 @@ class SubNav extends Component {
 		return (
 			<div style={{display: this.props.visible ? 'block' : 'none'}}>
 			    <List>
-				      <Subheader inset={true}>Project Filter</Subheader>
-				      <ListItem
-		                onClick={this.handleClick.bind(this, 'dev')}
-				        primaryText="Web Development"
-				        leftAvatar={<Avatar icon={<Icon />} />}
-				      />
-				      <ListItem
-		                onClick={this.handleClick.bind(this, 'admin')}
-				        primaryText="Adminstration"
-				        leftAvatar={<Avatar icon={<Icon />} />}
-				      />
-		    		<Divider />
-				      <ListItem
-		                onClick={this.handleClick.bind(this, 'academic')}
-				        primaryText="Academic"
-				        leftAvatar={<Avatar icon={<Icon />} />}
-				      />
-				    <Divider />
-				      <ListItem
-		                onClick={this.handleClick.bind(this, 'excel')}
-				        primaryText="Excel"
-				        leftAvatar={<Avatar icon={<Icon />} />}
-				      />
-				      <ListItem
-		                onClick={this.handleClick.bind(this, 'other')}
-				        primaryText="Other"
-				        leftAvatar={<Avatar icon={<Icon />} />}
-				        rightIcon={null}
-				      />
-				    <Divider />
-			    </List>
-			</div>
+			        <Subheader inset={true}>
+                        Project Filter
+                    </Subheader>
+                    <ListItem
+                        onClick={this.handleClick.bind(this, DEV)}
+                        primaryText="Web Development"
+                        leftAvatar={<Avatar backgroundColor={this.state.filters[DEV] === true ? 'red' : null} icon={<Icon />} />}
+                      />
+                    <ListItem
+                        onClick={this.handleClick.bind(this, ADMIN)}
+                        primaryText="Adminstration"
+                        leftAvatar={<Avatar backgroundColor={this.state.filters[ADMIN] === true ? 'red' : null} icon={<Icon />} />}
+                    />
+                	<Divider />
+                    <ListItem
+                        onClick={this.handleClick.bind(this, ACADEMIC)}
+                        primaryText="Academic"
+                        leftAvatar={<Avatar backgroundColor={this.state.filters[ACADEMIC] === true ? 'red' : null} icon={<Icon />} />}
+                    />
+                    <Divider />
+                    <ListItem
+                        onClick={this.handleClick.bind(this, EXCEL)}
+                        primaryText="Excel"
+                        leftAvatar={<Avatar backgroundColor={this.state.filters[EXCEL] === true ? 'red' : null} icon={<Icon />} />}
+                    />
+                    <ListItem
+                        onClick={this.handleClick.bind(this, OTHER)}
+                        primaryText="Other"
+                        leftAvatar={<Avatar backgroundColor={this.state.filters[OTHER] === true ? 'red' : null} icon={<Icon />} />}
+                        rightIcon={null}
+                    />
+                    <Divider />
+    			</List>
+            </div>
 		);
 	}
 
