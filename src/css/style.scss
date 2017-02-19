@@ -60,6 +60,9 @@ nav>div{
 	padding:0 1.25rem 1.25rem 1.25rem;
 	border-radius:5px;
 }
+.thumbs ul{
+	list-style:none;
+}
 .thumbs ul li{
     margin-top:1.25rem;
     margin-bottom:0;
@@ -92,7 +95,7 @@ nav ul.sub-nav{
     margin-top:2rem;
 }
 
-$media only screen and (min-width: 40.063em) and (max-width: 64em) {
+@media only screen and (min-width: 40.063em) and (max-width: 64em) {
     /*hide some thumbnails on medium sized screens*/
     .hide-medium{display:none}
 }

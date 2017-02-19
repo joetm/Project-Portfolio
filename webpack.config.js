@@ -20,10 +20,13 @@ module.exports = {
     filename: "js/client.min.js"
   },
   devtool: debug ? "inline-sourcemap" : null,
-  resolve: {
-      alias: {
-          jquery: './node_modules/jquery/dist/jquery.min.js'
-      }
+  // resolve: {
+  //     alias: {
+  //         jquery: './node_modules/jquery/dist/jquery.min.js'
+  //     }
+  // },
+  resolveLoader: {
+    fallback: __dirname + "/node_modules"
   },
   module: {
     loaders: [
@@ -42,26 +45,35 @@ module.exports = {
         exclude: /(node_modules|bower_components|projects)/,
         loader: 'json5-loader'
       },
-      // fonts and svg
-      // { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff" },
-      // { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff" },
-      // { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
-      // { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
-      // { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" },
-      // images
       {
         test: /\.(ico|jpe?g|png|gif)$/,
-        loader: "file"
+        exclude: /(node_modules|projects)/,
+        loader: "file-loader"
       },
       {
         test: /\.scss$/,
-        exclude: [ /projects/, /node_modules/ ],
-        loader: ExtractTextPlugin.extract("style", "css?sourceMap!postcss!sass?sourceMap&outputStyle=expanded")
-      }
+        exclude: [ /projects/ ],
+        loader: ExtractTextPlugin.extract("style", "css-loader?sourceMap!sass-loader?sourceMap&outputStyle=expanded")
+      },
+      {
+        test: /\.css$/,
+        exclude: [ /projects/ ],
+        loader: ExtractTextPlugin.extract("style", "css-loader?sourceMap")
+      },
+      // fonts and svg
+      { test: /\.woff(\?\d+)?(#[a-zA-Z0-9]+)?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
+      { test: /\.woff2(\?\d+)?(#[a-zA-Z0-9]+)?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
+      { test: /\.ttf(\?\d+)?(#[a-zA-Z0-9]+)?$/, loader: "url-loader?limit=10000&mimetype=application/octet-stream" },
+      { test: /\.eot(\?\d+)?(#[a-zA-Z0-9]+)?$/, loader: "url-loader?limit=10000&mimetype=application/vnd.ms-fontobject" },
+      { test: /\.svg(\?\d+)?(#[a-zA-Z0-9]+)?$/, loader: "url-loader?limit=10000&mimetype=image/svg+xml" },
+      // {
+      //   test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+      //   loader: 'url-loader?limit=100000'
+      // }
       // {
       //     test: /\.s?css$/,
       //     exclude: /projects/,
-      // 	  loader: "style-loader!css-loader"
+      //    loader: "style-loader!css-loader"
       // }
       // {
       //   test: /\.css$/,
@@ -90,25 +102,44 @@ module.exports = {
     'react/lib/ExecutionEnvironment': true,
     'react/lib/ReactContext': true
   },
-  plugins: debug ? [] : [
-    new ExtractTextPlugin('style.css', { allChunks: true }),
+  plugins: debug ? [
+    new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+    }),
+    new webpack.DefinePlugin({
+      $dirname: '__dirname',
+    }),
+    new ExtractTextPlugin(
+      'css/style.css',
+      {
+        allChunks: true
+      }
+    )
+  ] : [
+    new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+    }),
+    new webpack.DefinePlugin({
+      $dirname: '__dirname',
+    }),
+    new ExtractTextPlugin(
+      'css/style.css',
+      {
+        allChunks: true
+      }
+    ),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new CopyWebpackPlugin([
       {from: './data', to: './data'},
       {from: './font', to: './font'}
     ]),
-    new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
-    }),
   	new webpack.optimize.UglifyJsPlugin({
+        //mangle: false,
+        //sourcemap: true
         compress: {
             warnings: false
         }
-     })
-    //new webpack.optimize.UglifyJsPlugin({
-      //mangle: false,
-      //sourcemap: true
-    //})
+    })
   ]
 };
