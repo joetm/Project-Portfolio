@@ -10,7 +10,7 @@
   "scripts": {
     "watch": "webpack --watch",
     "build": "webpack -p",
-    "start": "node_modules/.bin/webpack-dev-server",
+    "start": "node_modules/.bin/webpack-dev-server --open",
     "test": "jest",
     "test:watch": "jest --watch"
   },
