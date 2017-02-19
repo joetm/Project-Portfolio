@@ -1,15 +1,17 @@
 @import '../../node_modules/foundation-sites/scss/foundation';
 
 /// include all modules of foundation
-@include foundation-everything;
+// @include foundation-everything;
 
-/// or use just particular mouldes
-// @include foundation-global-styles;
-// @include foundation-grid;
+/// or use just particular modules
+@include foundation-global-styles;
+@include foundation-grid;
+// @include foundation-flex-grid;
+// @include foundation-flex-classes;
 // @include foundation-typography;
 // @include foundation-button;
 // @include foundation-forms;
-// @include foundation-visibility-classes;
+@include foundation-visibility-classes;
 // @include foundation-float-classes;
 // @include foundation-accordion;
 // @include foundation-accordion-menu;
@@ -25,6 +27,7 @@
 // @include foundation-label;
 // @include foundation-media-object;
 // @include foundation-menu;
+// @include foundation-menu-icon;
 // @include foundation-off-canvas;
 // @include foundation-orbit;
 // @include foundation-pagination;
