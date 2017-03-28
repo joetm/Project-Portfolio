@@ -64,7 +64,8 @@ nav>div{
 	list-style:none;
 }
 .thumbs ul li{
-    margin-top:1.25rem;
+    /*margin-top:1.25rem;*/
+    margin-top:10px;
     margin-bottom:0;
     padding-bottom:0;
     padding-top:0;
@@ -118,6 +119,28 @@ nav ul.sub-nav{
 	background-color:$h3-bg;
 	border-radius:5px;
 }
+ul.clearing-thumbs{
+	padding-left:0;
+	margin-left:0;
+    display: block;
+	li {
+		float:left;
+		margin-right:10px;
+		img {
+			max-height:160px;
+		}
+	}
+}
+ul.clearing-thumbs:after {
+    content: "";
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+* html .clearing-thumbs             { zoom: 1; } /* IE6 */
+*:first-child+html .clearing-thumbs { zoom: 1; } /* IE7 */
+
 .columns ul {
 	margin-top:0;
 	margin-bottom:0;
