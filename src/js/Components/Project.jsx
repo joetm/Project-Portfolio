@@ -75,7 +75,7 @@ var Project = React.createClass({
 
                     <div class="descr" dangerouslySetInnerHTML={{__html: this.props.attrs.description}}></div>
 
-                    {this.props.attrs.imgs && this.props.attrs.imgs.length > 0 ? 
+                    {this.props.attrs.imgs && this.props.attrs.imgs.length > 0 ?
                         <div class="thumbs">
                             <ul class="clearing-thumbs small-block-grid-1 medium-block-grid-3 large-block-grid-4">
                                 {imgs}
@@ -86,14 +86,14 @@ var Project = React.createClass({
 
                     <div class="meta columns margin-top-print">
 
-                        {projectLinks ? 
+                        {projectLinks ?
                             <div class="large-12">
                                 {projectLinks}
                             </div> :
                             ''
                         }
 
-                        {technologies ? 
+                        {technologies.length ?
                             <div class="large-12">
                                 <span class="lbl">Technology:</span>
                                 <ul class="inline-list">
@@ -103,49 +103,49 @@ var Project = React.createClass({
                             ''
                         }
 
-                        {this.props.attrs.status ? 
+                        {this.props.attrs.status ?
                             <div class="large-12">
                                 <span class="lbl">Status:</span> {this.props.attrs.status}
                             </div> :
                             ''
                         }
 
-                        {this.props.attrs.purpose ? 
+                        {this.props.attrs.purpose ?
                             <div class="large-12">
                                 <span class="lbl">Purpose:</span> {this.props.attrs.purpose}
                             </div> :
                             ''
                         }
 
-                        {this.props.attrs.position ? 
+                        {this.props.attrs.position ?
                             <div class="large-12">
                                 <span class="lbl">Position:</span> {this.props.attrs.position}
                             </div> :
                             ''
                         }
 
-                        {this.props.attrs.organisation ? 
+                        {this.props.attrs.organisation ?
                             <div class="large-12">
                                 <span class="lbl">Organisation:</span> <span class="descr" dangerouslySetInnerHTML={{__html: this.props.attrs.organisation}}></span>
                             </div> :
                             ''
                         }
 
-                        {this.props.attrs.type ? 
+                        {this.props.attrs.type ?
                             <div class="large-12">
                                 <span class="lbl">Type:</span> {this.props.attrs.type}
                             </div> :
                             ''
                         }
 
-                        {this.props.attrs.grade ? 
+                        {this.props.attrs.grade ?
                             <div class="large-12">
                                 <span class="lbl">Grade:</span> {this.props.attrs.grade}
                             </div> :
                             ''
                         }
 
-                        {this.props.attrs.daterange ? 
+                        {this.props.attrs.daterange ?
                             <div class="large-12">
                                 <span class="lbl">Date:</span> {this.props.attrs.daterange}
                             </div> :
