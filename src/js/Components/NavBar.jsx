@@ -4,7 +4,6 @@ import AppBar from 'material-ui/AppBar';
 
 
 // let NavBar = () => (
-// let NavBar = React.createClass({
 class NavBar extends React.Component {
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -21,10 +20,11 @@ class NavBar extends React.Component {
         this.props.toggleSubMenu();
     }
 
+//               onTitleTouchTap={this.handleTitleTouchTap}
+
 	  render() {
         return (
             <AppBar
-               onTitleTouchTap={this.handleTitleTouchTap}
                onLeftIconButtonTouchTap={this.handleLeftIconButtonTouchTap.bind(this)}
                title="Project Portfolio"
                showMenuIconButton={true}

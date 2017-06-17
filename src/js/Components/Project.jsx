@@ -21,9 +21,9 @@ class ProjectLinkRow extends React.PureComponent {
 // }
 
 
-var Project = React.createClass({
+class Project extends React.Component {
 
-    render: function() {
+    render() {
 
         // console.log('project visible', this.props.visible);
 
@@ -159,6 +159,6 @@ var Project = React.createClass({
             </div>
         );
     }
-});
+}
 
 export default Project;

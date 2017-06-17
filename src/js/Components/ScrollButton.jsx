@@ -5,7 +5,6 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/navigation/arrow-upward';
 
 // const FloatingScrollButton = () => (
-// const FloatingScrollButton = React.createClass({
 class FloatingScrollButton extends Component {
 
     constructor(props) {

@@ -134,7 +134,7 @@ module.exports = {
       {from: './data', to: './data'},
       {from: './font', to: './font'}
     ]),
-  	new webpack.optimize.UglifyJsPlugin({
+    new webpack.optimize.UglifyJsPlugin({
         //mangle: false,
         //sourcemap: true
         compress: {

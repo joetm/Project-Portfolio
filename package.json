@@ -1,6 +1,6 @@
 {
   "name": "portfolio",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "",
   "main": "./src/js/index.js",
   "repository": {
@@ -75,15 +75,15 @@
   "dependencies": {
     "foundation-sites": "^6.2.4",
     "material-ui": "^0.16.1",
-    "react": "^15.3.2",
-    "react-addons-test-utils": "^15.4.1",
-    "react-click-outside": "^2.2.0",
-    "react-dom": "^15.3.2",
-    "react-icons": "^2.2.1",
-    "react-redux": "^5.0.1",
-    "react-select": "^1.0.0-rc.2",
-    "react-tap-event-plugin": "^1.0.0",
-    "redux": "^3.6.0",
-    "whatwg-fetch": "^2.0.1"
+    "react": "^15.6.1",
+    "react-addons-test-utils": "^15.6.0",
+    "react-click-outside": "^2.3.1",
+    "react-dom": "^15.6.1",
+    "react-icons": "^2.2.5",
+    "react-redux": "^5.0.5",
+    "react-select": "^1.0.0-rc.5",
+    "react-tap-event-plugin": "^2.0.1",
+    "redux": "^3.7.0",
+    "whatwg-fetch": "^2.0.3"
   }
 }

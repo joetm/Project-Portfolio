@@ -18,7 +18,7 @@ import React from 'react';
 import { render } from 'react-dom';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
-// Needed for onTouchTap
+// Needed for onTouchTap in Navbar > Appbar
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
 

@@ -79,29 +79,29 @@ class BottomBar extends Component {
           <BottomNavigationItem
             label={this.state.email}
             icon={<EmailICO />}
-            onTouchTap={() => this.navigate(0, 'mailto:', this.state.email)}
+            onClick={() => this.navigate(0, 'mailto:', this.state.email)}
           />
           <BottomNavigationItem
             label={this.state.phone}
             icon={<PhoneICO />}
-            onTouchTap={() => this.navigate(1, 'phone:', this.state.phone)}
+            onClick={() => this.navigate(1, 'phone:', this.state.phone)}
           />
           <BottomNavigationItem
             label={this.state.linkedin}
             icon={<LinkedInICO style={iconStyle} />}
             target={'linkedin'}
-            onTouchTap={() => this.navigate(2, 'https://www.linkedin.com/in/', this.state.linkedin)}
+            onClick={() => this.navigate(2, 'https://www.linkedin.com/in/', this.state.linkedin)}
           />
           <BottomNavigationItem
             label={'joetm'}
             icon={<GitICO style={iconStyle} />}
             target={'github'}
-            onTouchTap={() => this.navigate(3, 'https://github.com/', 'joetm')}
+            onClick={() => this.navigate(3, 'https://github.com/', 'joetm')}
           />
           <BottomNavigationItem
             label={this.state.cv}
             icon={<WebsiteICO />}
-            onTouchTap={() => this.navigate(4, this.state.cv, '')}
+            onClick={() => this.navigate(4, this.state.cv, '')}
           />
         </BottomNavigation>
       </Paper>
