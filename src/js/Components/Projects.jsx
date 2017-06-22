@@ -1,3 +1,5 @@
+/* @flow */
+
 import React from 'react';
 import { Component } from 'react';
 
@@ -5,12 +7,9 @@ import LoadingAnim from './LoadingAnim.jsx';
 
 class PastProjects extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            loading: true
-        };
-    }
+    state = {
+        loading: true
+    };
 
     // TODO: fix CSS and remove id="past"
     render() {

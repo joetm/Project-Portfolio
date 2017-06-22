@@ -1,3 +1,5 @@
+/* @flow */
+
 const React = require('react');
 
 import Thumb from './Thumb.jsx';

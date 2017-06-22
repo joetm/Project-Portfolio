@@ -1,3 +1,5 @@
+/* @flow */
+
 import React from 'react';
 
 class LoadingAnim extends React.PureComponent {

@@ -1,3 +1,5 @@
+/* @flow */
+
 import React from 'react';
 import { Component } from 'react';
 
@@ -7,15 +9,12 @@ import ContentAdd from 'material-ui/svg-icons/navigation/arrow-upward';
 // const FloatingScrollButton = () => (
 class FloatingScrollButton extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            scrolled: false
-        };
-    }
+    state = {
+        scrolled: false
+    };
 
     // see http://stackoverflow.com/a/24559613/426266
-    scrollToTop(scrollDuration) {
+    scrollToTop(scrollDuration : number) {
         var scrollStep = -window.scrollY / (scrollDuration / 15),
             scrollInterval = setInterval(function(){
             if ( window.scrollY != 0 ) {
@@ -27,7 +26,7 @@ class FloatingScrollButton extends Component {
         },15);
     }
 
-    onBtnClick(event) {
+    onBtnClick() {
         this.scrollToTop(400)
     }
 

@@ -1,3 +1,5 @@
+/* @flow */
+
 import React, {Component} from 'react';
 import FontIcon from 'material-ui/FontIcon';
 import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
@@ -21,10 +23,10 @@ class BottomBar extends Component {
   state = {
     selectedIndex: -1,
     loading: true,
-    Email: 'loading...',
-    Phone: 'loading...',
-    CV: 'loading...',
-    Linkedin: 'loading...',
+    email: 'loading...',
+    phone: 'loading...',
+    cv: 'loading...',
+    linkedin: 'loading...',
   };
 
   serverRequest = null;

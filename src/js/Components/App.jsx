@@ -1,3 +1,5 @@
+/* @flow */
+
 import React from 'react';
 
 // https://github.com/callemall/material-ui
@@ -91,7 +93,7 @@ class App extends React.Component {
         let numProjects = 0;
         let projects = this.state.projects[projectType].map((project, index) => {
                             if (project.visible !== false) {
-                                numProjects++;    
+                                numProjects++;
                             }
                             return (
                                 <Project

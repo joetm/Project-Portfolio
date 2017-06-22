@@ -1,25 +1,26 @@
+/* @flow */
+
 // import appConfig from '../../../config.json5';
 
 import React from 'react';
 
-import 'whatwg-fetch'; // see https://github.com/github/fetch
+import 'whatwg-fetch'; // https://github.com/github/fetch
 
 String.prototype.rot14 = function(){return this.replace(/[a-zA-Z]/g, function(c){return String.fromCharCode((c <= "Z" ? 90 : 122) >= (c = c.charCodeAt(0) + 14) ? c : c - 26);});};
 
+
 class Footer extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.serverRequest = null;
-        this.state = {
-            loading: true,
-            Name: 'loading...',
-            Email: 'loading...',
-            Phone: 'loading...',
-            CV: 'loading...',
-            Linkedin: 'loading...',
-        };
-    }
+    serverRequest = null;
+
+    state = {
+        loading: true,
+        Name: 'loading...',
+        Email: 'loading...',
+        Phone: 'loading...',
+        CV: 'loading...',
+        Linkedin: 'loading...',
+    };
 
     componentDidMount() {
 

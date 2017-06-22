@@ -1,3 +1,5 @@
+/* @flow */
+
 const React = require('react');
 
 import AppBar from 'material-ui/AppBar';
@@ -6,7 +8,7 @@ import AppBar from 'material-ui/AppBar';
 // let NavBar = () => (
 class NavBar extends React.Component {
 
-    shouldComponentUpdate(nextProps, nextState) {
+    shouldComponentUpdate() { // nextProps, nextState
         // This ain't the updates you are looking for.
         return false;
     }
