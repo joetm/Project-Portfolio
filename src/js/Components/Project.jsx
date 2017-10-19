@@ -8,20 +8,24 @@ import Video from './Video.jsx';
 
 class ProjectLinkRow extends React.PureComponent {
     render() {
+        const { label, linkTarget, linkText } = this.props
         return (
             <div>
-                <span class="lbl">{this.props.label}:</span> <a href={this.props.linkTarget} target="_blank">{this.props.linkText}</a>
+                <span class="lbl">{label}:</span> <a href={linkTarget} target="_blank">{linkText}</a>
             </div>
-        );
+        )
     }
 }
 
 
 class Project extends React.Component {
     render() {
-        const { attrs, visible, idtype } = this.props;
+        const { attrs, visible, idtype } = this.props
 
-        const technologies = attrs.technology.map((item, index) => <li key={`${idtype}_tech_${index}`}>{item}</li>);
+        let technologies = [];
+        for (let i=0, numrows = attrs.technology.length; i < numrows; i++) {
+            technologies.push(<li key={idtype+'_tech_'+i}>{attrs.technology[i]}</li>);
+        }
 
         let imgs = null;
         if (attrs.imgs !== undefined) {
@@ -35,7 +39,7 @@ class Project extends React.Component {
                         />
                     </li>
                 )
-            );
+            )
         }
 
         let projectLinks = [];
