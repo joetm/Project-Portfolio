@@ -17,6 +17,7 @@ import CloseIcon from 'material-ui/svg-icons/navigation/close';
 const DEV = 'dev';
 const ADMIN = 'admin';
 const ACADEMIC = 'academic';
+const CONFERENCE = 'conference';
 const EXCEL = 'excel';
 const OTHER = 'other';
 
@@ -24,6 +25,7 @@ const initialFilterState = {
   [DEV]: false,
   [ADMIN]: false,
   [ACADEMIC]: false,
+  [CONFERENCE]: false,
   [EXCEL]: false,
   [OTHER]: false
 };
@@ -49,7 +51,7 @@ class SubNav extends Component {
     resetFilters() {
         let filters = {};
         for (let key in this.state.filters) {
-            if (this.state.filters.hasOwnProperty(key)) {
+            if (Object.prototype.hasOwnProperty.call(this.state.filters, key)) {
                 filters[key] = false;
             }
         }
@@ -68,7 +70,7 @@ class SubNav extends Component {
 		// console.log('selected filter:', filter);
         let filters = {};
         for (let key in this.state.filters) {
-            if (this.state.filters.hasOwnProperty(key)) {
+            if (Object.prototype.hasOwnProperty.call(this.state.filters, key)) {
                 // not the clicked one
                 if (key !== filter) {
                     // filter is not active
@@ -123,6 +125,11 @@ class SubNav extends Component {
                         onClick={this.handleClick.bind(this, ACADEMIC)}
                         primaryText="Academic"
                         leftAvatar={<Avatar backgroundColor={this.state.filters[ACADEMIC] === true ? 'red' : null} icon={<Icon />} />}
+                    />
+                    <ListItem
+                        onClick={this.handleClick.bind(this, CONFERENCE)}
+                        primaryText="Conferences, Workshops"
+                        leftAvatar={<Avatar backgroundColor={this.state.filters[CONFERENCE] === true ? 'red' : null} icon={<Icon />} />}
                     />
                     <Divider />
                     <ListItem
