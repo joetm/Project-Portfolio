@@ -4,18 +4,7 @@ const React = require('react');
 
 import Thumb from './Thumb.jsx';
 import Video from './Video.jsx';
-
-
-class ProjectLinkRow extends React.PureComponent {
-    render() {
-        const { label, linkTarget, linkText } = this.props
-        return (
-            <div>
-                <span class="lbl">{label}:</span> <a href={linkTarget} target="_blank">{linkText}</a>
-            </div>
-        )
-    }
-}
+import ProjectLinkRow from './ProjectLinkRow.jsx';
 
 
 class Project extends React.Component {

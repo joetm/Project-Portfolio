@@ -10,14 +10,15 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import 'whatwg-fetch'; // see https://github.com/github/fetch
 
-import Nav from './Nav.jsx';
-import NavBar from './NavBar.jsx';
-import About from './About.jsx';
-import Footer from './Footer.jsx';
-import Project from './Project.jsx';
-import Projects from './Projects.jsx';
-import BottomBar from './BottomBar.jsx';
-import ScrollButton from './ScrollButton.jsx';
+import Nav from './Nav.jsx'
+import NavBar from './NavBar.jsx'
+import About from './About.jsx'
+import Footer from './Footer.jsx'
+import Project from './Project.jsx'
+import Projects from './Projects.jsx'
+import Activity from './Activity.jsx'
+import BottomBar from './BottomBar.jsx'
+import ScrollButton from './ScrollButton.jsx'
 
 
 class App extends React.Component {
@@ -58,6 +59,7 @@ class App extends React.Component {
     componentWillUnmount() {
         if (this.serverRequest) {
             this.serverRequest.abort();
+            this.serverRequest = null;
         }
     }
 
@@ -92,6 +94,15 @@ class App extends React.Component {
     getProjects(projectType) {
         let numProjects = 0;
         let projects = this.state.projects[projectType].map((project, index) => {
+                            if (project.idtype === 'conference' || project.idtype === 'workshop') {
+                                return (
+                                    <Activity
+                                        key={`${projectType}_project_${index}`}
+                                        attrs={project}
+                                        visible={project.visible !== false}
+                                    />
+                                );
+                            }
                             if (project.visible !== false) {
                                 numProjects++;
                             }

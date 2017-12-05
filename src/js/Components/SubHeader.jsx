@@ -121,6 +121,7 @@ class SubNav extends Component {
                         leftAvatar={<Avatar backgroundColor={this.state.filters[ADMIN] === true ? 'red' : null} icon={<Icon />} />}
                     />
                 	<Divider />
+                    {/*
                     <ListItem
                         onClick={this.handleClick.bind(this, ACADEMIC)}
                         primaryText="Academic"
@@ -132,6 +133,7 @@ class SubNav extends Component {
                         leftAvatar={<Avatar backgroundColor={this.state.filters[CONFERENCE] === true ? 'red' : null} icon={<Icon />} />}
                     />
                     <Divider />
+                    */}
                     <ListItem
                         onClick={this.handleClick.bind(this, EXCEL)}
                         primaryText="Excel"
