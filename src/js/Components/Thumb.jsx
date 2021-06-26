@@ -12,6 +12,7 @@ class Thumb extends PureComponent {
 			<a href={this.props.img} title={this.props.title}>
 			    <img src={this.props.thumb}
 			        alt=""
+                    loading="lazy"
 			    />
 			</a>
 		);
