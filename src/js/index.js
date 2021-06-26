@@ -5,11 +5,11 @@
 /*********/
 
 // TODO
-import '../css/foundation.scss'; // .min
+import '../css/foundation.css'; // .min
 
 import 'url-loader!../css/loading.css';
 import '../css/animation.css';
-import '../css/style.scss';
+import '../css/style.css';
 
 
 /********/

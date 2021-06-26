@@ -13,7 +13,7 @@ class Project extends React.Component {
 
         let technologies = [];
         for (let i=0, numrows = attrs.technology.length; i < numrows; i++) {
-            technologies.push(<li key={idtype+'_tech_'+i}>{attrs.technology[i]}</li>);
+            technologies.push(<li className="label" key={idtype+'_tech_'+i}>{attrs.technology[i]}</li>);
         }
 
         let imgs = null;
@@ -48,19 +48,19 @@ class Project extends React.Component {
         return (
             <div
                 style={{display: visible === false ? 'none' : 'block'}}
-                class="row page-break margin-top-print"
+                className="row page-break margin-top-print"
             >
-                <div class="large-12 columns">
+                <div className="large-12 columns">
 
-                    <hr class="hide-for-print" />
+                    <hr className="hide-for-print" />
 
                     <h4>{attrs.title}</h4>
 
-                    <div class="descr" dangerouslySetInnerHTML={{__html: attrs.description}}></div>
+                    <div className="descr" dangerouslySetInnerHTML={{__html: attrs.description}}></div>
 
                     {attrs.imgs && attrs.imgs.length > 0 && (
-                            <div class="thumbs">
-                                <ul class="clearing-thumbs small-block-grid-1 medium-block-grid-3 large-block-grid-4">
+                            <div className="thumbs">
+                                <ul className="clearing-thumbs small-block-grid-1 medium-block-grid-3 large-block-grid-4">
                                     {imgs}
                                 </ul>
                             </div>
@@ -77,9 +77,9 @@ class Project extends React.Component {
                         }
 
                         {technologies.length ?
-                            <div class="large-12">
-                                <span class="lbl">Technology:</span>
-                                <ul class="inline-list">
+                            <div className="large-12">
+                                <span className="lbl">Technology:</span>
+                                <ul className="technologies inline-list">
                                     {technologies}
                                 </ul>
                             </div> :

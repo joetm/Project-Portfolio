@@ -14,7 +14,7 @@ class Projects extends React.Component {
     render() {
         const { children, visible, title } = this.props
         return (
-            <section style={{display: visible ? 'block' : 'none'}}>
+            <section className="padded" style={{display: visible ? 'block' : 'none'}}>
                 <div id="past" class="projects_headline row hide-for-print">
                     <div class="large-12 columns">
                         <hr class="hidden-print" />

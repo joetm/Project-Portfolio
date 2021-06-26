@@ -50,11 +50,11 @@ module.exports = {
         exclude: /(node_modules|projects)/,
         loader: "file-loader"
       },
-      {
-        test: /\.scss$/,
-        exclude: [ /projects/ ],
-        loader: ExtractTextPlugin.extract("style", "css-loader?sourceMap!sass-loader?sourceMap&outputStyle=expanded")
-      },
+      // {
+      //   test: /\.scss$/,
+      //   exclude: [ /projects/ ],
+      //   loader: ExtractTextPlugin.extract("style", "css-loader?sourceMap!sass-loader?sourceMap&outputStyle=expanded")
+      // },
       {
         test: /\.css$/,
         exclude: [ /projects/ ],

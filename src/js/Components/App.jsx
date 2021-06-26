@@ -10,6 +10,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import 'whatwg-fetch'; // see https://github.com/github/fetch
 
+import LazyLoad from 'react-lazyload';
+
 import Nav from './Nav.jsx'
 import NavBar from './NavBar.jsx'
 import About from './About.jsx'
@@ -127,7 +129,8 @@ class App extends React.Component {
 
         return (
             <MuiThemeProvider>
-                <div>
+                <div className="appContainer">
+                    <LazyLoad>
                     <Nav
                         projectsFilter={this.projectsFilter.bind(this)}
                         subMenuVisible={this.state.subMenuVisible}
@@ -151,6 +154,7 @@ class App extends React.Component {
                     >
                         {pastProjects}
                     </Projects>
+                    </LazyLoad>
                     <ScrollButton />
                     <BottomBar />
                 </div>

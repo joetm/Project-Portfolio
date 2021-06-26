@@ -21,9 +21,9 @@ class ContactLink extends React.PureComponent {
 class About extends React.PureComponent {
     render () {
         return (
-            <section>
-                <div id="intro" class="row hidden-print">
-                    <div class="small-12 columns">
+            <section className="padded">
+                <div id="intro" className="row hidden-print">
+                    <div className="small-12 columns">
                         <h3>About</h3>
                         <p>
                             {this.props.aboutText}

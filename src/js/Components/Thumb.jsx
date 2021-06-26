@@ -9,10 +9,9 @@ class Thumb extends PureComponent {
 			return null;
 		}
 		return (
-			<a href={this.props.img} title={this.props.title}>
+			<a className="thumbnail" href={this.props.img} title={this.props.title}>
 			    <img src={this.props.thumb}
 			        alt=""
-                    loading="lazy"
 			    />
 			</a>
 		);
