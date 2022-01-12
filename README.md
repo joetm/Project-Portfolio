@@ -35,3 +35,9 @@ Type:
 `npm run watch`
 `npm start`
 The latter will start the dev server at http://localhost:8080/webpack-dev-server/
+
+Build
+-----
+
+Type:
+`npm run build`
