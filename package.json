@@ -72,7 +72,7 @@
     "typescript": "^2.6.2",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.3",
-    "webpack-dev-server": "^1.16.2"
+    "webpack-dev-server": "^3.1.11"
   },
   "dependencies": {
     "foundation-sites": "^6.4.3",
