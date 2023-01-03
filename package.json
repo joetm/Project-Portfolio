@@ -62,7 +62,7 @@
     "jasmine-enzyme": "^2.0.0",
     "jest": "^17.0.3",
     "jest-enzyme": "^2.0.0",
-    "json5": "^0.5.1",
+    "json5": "^1.0.2",
     "json5-loader": "^0.6.0",
     "karma": "^1.7.1",
     "postcss-loader": "^1.3.1",
