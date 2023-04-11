@@ -13,6 +13,8 @@ class Thumb extends PureComponent {
 			    <img src={this.props.thumb}
 			        alt=""
 			        loading="lazy"
+					decoding="async"
+					placeholder="dominantColor"
 			    />
 			</a>
 		);
