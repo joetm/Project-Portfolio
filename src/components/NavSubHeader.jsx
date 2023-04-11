@@ -15,7 +15,6 @@ import ListSubheader from '@mui/material/ListSubheader';
 import Divider from '@mui/material/Divider';
 import Icon from '@mui/icons-material/Folder';
 import FlatButton from '@mui/material/Button';
-// import CloseIcon from 'material-ui/svg-icons/navigation/close';
 import CloseIcon from '@mui/icons-material/Close';
 
 
@@ -109,11 +108,12 @@ class SubNav extends React.Component {
                                 Active Filter: {this.state.activeFilter}
                                 <FlatButton
                                     onClick={this.resetFilters.bind(this)}
-                                    label="Reset"
-                                    icon={<CloseIcon />}
+                                    title="Reset Filter"
                                     style={{marginLeft:'1em'}}
                                     color="secondary"
-                                />
+                                >
+                                    <CloseIcon />
+                                </FlatButton>
                             </div>
                         </ListSubheader>
                     }
@@ -121,7 +121,7 @@ class SubNav extends React.Component {
                     <ListItem onClick={this.handleClick.bind(this, DEV)}>
                         <ListItemButton>
                           <ListItemIcon>
-                            <Avatar backgroundColor={this.state.filters[DEV] === true ? 'red' : null} icon={<Icon />} />
+                            <Avatar sx={{bgcolor: this.state.filters[DEV] === true ? 'red' : null}}><Icon /></Avatar>
                           </ListItemIcon>
                           <ListItemText primary="Web Development" />
                         </ListItemButton>
@@ -129,7 +129,7 @@ class SubNav extends React.Component {
                     <ListItem onClick={this.handleClick.bind(this, ADMIN)}>
                         <ListItemButton>
                           <ListItemIcon>
-                            <Avatar backgroundColor={this.state.filters[ADMIN] === true ? 'red' : null} icon={<Icon />} />
+                            <Avatar sx={{bgcolor: this.state.filters[ADMIN] === true ? 'red' : null}}><Icon /></Avatar>
                           </ListItemIcon>
                           <ListItemText primary="Adminstration" />
                         </ListItemButton>
@@ -151,7 +151,7 @@ class SubNav extends React.Component {
                     <ListItem onClick={this.handleClick.bind(this, EXCEL)}>
                         <ListItemButton>
                           <ListItemIcon>
-                            <Avatar backgroundColor={this.state.filters[EXCEL] === true ? 'red' : null} icon={<Icon />} />
+                            <Avatar sx={{bgcolor: this.state.filters[EXCEL] === true ? 'red' : null}}><Icon /></Avatar>
                           </ListItemIcon>
                           <ListItemText primary="Excel" />
                         </ListItemButton>
@@ -159,7 +159,7 @@ class SubNav extends React.Component {
                     <ListItem onClick={this.handleClick.bind(this, OTHER)}>
                         <ListItemButton>
                           <ListItemIcon>
-                            <Avatar backgroundColor={this.state.filters[OTHER] === true ? 'red' : null} icon={<Icon />} />
+                            <Avatar sx={{bgcolor: this.state.filters[OTHER] === true ? 'red' : null}}><Icon /></Avatar>
                           </ListItemIcon>
                           <ListItemText primary="Other" />
                         </ListItemButton>

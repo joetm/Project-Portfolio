@@ -27,6 +27,7 @@ class BottomBar extends Component {
 
   state = {
     selectedIndex: -1,
+    selectedValue: null,
     loading: true,
     email: 'loading...',
     phone: 'loading...',
@@ -36,8 +37,8 @@ class BottomBar extends Component {
 
   serverRequest = null;
 
-  navigate = (index, site, content, external=false) => {
-    this.setState({selectedIndex: index});
+  navigate = (value, site, content, external=false) => {
+    this.setState({selectedValue: value});
     //navigate after a nice animation
     window.setTimeout(() => {
       if (external) {
@@ -84,20 +85,27 @@ class BottomBar extends Component {
   // }
 
   render() {
+
+    const { selectedValue } = this.state;
+
     return (
       <Paper style={{marginTop:'4em'}} elevation={1}>
-        <BottomNavigation selectedIndex={this.state.selectedIndex}>
+        <BottomNavigation
+          value={selectedValue}
+        >
           <BottomNavigationAction
             label={this.state.email}
             showLabel={true}
             icon={<EmailICO />}
-            onClick={() => this.navigate(0, 'mailto:', this.state.email)}
+            onClick={() => this.navigate('email', 'mailto:', this.state.email)}
+            value={'email'}
           />
           {/*
           <BottomNavigationAction
             label={this.state.phone}
             icon={<PhoneICO />}
-            onClick={() => this.navigate(1, 'phone:', this.state.phone)}
+            onClick={() => this.navigate('phone', 'phone:', this.state.phone)}
+            value="phone"
           />
           */}
           <BottomNavigationAction
@@ -105,20 +113,23 @@ class BottomBar extends Component {
             showLabel={true}
             icon={<LinkedInICO style={iconStyle} />}
             target={'linkedin'}
-            onClick={() => this.navigate(2, 'https://www.linkedin.com/in/', this.state.linkedin, true)}
+            onClick={() => this.navigate('linkedin', 'https://www.linkedin.com/in/', this.state.linkedin, true)}
+            value={'linkedin'}
           />
           <BottomNavigationAction
             label={'joetm'}
             showLabel={true}
             icon={<GitICO style={iconStyle} />}
             target={'github'}
-            onClick={() => this.navigate(3, 'https://github.com/', 'joetm', true)}
+            onClick={() => this.navigate('github', 'https://github.com/', 'joetm', true)}
+            value={'github'}
           />
           <BottomNavigationAction
             label={this.state.cv}
             showLabel={true}
             icon={<WebsiteICO />}
-            onClick={() => this.navigate(4, this.state.cv, '')}
+            onClick={() => this.navigate('cv', this.state.cv, '')}
+            value={'cv'}
           />
         </BottomNavigation>
       </Paper>
