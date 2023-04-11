@@ -1,15 +1,20 @@
 /* @flow */
 
 import React, {Component} from 'react';
-import FontIcon from 'material-ui/FontIcon';
-import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
-import Paper from 'material-ui/Paper';
-
-import EmailICO from 'material-ui/svg-icons/communication/email';
-import PhoneICO from 'material-ui/svg-icons/communication/phone';
-import WebsiteICO from 'material-ui/svg-icons/av/web';
-import GitICO from 'react-icons/lib/fa/github-square';
-import LinkedInICO from 'react-icons/lib/fa/linkedin-square';
+import Paper from '@mui/material/Paper';
+import BottomNavigation from '@mui/material/BottomNavigation';
+// import BottomNavigationItem from '@mui/material/BottomNavigationItem';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+// import EmailICO from 'material-ui/svg-icons/communication/email';
+import EmailICO from '@mui/icons-material/Email';
+// import PhoneICO from 'material-ui/svg-icons/communication/phone';
+// import PhoneICO from '@mui/icons-material/Phone';
+// import WebsiteICO from 'material-ui/svg-icons/av/web';
+import WebsiteICO from '@mui/icons-material/Language';
+// import GitICO from 'react-icons/lib/fa/github-square';
+import GitICO from '@mui/icons-material/GitHub';
+// import LinkedInICO from 'react-icons/lib/fa/linkedin-square';
+import LinkedInICO from '@mui/icons-material/LinkedIn';
 
 
 const DELAY = 1000;
@@ -31,18 +36,22 @@ class BottomBar extends Component {
 
   serverRequest = null;
 
-  navigate = (index, site, content) => {
+  navigate = (index, site, content, external=false) => {
     this.setState({selectedIndex: index});
     //navigate after a nice animation
     window.setTimeout(() => {
+      if (external) {
+        window.open(site + content, '_blank');
+      } else {
         window.location = site + content;
+      }
     }, DELAY);
   }
 
 
   componentDidMount() {
 
-        const authorInfo = './data/author.txt';
+        const authorInfo = '/data/author.txt';
 
         this.serverRequest = fetch(authorInfo)
         .then((response) => {
@@ -68,40 +77,46 @@ class BottomBar extends Component {
   }
 
   // abort the running request if component is unmounted
-  componentWillUnmount() {
-      if (this.serverRequest) {
-        this.serverRequest.abort();
-      }
-  }
+  // componentWillUnmount() {
+  //     if (this.serverRequest) {
+  //       this.serverRequest.abort();
+  //     }
+  // }
 
   render() {
     return (
-      <Paper style={{marginTop:'4em'}} zDepth={1}>
+      <Paper style={{marginTop:'4em'}} elevation={1}>
         <BottomNavigation selectedIndex={this.state.selectedIndex}>
-          <BottomNavigationItem
+          <BottomNavigationAction
             label={this.state.email}
+            showLabel={true}
             icon={<EmailICO />}
             onClick={() => this.navigate(0, 'mailto:', this.state.email)}
           />
-          <BottomNavigationItem
+          {/*
+          <BottomNavigationAction
             label={this.state.phone}
             icon={<PhoneICO />}
             onClick={() => this.navigate(1, 'phone:', this.state.phone)}
           />
-          <BottomNavigationItem
+          */}
+          <BottomNavigationAction
             label={this.state.linkedin}
+            showLabel={true}
             icon={<LinkedInICO style={iconStyle} />}
             target={'linkedin'}
-            onClick={() => this.navigate(2, 'https://www.linkedin.com/in/', this.state.linkedin)}
+            onClick={() => this.navigate(2, 'https://www.linkedin.com/in/', this.state.linkedin, true)}
           />
-          <BottomNavigationItem
+          <BottomNavigationAction
             label={'joetm'}
+            showLabel={true}
             icon={<GitICO style={iconStyle} />}
             target={'github'}
-            onClick={() => this.navigate(3, 'https://github.com/', 'joetm')}
+            onClick={() => this.navigate(3, 'https://github.com/', 'joetm', true)}
           />
-          <BottomNavigationItem
+          <BottomNavigationAction
             label={this.state.cv}
+            showLabel={true}
             icon={<WebsiteICO />}
             onClick={() => this.navigate(4, this.state.cv, '')}
           />

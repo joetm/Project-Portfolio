@@ -1,6 +1,6 @@
 /* @flow */
 
-const React = require('react');
+import React from 'react';
 
 import Thumb from './Thumb.jsx';
 import Video from './Video.jsx';
@@ -18,13 +18,15 @@ class Project extends React.Component {
 
         let imgs = null;
         if (attrs.imgs !== undefined) {
+            const numimgs = attrs.imgs.length
             imgs = attrs.imgs.map((img, index) => (
-                    <li key={`${idtype}_img_${index}`} class={img.class}>
+                    <li key={`${idtype}_img_${index}`} className={img.class}>
                         <Thumb
                             title={img.title}
                             img={img.img}
                             thumb={img.thumb}
                             alt=""
+                            numimgs={numimgs}
                         />
                     </li>
                 )
@@ -58,7 +60,8 @@ class Project extends React.Component {
 
                     <div className="descr" dangerouslySetInnerHTML={{__html: attrs.description}}></div>
 
-                    {attrs.imgs && attrs.imgs.length > 0 && (
+                    {
+                        attrs.imgs && attrs.imgs.length > 0 && (
                             <div className="thumbs">
                                 <ul className="clearing-thumbs small-block-grid-1 medium-block-grid-3 large-block-grid-4">
                                     {imgs}
@@ -67,85 +70,70 @@ class Project extends React.Component {
                         )
                     }
 
-                    <div class="meta columns margin-top-print">
-
-                        {projectLinks ?
-                            <div class="large-12">
-                                {projectLinks}
-                            </div> :
-                            ''
+                    <div className="meta columns margin-top-print">
+                        {
+                            projectLinks &&
+                            <div className="large-12">{projectLinks}</div>
                         }
-
-                        {technologies.length ?
+                        {
+                            technologies.length &&
                             <div className="large-12">
                                 <span className="lbl">Technology:</span>
                                 <ul className="technologies inline-list">
                                     {technologies}
                                 </ul>
-                            </div> :
-                            ''
+                            </div>
                         }
-
-                        {attrs.status ?
-                            <div class="large-12">
-                                <span class="lbl">Status:</span> {attrs.status}
-                            </div> :
-                            ''
+                        {
+                            attrs.status &&
+                            <div className="large-12">
+                                <span className="lbl">Status:</span> {attrs.status}
+                            </div>
                         }
-
-                        {attrs.purpose ?
-                            <div class="large-12">
-                                <span class="lbl">Purpose:</span> {attrs.purpose}
-                            </div> :
-                            ''
+                        {
+                            attrs.purpose &&
+                            <div className="large-12">
+                                <span className="lbl">Purpose:</span> {attrs.purpose}
+                            </div>
                         }
-
-                        {attrs.position ?
-                            <div class="large-12">
-                                <span class="lbl">Position:</span> {attrs.position}
-                            </div> :
-                            ''
+                        {
+                            attrs.position &&
+                            <div className="large-12">
+                                <span className="lbl">Position:</span> {attrs.position}
+                            </div>
                         }
-
-                        {attrs.organisation ?
-                            <div class="large-12">
-                                <span class="lbl">Organisation:</span> <span class="descr" dangerouslySetInnerHTML={{__html: attrs.organisation}}></span>
-                            </div> :
-                            ''
+                        {
+                            attrs.organisation &&
+                            <div className="large-12">
+                                <span className="lbl">Organisation:</span> <span className="descr" dangerouslySetInnerHTML={{__html: attrs.organisation}}></span>
+                            </div>
                         }
-
-                        {attrs.location ?
-                            <div class="large-12">
-                                <span class="lbl">Location:</span> <span class="descr">{attrs.location}</span>
-                            </div> :
-                            ''
+                        {
+                            attrs.location &&
+                            <div className="large-12">
+                                <span className="lbl">Location:</span> <span className="descr">{attrs.location}</span>
+                            </div>
                         }
-
-                        {attrs.type ?
-                            <div class="large-12">
-                                <span class="lbl">Type:</span> {attrs.type}
-                            </div> :
-                            ''
+                        {
+                            attrs.type &&
+                            <div className="large-12">
+                                <span className="lbl">Type:</span> {attrs.type}
+                            </div>
                         }
-
-                        {attrs.grade ?
-                            <div class="large-12">
-                                <span class="lbl">Grade:</span> {attrs.grade}
-                            </div> :
-                            ''
+                        {
+                            attrs.grade &&
+                            <div className="large-12">
+                                <span className="lbl">Grade:</span> {attrs.grade}
+                            </div>
                         }
-
-                        {attrs.daterange ?
-                            <div class="large-12">
-                                <span class="lbl">Date:</span> {attrs.daterange}
-                            </div> :
-                            ''
+                        {
+                            attrs.daterange &&
+                            <div className="large-12">
+                                <span className="lbl">Date:</span> {attrs.daterange}
+                            </div>
                         }
-
                     </div>
-
                 </div>
-
             </div>
         );
     }

@@ -4,7 +4,7 @@
 
 import React from 'react';
 
-import 'whatwg-fetch'; // https://github.com/github/fetch
+// import 'whatwg-fetch'; // https://github.com/github/fetch
 
 String.prototype.rot14 = function(){return this.replace(/[a-zA-Z]/g, function(c){return String.fromCharCode((c <= "Z" ? 90 : 122) >= (c = c.charCodeAt(0) + 14) ? c : c - 26);});};
 
@@ -54,22 +54,22 @@ class Footer extends React.Component {
 
         return (
             <div id="Footer">
-                <div id="contact" class="large-12 columns">
+                <div id="contact" className="large-12 columns">
                     <hr />
                     <h4>Contact Me</h4>
-                    <div class="small-12 medium-6 columns" id="em">
-                        <i class="fi-mail"></i> Email: {this.state.Email}
+                    <div className="small-12 medium-6 columns" id="em">
+                        <i className="fi-mail"></i> Email: {this.state.Email}
                     </div>
-                    <div class="small-12 medium-6 columns">
+                    <div className="small-12 medium-6 columns">
                         <a href="#" target="_blank" id="linkedin">
-                            <i class="fi-social-linkedin"></i> LinkedIn: {this.state.Linkedin}
+                            <i className="fi-social-linkedin"></i> LinkedIn: {this.state.Linkedin}
                         </a>
                     </div>
-                    <div class="small-12 medium-6 columns" id="ph">
-                        <i class="fi-telephone"></i> Mobile Phone: {this.state.Phone}
+                    <div className="small-12 medium-6 columns" id="ph">
+                        <i className="fi-telephone"></i> Mobile Phone: {this.state.Phone}
                     </div>
-                    <div class="small-12 medium-6 columns" id="cv">
-                            <i class="fi-web"></i> CV website: <a href="http:{this.state.CV}">{this.state.CV}</a>
+                    <div className="small-12 medium-6 columns" id="cv">
+                            <i className="fi-web"></i> CV website: <a href="http:{this.state.CV}">{this.state.CV}</a>
                     </div>
                 </div>
             </div>

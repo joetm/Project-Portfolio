@@ -11,7 +11,7 @@ class LoadingAnim extends React.PureComponent {
 	      {display: 'inline-block'};
 
         return (
-            <i style={icon_style} class="icon-loading animate-spin" title="...loading..."></i>
+            <i style={icon_style} className="icon-loading animate-spin" title="...loading..."></i>
         )
     }
 

@@ -6,7 +6,7 @@ import { PureComponent } from 'react';
 class Vid extends PureComponent {
   render() {
     return (
-        <div class="videos">
+        <div className="videos">
             <iframe
                 width="420"
                 height="315"

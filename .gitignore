@@ -10,6 +10,10 @@ node_modules/
 img/
 !img/badges
 
+src/data/academic.json
+src/data/author.txt
+src/data/projects.json
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db

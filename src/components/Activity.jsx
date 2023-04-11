@@ -1,6 +1,6 @@
 /* @flow */
 
-const React = require('react')
+import React from 'react'
 
 import ProjectLinkRow from './ProjectLinkRow.jsx'
 
@@ -36,49 +36,49 @@ class Activity extends React.PureComponent {
         return (
             <div
                 style={{display: visible === false ? 'none' : 'block'}}
-                class="row page-break margin-top-print"
+                className="row page-break margin-top-print"
             >
-                <div class="large-12 columns">
+                <div className="large-12 columns">
 
-                    <hr class="hide-for-print" />
+                    <hr className="hide-for-print" />
 
                     <h4>{title}</h4>
 
-                    <div class="descr" dangerouslySetInnerHTML={{__html: description}}></div>
+                    <div className="descr" dangerouslySetInnerHTML={{__html: description}}></div>
 
-                    <div class="meta columns margin-top-print">
+                    <div className="meta columns margin-top-print">
 
                         {daterange ?
-                            <div class="large-12">
-                                <span class="lbl">Date:</span> {daterange}
+                            <div className="large-12">
+                                <span className="lbl">Date:</span> {daterange}
                             </div> :
                             ''
                         }
 
                         {location ?
-                            <div class="large-12">
-                                <span class="lbl">Location:</span> <span class="descr">{location}</span>
+                            <div className="large-12">
+                                <span className="lbl">Location:</span> <span className="descr">{location}</span>
                             </div> :
                             ''
                         }
 
                         {projectLinks ?
-                            <div class="large-12">
+                            <div className="large-12">
                                 {projectLinks}
                             </div> :
                             ''
                         }
 
                         {position ?
-                            <div class="large-12">
-                                <span class="lbl">Position:</span> {position}
+                            <div className="large-12">
+                                <span className="lbl">Position:</span> {position}
                             </div> :
                             ''
                         }
 
                         {organisation ?
-                            <div class="large-12">
-                                <span class="lbl">Organisation:</span> <span class="descr" dangerouslySetInnerHTML={{__html: organisation}}></span>
+                            <div className="large-12">
+                                <span className="lbl">Organisation:</span> <span className="descr" dangerouslySetInnerHTML={{__html: organisation}}></span>
                             </div> :
                             ''
                         }

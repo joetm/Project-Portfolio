@@ -3,10 +3,12 @@
 import React from 'react';
 import { Component } from 'react';
 
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/navigation/arrow-upward';
+import FloatingActionButton from '@mui/material/Fab';
 
-// const FloatingScrollButton = () => (
+//import ContentAdd from 'material-ui/svg-icons/navigation/arrow-upward';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+
+
 class FloatingScrollButton extends Component {
 
     state = {
@@ -14,7 +16,8 @@ class FloatingScrollButton extends Component {
     };
 
     // see http://stackoverflow.com/a/24559613/426266
-    scrollToTop(scrollDuration : number) {
+    // scrollToTop(scrollDuration : number) {
+    scrollToTop(scrollDuration) {
         var scrollStep = -window.scrollY / (scrollDuration / 15),
             scrollInterval = setInterval(function(){
             if ( window.scrollY != 0 ) {
@@ -52,7 +55,7 @@ class FloatingScrollButton extends Component {
                     bottom:'20px'
                 }}
                 >
-                <ContentAdd />
+                <ArrowUpwardIcon />
             </FloatingActionButton>
         );
     }

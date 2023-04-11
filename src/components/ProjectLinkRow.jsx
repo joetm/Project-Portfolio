@@ -1,6 +1,6 @@
 /* @flow */
 
-const React = require('react');
+import React from 'react';
 
 
 class ProjectLinkRow extends React.PureComponent {
@@ -8,7 +8,7 @@ class ProjectLinkRow extends React.PureComponent {
         const { label, linkTarget, linkText } = this.props
         return (
             <div>
-                <span class="lbl">{label}:</span> <a href={linkTarget} target="_blank">{linkText}</a>
+                <span className="lbl">{label}:</span> <a href={linkTarget} target="_blank">{linkText}</a>
             </div>
         )
     }
