@@ -11,38 +11,11 @@ class Project extends React.Component {
     render() {
         const { attrs, visible, idtype } = this.props
 
-        let technologies = [];
-        for (let i=0, numrows = attrs.technology.length; i < numrows; i++) {
-            technologies.push(<li className="label" key={idtype+'_tech_'+i}>{attrs.technology[i]}</li>);
-        }
-
-        let imgs = null;
-        if (attrs.imgs !== undefined) {
-            const numimgs = attrs.imgs.length
-            imgs = attrs.imgs.map((img, index) => (
-                    <li key={`${idtype}_img_${index}`} className={img.class}>
-                        <Thumb
-                            title={img.title}
-                            img={img.img}
-                            thumb={img.thumb}
-                            alt=""
-                            numimgs={numimgs}
-                        />
-                    </li>
-                )
-            )
-        }
-
         let projectLinks = [];
         if (attrs.links !== undefined) {
             for (let i = 0, numrows = attrs.links.length; i < numrows; i++) {
                 projectLinks.push(
-                    <ProjectLinkRow
-                        key={`${this.props.idtype}_link_${i}`}
-                        label={attrs.links[i].label}
-                        linkText={attrs.links[i].title}
-                        linkTarget={attrs.links[i].link}
-                    />
+                    
                 );
             }
         }
@@ -58,31 +31,60 @@ class Project extends React.Component {
 
                     <h4>{attrs.title}</h4>
 
-                    <div className="descr" dangerouslySetInnerHTML={{__html: attrs.description}}></div>
+                    {
+                        attrs?.description &&
+                            <div className="descr" dangerouslySetInnerHTML={{__html: attrs.description}}></div>
+                    }
 
                     {
-                        attrs.imgs && attrs.imgs.length > 0 && (
+                        attrs?.imgs?.length > 0 && (
                             <div className="thumbs">
                                 <ul className="clearing-thumbs small-block-grid-1 medium-block-grid-3 large-block-grid-4">
-                                    {imgs}
+                                {
+                                    attrs.imgs.map((el, index) => (
+                                        <li key={`_img_${index}`} className={el.class}>
+                                            <Thumb
+                                                title={el.title}
+                                                img={el.img}
+                                                thumb={el.thumb}
+                                                alt=""
+                                                numimgs={attrs.imgs.length}
+                                            />
+                                        </li>
+                                    ))
+                                }
                                 </ul>
                             </div>
                         )
                     }
 
                     <div className="meta columns margin-top-print">
+
                         {
-                            projectLinks &&
-                            <div className="large-12">{projectLinks}</div>
+                            attrs?.links &&
+                                <div className="large-12">
+                                {
+                                    attrs.links.map((el) =>
+                                        <ProjectLinkRow
+                                            key={`_link_${el}`}
+                                            label={el.label}
+                                            linkText={el.title}
+                                            linkTarget={el.link}
+                                        />
+                                    )
+                                }
+                                </div>
                         }
                         {
-                            technologies.length &&
-                            <div className="large-12">
-                                <span className="lbl">Technology:</span>
-                                <ul className="technologies inline-list">
-                                    {technologies}
-                                </ul>
-                            </div>
+                            attrs.technology.length &&
+                                <div className="large-12">
+                                    <span className="lbl">Technology:</span>
+                                    <ul className="technologies inline-list">
+                                    {
+                                        attrs.technology.map((e) => <li className="label" key={`_tech_-${e}`}>{e}</li>)
+                                    }
+                                    </ul>
+                                </div>
                         }
                         {
                             attrs.status &&
