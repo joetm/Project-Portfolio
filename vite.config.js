@@ -11,10 +11,11 @@ export default defineConfig(({ command, mode }) => {
         assetFileNames: `assets/[name].[ext]`
       }
     },
+    base: "/portfolio/",
     plugins: [],
     publicDir: '../public',
     build: {
-      outDir: '../dist',
+      outDir: '../dist/portfolio',
       minify: false,
       emptyOutDir: true,
     },

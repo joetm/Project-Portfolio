@@ -43,7 +43,7 @@ export default function App () {
     let serverRequest = null
 
     useEffect(() => {
-        serverRequest = fetch(`/data/projects.json`)
+        serverRequest = fetch(`/portfolio/data/projects.json`)
             .then((response) => response.json())
             .then((ps) => {
                 setData(ps.projects)

@@ -4,7 +4,6 @@ import React from 'react'
 
 import LoadingAnim from './LoadingAnim.jsx'
 
-
 function Projects({ loading, children, title }) {
     return (
         <section>
@@ -20,7 +19,6 @@ function Projects({ loading, children, title }) {
                 children &&
                     <div className="projects_body margin-top-print padded">
                         {children}
-                    }
                     </div>
             }
         </section>
