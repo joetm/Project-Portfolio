@@ -1,21 +1,6 @@
 /* @flow */
 
-import React from 'react';
-
-// https://github.com/callemall/material-ui
-// import MuiThemeProvider from '@mui/material/MuiThemeProvider';;
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: 'rgb(0, 188, 212)',
-    },
-    secondary: {
-      main: 'rgb(255, 64, 129)',
-    },
-  },
-});
+import React, { useState, useEffect } from 'react'
 
 // import { createStore } from 'redux';
 // import { Provider } from 'react-redux';
@@ -31,36 +16,42 @@ import Activity from '../components/Activity.jsx'
 import BottomBar from '../components/BottomBar.jsx'
 import ScrollButton from '../components/ScrollButton.jsx'
 
-class App extends React.Component {
+// https://github.com/callemall/material-ui
+// import MuiThemeProvider from '@mui/material/MuiThemeProvider';;
+import { ThemeProvider, createTheme } from '@mui/material/styles'
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            loading: true,
-            aboutText: '',
-            introText: '',
-            subMenuVisible: false,
-            projects: {
-                current: [],
-                past: []
-            }
-        };
-        this.serverRequest = null;
-    }
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: 'rgb(0, 188, 212)',
+    },
+    secondary: {
+      main: 'rgb(255, 64, 129)',
+    },
+  },
+})
 
-    componentDidMount() {
-        const projectsData = `/data/projects.json`;
-        this.serverRequest = fetch(projectsData)
-        .then((response) => response.json())
-        .then((ps) => {
-            this.setState({
-                projects: ps.projects,
-                aboutText: ps.about,
-                introText: ps.intro_text,
-                loading: false,
-            });
-        });
-    }
+
+export default function App () {
+
+    const [data, setData] = useState({ current: [], past: [] })
+    const [loading, setLoading] = useState(true)
+    const [aboutText, setAboutText] = useState('')
+    const [introText, setIntroText] = useState('')
+    const [subMenuVisible, setSubMenuVisible] = useState(false)
+
+    let serverRequest = null
+
+    useEffect(() => {
+        serverRequest = fetch(`/data/projects.json`)
+            .then((response) => response.json())
+            .then((ps) => {
+                setData(ps.projects)
+                setAboutText(ps.about)
+                setIntroText(ps.intro_text)
+                setLoading(false)
+            })
+    }, [])
 
     // abort the running request if component is unmounted
     // componentWillUnmount() {
@@ -70,98 +61,79 @@ class App extends React.Component {
     //     }
     // }
 
-    projectsFilter(filter) {
+    function projectsFilter(filter) {
         // project filter
         if (filter) {
             // console.log('projectsFilter', filter);
-            this.state.projects.current.map((project) => {
-                project.visible = (project.idtype === filter ? true : false);
-            });
-            this.state.projects.past.map((project) => {
-                project.visible = (project.idtype === filter ? true : false);
-            });
+            data.current.map((project) => {
+                project.visible = (project.idtype === filter ? true : false)
+            })
+            data.past.map((project) => {
+                project.visible = (project.idtype === filter ? true : false)
+            })
         // filter reset
         } else {
-            this.state.projects.current.map((project) => {
-                project.visible = true;
-            });
-            this.state.projects.past.map((project) => {
-                project.visible = true;
-            });
+            data.current.map((project) => { project.visible = true })
+            data.past.map((project) => { project.visible = true })
         }
     }
 
-    toggleSubMenu() {
-        let subMenuVisible = this.state.subMenuVisible;
-        this.setState({
-            subMenuVisible: !subMenuVisible
-        });
-    }
-
-    getProjects(projectType) {
-        let numProjects = 0;
-        let projects = this.state.projects[projectType].map((project, index) => {
+    function getProjects(projectType) {
+        let numProjects = 0
+        const projects = data[projectType].map((project, index) => {
             if (project.idtype === 'conference' || project.idtype === 'workshop') {
                 return (
                     <Activity
-                        key={`${projectType}_project_${index}`}
+                        key={`${projectType}_${project.title}_${index}`}
                         attrs={project}
                         visible={project.visible !== false}
                     />
-                );
+                )
             }
-            if (project.visible !== false) {
-                numProjects++;
-            }
+            if (project.visible !== false) { numProjects++ }
             return (
                 <Project
-                    key={`${projectType}_project_${index}`}
+                    key={`${projectType}_${project.title}_${index}`}
                     attrs={project}
                     visible={project.visible !== false}
                 />
-            );
-        });
-        return { projects, numProjects };
+            )
+        })
+        return { projects, numProjects }
     }
 
-    render() {
 
-        let { projects: currentProjects = [], numProjects: numCurrentProjects } = this.getProjects('current');
-        let { projects: pastProjects = [], numProjects: numPastProjects } = this.getProjects('past');
+    const { projects: currentProjects = [], numProjects: numCurrentProjects } = getProjects('current')
+    const { projects: pastProjects = [], numProjects: numPastProjects } = getProjects('past')
 
-        // <ThemeProvider>
-        // </ThemeProvider>
+    return (
+      <ThemeProvider theme={theme}>
+        <div className="appContainer">
+            <Nav
+                projectsFilter={projectsFilter}
+                subMenuVisible={subMenuVisible}
+                toggleSubMenu={() => setSubMenuVisible(!subMenuVisible)}
+            />
+            <About
+                aboutText={aboutText}
+                introText={introText}
+            />
+            <Projects
+                loading={loading}
+                title={'Current Projects'}
+            >
+                {currentProjects}
+            </Projects>
+            <Projects
+                loading={loading}
+                title={'Past Projects'}
+            >
+                {pastProjects}
+            </Projects>
+            <ScrollButton />
+            <BottomBar />
+        </div>
+      </ThemeProvider>
+    )
 
-        return (
-          <ThemeProvider theme={theme}>
-            <div className="appContainer">
-                <Nav
-                    projectsFilter={this.projectsFilter.bind(this)}
-                    subMenuVisible={this.state.subMenuVisible}
-                    toggleSubMenu={this.toggleSubMenu.bind(this)}
-                />
-                <About
-                    aboutText={this.state.aboutText}
-                    introText={this.state.introText}
-                />
-                <Projects
-                    loading={this.state.loading}
-                    title={'Current Projects'}
-                >
-                    {currentProjects}
-                </Projects>
-                <Projects
-                    loading={this.state.loading}
-                    title={'Past Projects'}
-                >
-                    {pastProjects}
-                </Projects>
-                <ScrollButton />
-                <BottomBar />
-            </div>
-          </ThemeProvider>
-        );
-    }
-};
-
-export default App;
+}

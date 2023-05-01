@@ -42,7 +42,7 @@ class Project extends React.Component {
                                 <ul className="clearing-thumbs small-block-grid-1 medium-block-grid-3 large-block-grid-4">
                                 {
                                     attrs.imgs.map((el, index) => (
-                                        <li key={`_img_${index}`} className={el.class}>
+                                        <li key={`${el.title}_${index}`} className={el.class}>
                                             <Thumb
                                                 title={el.title}
                                                 img={el.img}
@@ -64,9 +64,9 @@ class Project extends React.Component {
                             attrs?.links &&
                                 <div className="large-12">
                                 {
-                                    attrs.links.map((el) =>
+                                    attrs.links.map((el, index) =>
                                         <ProjectLinkRow
-                                            key={`_link_${el}`}
+                                            key={`${el.title}_${index}`}
                                             label={el.label}
                                             linkText={el.title}
                                             linkTarget={el.link}

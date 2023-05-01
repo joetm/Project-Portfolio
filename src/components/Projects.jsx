@@ -7,7 +7,7 @@ import LoadingAnim from './LoadingAnim.jsx'
 
 function Projects({ loading, children, title }) {
     return (
-        <section className="padded">
+        <section>
             <div id="past" className="projects_headline row hide-for-print">
                 <div className="large-12 columns">
                     <hr className="hidden-print" />
@@ -18,8 +18,9 @@ function Projects({ loading, children, title }) {
             </div>
             {
                 children &&
-                    <div className="projects_body margin-top-print">
+                    <div className="projects_body margin-top-print padded">
                         {children}
+                    }
                     </div>
             }
         </section>

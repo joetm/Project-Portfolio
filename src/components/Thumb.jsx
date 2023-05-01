@@ -1,10 +1,10 @@
 /* @flow */
 
-import React from 'react';
+import React from 'react'
 
 export default function Thumb({img, thumb, title, numimgs}) {
 	if (!img || !thumb) {
-		return null;
+		return null
 	}
 	return (
 		<a className="thumbnail" href={img} title={title}>
@@ -20,5 +20,5 @@ export default function Thumb({img, thumb, title, numimgs}) {
 				}}
 		    />
 		</a>
-	);
-};
+	)
+}

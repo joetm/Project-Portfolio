@@ -1,6 +1,8 @@
 #private files
 projects/
-projects.json
+public/data/projects.json
+public/data/academic.json
+public/data/search.json
 json/projects.min.json
 projects.BAK.json
 

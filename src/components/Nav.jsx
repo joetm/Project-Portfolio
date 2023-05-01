@@ -1,9 +1,9 @@
 /* @flow */
 
-import React from 'react';
+import React from 'react'
 
-import NavBar from './NavBar.jsx';
-import NavSubHeader from './NavSubHeader.jsx';
+import NavBar from './NavBar.jsx'
+import NavSubHeader from './NavSubHeader.jsx'
 
 
 const Nav = ({ toggleSubMenu, subMenuVisible, projectsFilter }) => (
@@ -15,7 +15,7 @@ const Nav = ({ toggleSubMenu, subMenuVisible, projectsFilter }) => (
             toggleSubMenu={toggleSubMenu}
         />
     </div>
-);
+)
 
 
-export default Nav;
+export default Nav

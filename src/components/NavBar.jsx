@@ -2,12 +2,12 @@
 
 import React from 'react'
 
-import Box from '@mui/material/Box';
-import AppBar from "@mui/material/AppBar";
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+import Box from '@mui/material/Box'
+import AppBar from "@mui/material/AppBar"
+import Toolbar from '@mui/material/Toolbar'
+import Typography from '@mui/material/Typography'
+import IconButton from '@mui/material/IconButton'
+import MenuIcon from '@mui/icons-material/Menu'
 
 
 function NavBar({ toggleSubMenu }) {
@@ -19,7 +19,7 @@ function NavBar({ toggleSubMenu }) {
 
     const handleLeftIconButtonClick = () => {
         console.log('menu icon click');
-        toggleSubMenu();
+        toggleSubMenu()
     }
 
     return (
@@ -42,8 +42,8 @@ function NavBar({ toggleSubMenu }) {
         </Toolbar>
         </AppBar>
       </Box>
-    );
+    )
 }
 
 
-export default NavBar;
+export default NavBar

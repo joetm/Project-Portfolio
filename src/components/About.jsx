@@ -1,16 +1,14 @@
 /* @flow */
 
-import React from 'react';
+import React from 'react'
 
 function ContactLink() {
     function onBtnClick(event) {
-        window.scrollTo(0, document.body.scrollHeight);
+        window.scrollTo(0, document.body.scrollHeight)
     }
     return (
-        <a href="#contact" onClick={onBtnClick}>
-            Contact information
-        </a>
-    );
+        <a href="#contact" onClick={onBtnClick}>Contact information</a>
+    )
 }
 
 function About({ aboutText, introText }) {
@@ -19,19 +17,13 @@ function About({ aboutText, introText }) {
             <div id="intro" className="row hidden-print">
                 <div className="small-12 columns">
                     <h3>About</h3>
-                    <p>
-                        { aboutText ? aboutText : <span>&nbsp;</span> }
-                    </p>
-                    <p>
-                        { introText ? introText : <span>&nbsp;</span> }
-                    </p>
-                    <p>
-                        <ContactLink />
-                    </p>
+                    <p> { aboutText ? aboutText : <span>&nbsp;</span> } </p>
+                    <p> { introText ? introText : <span>&nbsp;</span> } </p>
+                    <p> <ContactLink /> </p>
                 </div>
             </div>
         </section>
-    );
+    )
 }
 
-export default About;
+export default About

@@ -1,22 +1,19 @@
 /* @flow */
 
-import React from 'react';
-import { PureComponent } from 'react';
+import React from 'react'
 
-class Vid extends PureComponent {
-  render() {
+function Vid({code}) {
     return (
         <div className="videos">
             <iframe
                 width="420"
                 height="315"
-                src="https://www.youtube.com/embed/{this.props.code}"
+                src="https://www.youtube.com/embed/{code}"
                 frameborder="0"
                 allowfullscreen
             ></iframe>
         </div>
-    );
-  }
+    )
 }
 
-export default Vid;
+export default Vid

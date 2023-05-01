@@ -5,7 +5,7 @@ A portfolio of web development projects.
 
 Technologies used:
 *   Standards: HTML5, CSS3
-*   Components: React, Material-UI, Babel
+*   Components: React, Redux, Material-UI, Vite
 
 The projects are stored in data/projects.json.
 A sample file (data/projects.json.sample) is included.
@@ -19,25 +19,18 @@ Installation
 To install, rename the data/projects.json.sample to data/projects.json
 and rename data/author.txt.sample to data/author.txt.
 
-Usage
------
-
-Type:
 `npm install`
-Then:
-`webpack`
-`http-server .`
 
 Development
 -----------
 
 Type:
-`npm run watch`
-`npm start`
-The latter will start the dev server at http://localhost:8080/webpack-dev-server/
+`npm run start`
+`npm run dev`
 
 Build
 -----
 
 Type:
 `npm run build`
+`npm run preview`

@@ -1,20 +1,16 @@
 /* @flow */
 
-import React from 'react';
+import React from 'react'
 
-class LoadingAnim extends React.PureComponent {
 
-    render() {
+export default function LoadingAnim({loading}) {
 
-		let icon_style = this.props.loading === true ?
-	      {display: 'none'} :
-	      {display: 'inline-block'};
+    let icon_style = loading === true ?
+      {display: 'none'} :
+      {display: 'inline-block'}
 
-        return (
-            <i style={icon_style} className="icon-loading animate-spin" title="...loading..."></i>
-        )
-    }
+    return (
+        <i style={icon_style} className="icon-loading animate-spin" title="...loading..."></i>
+    )
 
 }
-
-export default LoadingAnim;
