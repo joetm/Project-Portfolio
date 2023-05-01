@@ -1,6 +1,7 @@
 #private files
 projects/
 public/data/projects.json
+dist/data/projects.json
 public/data/academic.json
 public/data/search.json
 json/projects.min.json
