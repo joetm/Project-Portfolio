@@ -27,7 +27,7 @@ function Footer() {
                 if(vars && vars.length){
                     vars = vars.map((item) => item.rot14())
                     setName(vars[0])
-                    setEmail(vars[1])
+                    // setEmail(vars[1])
                     // setPhone(vars[2])
                     setCV(vars[3])
                     setLinkedin(vars[4])
@@ -41,9 +41,11 @@ function Footer() {
             <div id="contact" className="large-12 columns">
                 <hr />
                 <h4>Contact Me</h4>
+                {/*
                 <div className="small-12 medium-6 columns" id="em">
                     <i className="fi-mail"></i> Email: {email}
                 </div>
+                */}
                 <div className="small-12 medium-6 columns">
                     <a href="#" target="_blank" id="linkedin">
                         <i className="fi-social-linkedin"></i> LinkedIn: {linkedin}
