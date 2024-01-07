@@ -40,6 +40,10 @@ function Project({ attrs, visible, idtype }) {
                         <ScreenSideBySide imgs={attrs?.imgs} bgcolor={attrs?.bgcolor} />
                 }
                 {
+                    attrs.frame  && attrs.frame === 'full' &&
+                        <img src={attrs?.imgs[0].img} style={{maxWidth:'100%'}} />
+                }
+                {
                     !attrs.frame && attrs?.imgs?.length > 0 && (
                             <div className="thumbs">
                                 <ul className="clearing-thumbs small-block-grid-1 medium-block-grid-3 large-block-grid-4">
