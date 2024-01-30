@@ -26,7 +26,6 @@ function Project({ attrs, visible, idtype }) {
                         <div className="descr" dangerouslySetInnerHTML={{__html: attrs.description}}></div>
                 }
 
-
                 {
                     attrs.frame  && attrs.frame === 'laptop' &&
                         <LaptopFrame img={attrs?.imgs[0].img} />
@@ -41,28 +40,53 @@ function Project({ attrs, visible, idtype }) {
                 }
                 {
                     attrs.frame  && attrs.frame === 'full' &&
-                        <img src={attrs?.imgs[0].img} style={{maxWidth:'100%'}} />
+                        attrs?.imgs.map(el => 
+                            <img src={el.img} style={{maxWidth:'100%'}} />
+                        )
                 }
                 {
-                    !attrs.frame && attrs?.imgs?.length > 0 && (
+                    attrs.frame  && attrs.frame === 'first' &&
+                        <>
+                            <img src={attrs?.imgs[0].img} style={{maxWidth:'100%'}} />
                             <div className="thumbs">
                                 <ul className="clearing-thumbs small-block-grid-1 medium-block-grid-3 large-block-grid-4">
                                 {
-                                    attrs.imgs.map((el, index) => (
+                                    attrs?.imgs.slice(1).map((el, index) => (
                                         <li key={`${el.title}_${index}`} className={el.class}>
                                             <Thumb
                                                 title={el.title}
                                                 img={el.img}
                                                 thumb={el.thumb}
                                                 alt=""
-                                                numimgs={attrs.imgs.length}
+                                                numimgs={attrs.imgs.slice(1).length}
                                             />
                                         </li>
                                     ))
                                 }
                                 </ul>
                             </div>
-                        )
+                        </>
+                }
+                {
+                    !attrs.frame && attrs?.imgs?.length > 0 && (
+                        <div className="thumbs">
+                            <ul className="clearing-thumbs small-block-grid-1 medium-block-grid-3 large-block-grid-4">
+                            {
+                                attrs.imgs.map((el, index) => (
+                                    <li key={`${el.title}_${index}`} className={el.class}>
+                                        <Thumb
+                                            title={el.title}
+                                            img={el.img}
+                                            thumb={el.thumb}
+                                            alt=""
+                                            numimgs={attrs.imgs.length}
+                                        />
+                                    </li>
+                                ))
+                            }
+                            </ul>
+                        </div>
+                    )
                 }
 
 

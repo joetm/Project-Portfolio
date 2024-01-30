@@ -13,7 +13,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "publish": "aws s3 sync ./dist/* s3://www.komasurfer.com",
+    "sync": "aws s3 sync ./dist/portfolio s3://www.komasurfer.com/portfolio",
     "invalidate": "./invalidate.sh",
     "test": "jest",
     "test:watch": "jest --watch"

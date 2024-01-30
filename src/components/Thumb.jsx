@@ -16,7 +16,7 @@ export default function Thumb({img, thumb, title, numimgs}) {
 				placeholder="dominantColor"
 				style={{
 					maxWidth: numimgs >= 3 ? '292px' : 'inherit',
-					height: 'auto'
+					height: numimgs >= 3 ? '160px' : 'inherit',
 				}}
 		    />
 		</a>
