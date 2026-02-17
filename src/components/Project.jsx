@@ -12,6 +12,7 @@ function Project({ attrs, visible, idtype }) {
 
     return (
         <div
+            id={attrs?.id.toLowerCase()}
             style={{display: visible === false ? 'none' : 'block'}}
             className="row page-break margin-top-print"
         >
@@ -41,7 +42,7 @@ function Project({ attrs, visible, idtype }) {
                 {
                     attrs.frame  && attrs.frame === 'full' &&
                         attrs?.imgs.map(el => 
-                            <img src={el.img} style={{maxWidth:'100%'}} />
+                            <img key={el.img} src={el.img} style={{maxWidth:'100%'}} />
                         )
                 }
                 {
@@ -72,17 +73,21 @@ function Project({ attrs, visible, idtype }) {
                         <div className="thumbs">
                             <ul className="clearing-thumbs small-block-grid-1 medium-block-grid-3 large-block-grid-4">
                             {
-                                attrs.imgs.map((el, index) => (
-                                    <li key={`${el.title}_${index}`} className={el.class}>
-                                        <Thumb
-                                            title={el.title}
-                                            img={el.img}
-                                            thumb={el.thumb}
-                                            alt=""
-                                            numimgs={attrs.imgs.length}
-                                        />
-                                    </li>
-                                ))
+                                attrs.imgs.map((el, index) => {
+                                    return (
+                                        <li key={`${el.title}_${index}`} className={el.class}>
+                                            <Thumb
+                                                title={el.title}
+                                                img={el.img}
+                                                thumb={el.thumb}
+                                                width={el?.width}
+                                                alt=""
+                                                numimgs={attrs.imgs.length}
+                                            />
+                                        </li>
+                                    )
+                                }
+                                )
                             }
                             </ul>
                         </div>
@@ -118,12 +123,12 @@ function Project({ attrs, visible, idtype }) {
                                 </ul>
                             </div>
                     }
-                    {
+                    {/*
                         attrs.status &&
                         <div className="large-12">
                             <span className="lbl">Status:</span> {attrs.status}
                         </div>
-                    }
+                    */}
                     {
                         attrs.purpose &&
                         <div className="large-12">

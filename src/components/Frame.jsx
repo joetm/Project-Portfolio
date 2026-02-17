@@ -36,8 +36,8 @@ export function ScreenSideBySide({imgs = [], bgcolor = '#505050'}) {
 		return () => window.removeEventListener('resize', resizeScreenshot)
 	}, [])
 
-	console.log(left[0], width[0], top[0], height[0])
-	console.log(left[1], width[1], top[1], height[1])
+	// console.log(left[0], width[0], top[0], height[0])
+	// console.log(left[1], width[1], top[1], height[1])
 
 	return (
 		<div style={{position: 'relative', margin: '1rem 0'}}>
@@ -114,8 +114,8 @@ export function TabletSideBySide({imgs = [], bgcolor = '#666666'}) {
 		return () => window.removeEventListener('resize', resizeScreenshot)
 	}, [])
 
-	console.log(left[0], width[0], top[0], height[0])
-	console.log(left[1], width[1], top[1], height[1])
+	// console.log(left[0], width[0], top[0], height[0])
+	// console.log(left[1], width[1], top[1], height[1])
 
 	return (
 		<div style={{position: 'relative'}}>

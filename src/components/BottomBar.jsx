@@ -49,7 +49,7 @@ function BottomBar() {
   }
 
   useEffect(() => {
-    fetch('/data/author.txt')
+    fetch('/portfolio/data/author.txt')
       .then((response) => response.text())
       .then((txt) => {
           var vars = txt.split("\n")
